@@ -14,6 +14,36 @@
       },
       "reviews": [],
       "id": 1
+    },
+    {
+      "email": "marcocipolletta1998@gmail.com",
+      "password": "$2a$10$xVKesn1DtMNiz3b9mV0LVO2OmdwveURQbU04DvmfO7DVe8XQrXE9W",
+      "firstName": "marco",
+      "lastName": "Cipolletta",
+      "profileImg": "",
+      "role": "guest",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 2
+    },
+    {
+      "email": "123@123.it",
+      "password": "$2a$10$HkqO6toERf2K4FjXW3nzcOyn7qRlmv5QdJirxXyK193KHrVhZ3nJC",
+      "firstName": "Marco",
+      "lastName": "marc",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 3
     }
   ],
   "apartments": [
