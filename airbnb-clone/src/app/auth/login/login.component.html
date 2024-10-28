@@ -15,9 +15,9 @@
             <label for="email" class="form-label mb-0"
               >Indirizzo email: *</label
             >
-            <span *ngIf="isInvalidTouched('email')" class="text-danger"
-              >Indirizzo email non valido</span
-            >
+            <span *ngIf="isInvalidTouched('email')" class="text-danger">{{
+              getError("email")
+            }}</span>
           </div>
           <input
             formControlName="email"

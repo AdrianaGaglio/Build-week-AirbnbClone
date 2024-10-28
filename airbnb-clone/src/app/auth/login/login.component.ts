@@ -25,7 +25,16 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  getError(fieldName: string) {
+    if (this.loginForm.get(fieldName)?.errors!['required']) {
+      return 'Campo obbligatorio';
+    } else if (this.loginForm.get(fieldName)?.errors!['email']) {
+      return 'Email non valida';
+    }
+    return null;
+  }
+
   login() {
-    console.log(this.loginForm.value);
+    console.log(this.getError('email'));
   }
 }

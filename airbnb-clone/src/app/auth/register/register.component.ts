@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +38,18 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  getError(fieldName: string) {
+    if (this.registerForm.get(fieldName)?.errors!['required']) {
+      return 'Campo obbligatorio';
+    } else if (this.registerForm.get(fieldName)?.errors!['email']) {
+      return 'Email non valida';
+    } else if (this.registerForm.get(fieldName)?.hasError('minlength')) {
+      return 'La password deve avere almeno 8 caratteri';
+    }
+    return null;
+  }
+
   register() {
-    console.log(this.registerForm.valid);
+    console.log(this.registerForm.value);
   }
 }
