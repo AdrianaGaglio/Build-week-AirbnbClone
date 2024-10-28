@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -7,6 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +17,12 @@ import { AuthService } from '../auth.service';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit {
-  constructor(private fb: FormBuilder, private authSvc: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authSvc: AuthService,
+    private router: Router
+  ) {}
+  private modalService = inject(NgbModal);
 
   registerForm!: FormGroup;
   message!: string;
@@ -60,11 +68,22 @@ export class RegisterComponent implements OnInit {
         next: () => {
           this.registerForm.reset();
           this.message = 'Registrazione avvenuta con successo';
+          this.openModal(this.message, true);
+          setTimeout(() => {
+            this.router.navigate(['/auth/login']);
+            this.modalService.dismissAll();
+          }, 2000);
         },
         error: (err) => {
           this.message = err;
+          this.openModal(this.message, false);
         },
       });
     }
+  }
+  openModal(message: string, value: boolean) {
+    const modalRef = this.modalService.open(PopupComponent);
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.isOk = value;
   }
 }

@@ -34,7 +34,6 @@ import { SharedModule } from './shared/shared.module';
       ionLogoInstagram,
       ionLogoFacebook,
       ionLogoTwitter,
-
       ionSearchCircleSharp,
     }),
     SharedModule,

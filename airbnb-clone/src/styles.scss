@@ -72,3 +72,19 @@ main {
   flex-grow: 1;
   padding-block: 2rem;
 }
+
+.modal-content {
+  background: #ffffff32;
+  border: 2px solid #fff;
+  backdrop-filter: blur(30px);
+  color: white;
+  text-shadow: 2px 2px 5px #00000055;
+  height: 100%;
+  .modal-body {
+    vertical-align: middle;
+
+    p {
+      margin: 0;
+    }
+  }
+}
