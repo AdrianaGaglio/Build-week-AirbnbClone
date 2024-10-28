@@ -2,3 +2,31 @@
   width: 340px;
   height: 230px;
 }
+
+.card-host-pos {
+  position: sticky;
+  top: 2.5rem;
+}
+
+.posStickyCardInfo {
+  position: sticky;
+  top: 19rem;
+}
+
+.lista {
+  list-style: none;
+}
+
+.hoverScale {
+  transition: 250ms;
+}
+
+.hoverScale:hover {
+  transition: 250ms;
+  scale: 1.05;
+}
+
+.hoverScale:active {
+  transition: 250ms;
+  scale: 0.95;
+}
