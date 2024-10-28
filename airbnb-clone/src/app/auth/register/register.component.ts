@@ -6,6 +6,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,9 +14,10 @@ import {
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authSvc: AuthService) {}
 
   registerForm!: FormGroup;
+  message!: string;
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -28,6 +30,9 @@ export class RegisterComponent implements OnInit {
       ]),
       profileImg: this.fb.control(''),
       role: this.fb.control('', [Validators.required]),
+      num_of_apartments: this.fb.control(0),
+      ratings: this.fb.control({ vote: 0, count: 0 }),
+      reviews: this.fb.control([]),
     });
   }
 
@@ -50,6 +55,16 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value);
+    if (this.registerForm.valid) {
+      this.authSvc.register(this.registerForm.value).subscribe({
+        next: () => {
+          this.registerForm.reset();
+          this.message = 'Registrazione avvenuta con successo';
+        },
+        error: (err) => {
+          this.message = err;
+        },
+      });
+    }
   }
 }

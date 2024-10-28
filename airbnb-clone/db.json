@@ -1,5 +1,21 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "marco.rossi@example.com",
+      "password": "$2a$10$/aPrHzIcDhMSUov.3nuXCeHTThOC./HUXoCEv1kf4XJo/TJLBWd7y",
+      "firstName": "Marco",
+      "lastName": "Rossi",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 1
+    }
+  ],
   "apartments": [
     {
       "id": 1,
@@ -7,9 +23,16 @@
       "description": "Un'accogliente casa a pochi passi dalla spiaggia.",
       "price": 80,
       "availability": true,
-      "location": { "latitude": 38.123456, "longitude": 13.456789 },
+      "location": {
+        "latitude": 38.123456,
+        "longitude": 13.456789
+      },
       "rooms": 2,
-      "services": ["Wi-Fi", "TV", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Cucina"
+      ],
       "squaremeters": 50,
       "hostId": 101,
       "coverImage": "https://example.com/images/casa_al_mare.jpg",
@@ -18,10 +41,19 @@
         "https://example.com/images/casa_al_mare_2.jpg"
       ],
       "reviews": [
-        { "userId": 201, "comment": "Posto stupendo e accogliente!" },
-        { "userId": 202, "comment": "Perfetto per una vacanza al mare." }
+        {
+          "userId": 201,
+          "comment": "Posto stupendo e accogliente!"
+        },
+        {
+          "userId": 202,
+          "comment": "Perfetto per una vacanza al mare."
+        }
       ],
-      "category": ["spiaggia", "famiglia"]
+      "category": [
+        "spiaggia",
+        "famiglia"
+      ]
     },
     {
       "id": 2,
@@ -29,9 +61,16 @@
       "description": "Appartamento moderno nel cuore della città.",
       "price": 120,
       "availability": true,
-      "location": { "latitude": 38.654321, "longitude": 13.987654 },
+      "location": {
+        "latitude": 38.654321,
+        "longitude": 13.987654
+      },
       "rooms": 1,
-      "services": ["Wi-Fi", "TV", "Aria Condizionata"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Aria Condizionata"
+      ],
       "squaremeters": 30,
       "hostId": 102,
       "coverImage": "https://example.com/images/appartamento_in_centro.jpg",
@@ -44,9 +83,15 @@
           "userId": 203,
           "comment": "Un soggiorno fantastico, tornerò sicuramente!"
         },
-        { "userId": 204, "comment": "Posizione ideale per esplorare la città." }
+        {
+          "userId": 204,
+          "comment": "Posizione ideale per esplorare la città."
+        }
       ],
-      "category": ["città", "lusso"]
+      "category": [
+        "città",
+        "lusso"
+      ]
     },
     {
       "id": 3,
@@ -54,9 +99,16 @@
       "description": "Villa immersa nel verde, perfetta per famiglie.",
       "price": 250,
       "availability": true,
-      "location": { "latitude": 38.456789, "longitude": 13.123456 },
+      "location": {
+        "latitude": 38.456789,
+        "longitude": 13.123456
+      },
       "rooms": 4,
-      "services": ["Wi-Fi", "Piscina", "Giardino"],
+      "services": [
+        "Wi-Fi",
+        "Piscina",
+        "Giardino"
+      ],
       "squaremeters": 120,
       "hostId": 103,
       "coverImage": "https://example.com/images/villa_relax.jpg",
@@ -65,10 +117,19 @@
         "https://example.com/images/villa_relax_2.jpg"
       ],
       "reviews": [
-        { "userId": 205, "comment": "Ottima esperienza, villa bellissima." },
-        { "userId": 206, "comment": "Adatta per famiglie, molto spazio." }
+        {
+          "userId": 205,
+          "comment": "Ottima esperienza, villa bellissima."
+        },
+        {
+          "userId": 206,
+          "comment": "Adatta per famiglie, molto spazio."
+        }
       ],
-      "category": ["famiglia", "natura"]
+      "category": [
+        "famiglia",
+        "natura"
+      ]
     },
     {
       "id": 4,
@@ -76,9 +137,16 @@
       "description": "Attico con vista mozzafiato sulla città.",
       "price": 150,
       "availability": false,
-      "location": { "latitude": 38.789012, "longitude": 13.345678 },
+      "location": {
+        "latitude": 38.789012,
+        "longitude": 13.345678
+      },
       "rooms": 2,
-      "services": ["Wi-Fi", "TV", "Terrazzo"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Terrazzo"
+      ],
       "squaremeters": 60,
       "hostId": 104,
       "coverImage": "https://example.com/images/attico_panoramico.jpg",
@@ -87,10 +155,19 @@
         "https://example.com/images/attico_panoramico_2.jpg"
       ],
       "reviews": [
-        { "userId": 207, "comment": "Vista incredibile!" },
-        { "userId": 208, "comment": "Un attico che offre privacy e comfort." }
+        {
+          "userId": 207,
+          "comment": "Vista incredibile!"
+        },
+        {
+          "userId": 208,
+          "comment": "Un attico che offre privacy e comfort."
+        }
       ],
-      "category": ["lusso", "città"]
+      "category": [
+        "lusso",
+        "città"
+      ]
     },
     {
       "id": 5,
@@ -98,9 +175,15 @@
       "description": "Monolocale a pochi passi dal mare, ideale per coppie.",
       "price": 70,
       "availability": true,
-      "location": { "latitude": 38.234567, "longitude": 13.56789 },
+      "location": {
+        "latitude": 38.234567,
+        "longitude": 13.56789
+      },
       "rooms": 1,
-      "services": ["Wi-Fi", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "Cucina"
+      ],
       "squaremeters": 25,
       "hostId": 105,
       "coverImage": "https://example.com/images/monolocale_in_spiaggia.jpg",
@@ -109,10 +192,19 @@
         "https://example.com/images/monolocale_in_spiaggia_2.jpg"
       ],
       "reviews": [
-        { "userId": 209, "comment": "Perfetto per un weekend romantico." },
-        { "userId": 210, "comment": "Pulito e ben posizionato." }
+        {
+          "userId": 209,
+          "comment": "Perfetto per un weekend romantico."
+        },
+        {
+          "userId": 210,
+          "comment": "Pulito e ben posizionato."
+        }
       ],
-      "category": ["spiaggia", "romantico"]
+      "category": [
+        "spiaggia",
+        "romantico"
+      ]
     },
     {
       "id": 6,
@@ -120,9 +212,16 @@
       "description": "Ampio appartamento con giardino, perfetto per famiglie.",
       "price": 200,
       "availability": true,
-      "location": { "latitude": 38.54321, "longitude": 13.678901 },
+      "location": {
+        "latitude": 38.54321,
+        "longitude": 13.678901
+      },
       "rooms": 3,
-      "services": ["Wi-Fi", "Giardino", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "Giardino",
+        "Cucina"
+      ],
       "squaremeters": 90,
       "hostId": 106,
       "coverImage": "https://example.com/images/appartamento_per_famiglie.jpg",
@@ -131,10 +230,19 @@
         "https://example.com/images/appartamento_per_famiglie_2.jpg"
       ],
       "reviews": [
-        { "userId": 211, "comment": "Molto spazioso e confortevole." },
-        { "userId": 212, "comment": "Ottimo per famiglie con bambini." }
+        {
+          "userId": 211,
+          "comment": "Molto spazioso e confortevole."
+        },
+        {
+          "userId": 212,
+          "comment": "Ottimo per famiglie con bambini."
+        }
       ],
-      "category": ["famiglia", "natura"]
+      "category": [
+        "famiglia",
+        "natura"
+      ]
     },
     {
       "id": 7,
@@ -142,9 +250,16 @@
       "description": "Suite elegante in un hotel di lusso.",
       "price": 500,
       "availability": true,
-      "location": { "latitude": 38.123456, "longitude": 13.876543 },
+      "location": {
+        "latitude": 38.123456,
+        "longitude": 13.876543
+      },
       "rooms": 1,
-      "services": ["Wi-Fi", "Servizio in Camera", "Spa"],
+      "services": [
+        "Wi-Fi",
+        "Servizio in Camera",
+        "Spa"
+      ],
       "squaremeters": 80,
       "hostId": 107,
       "coverImage": "https://example.com/images/suite_di_lusso.jpg",
@@ -157,9 +272,15 @@
           "userId": 213,
           "comment": "Servizio eccellente, tornerò sicuramente."
         },
-        { "userId": 214, "comment": "Una vera esperienza di lusso!" }
+        {
+          "userId": 214,
+          "comment": "Una vera esperienza di lusso!"
+        }
       ],
-      "category": ["lusso", "città"]
+      "category": [
+        "lusso",
+        "città"
+      ]
     },
     {
       "id": 8,
@@ -167,9 +288,16 @@
       "description": "Tranquilla casa di campagna con vista panoramica.",
       "price": 90,
       "availability": false,
-      "location": { "latitude": 38.56789, "longitude": 13.098765 },
+      "location": {
+        "latitude": 38.56789,
+        "longitude": 13.098765
+      },
       "rooms": 3,
-      "services": ["Wi-Fi", "Giardino", "Caminetto"],
+      "services": [
+        "Wi-Fi",
+        "Giardino",
+        "Caminetto"
+      ],
       "squaremeters": 100,
       "hostId": 108,
       "coverImage": "https://example.com/images/casa_di_campagna.jpg",
@@ -178,10 +306,19 @@
         "https://example.com/images/casa_di_campagna_2.jpg"
       ],
       "reviews": [
-        { "userId": 215, "comment": "Un angolo di paradiso!" },
-        { "userId": 216, "comment": "Perfetta per una fuga dalla città." }
+        {
+          "userId": 215,
+          "comment": "Un angolo di paradiso!"
+        },
+        {
+          "userId": 216,
+          "comment": "Perfetta per una fuga dalla città."
+        }
       ],
-      "category": ["campagna", "natura"]
+      "category": [
+        "campagna",
+        "natura"
+      ]
     },
     {
       "id": 9,
@@ -189,9 +326,16 @@
       "description": "Studio moderno nel centro storico.",
       "price": 85,
       "availability": true,
-      "location": { "latitude": 38.321654, "longitude": 13.234567 },
+      "location": {
+        "latitude": 38.321654,
+        "longitude": 13.234567
+      },
       "rooms": 1,
-      "services": ["Wi-Fi", "TV", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Cucina"
+      ],
       "squaremeters": 35,
       "hostId": 109,
       "coverImage": "https://example.com/images/studio_moderno.jpg",
@@ -200,10 +344,19 @@
         "https://example.com/images/studio_moderno_2.jpg"
       ],
       "reviews": [
-        { "userId": 217, "comment": "Ottima posizione e molto elegante." },
-        { "userId": 218, "comment": "Perfetto per un soggiorno breve." }
+        {
+          "userId": 217,
+          "comment": "Ottima posizione e molto elegante."
+        },
+        {
+          "userId": 218,
+          "comment": "Perfetto per un soggiorno breve."
+        }
       ],
-      "category": ["città", "modernità"]
+      "category": [
+        "città",
+        "modernità"
+      ]
     },
     {
       "id": 10,
@@ -211,9 +364,16 @@
       "description": "Bungalow accogliente vicino al lago.",
       "price": 120,
       "availability": true,
-      "location": { "latitude": 38.876543, "longitude": 13.123456 },
+      "location": {
+        "latitude": 38.876543,
+        "longitude": 13.123456
+      },
       "rooms": 2,
-      "services": ["Wi-Fi", "Cucina", "Balcone"],
+      "services": [
+        "Wi-Fi",
+        "Cucina",
+        "Balcone"
+      ],
       "squaremeters": 60,
       "hostId": 110,
       "coverImage": "https://example.com/images/bungalow_al_lago.jpg",
@@ -222,10 +382,19 @@
         "https://example.com/images/bungalow_al_lago_2.jpg"
       ],
       "reviews": [
-        { "userId": 219, "comment": "Bellissimo soggiorno, molto tranquillo." },
-        { "userId": 220, "comment": "Ideale per rilassarsi." }
+        {
+          "userId": 219,
+          "comment": "Bellissimo soggiorno, molto tranquillo."
+        },
+        {
+          "userId": 220,
+          "comment": "Ideale per rilassarsi."
+        }
       ],
-      "category": ["natura", "lago"]
+      "category": [
+        "natura",
+        "lago"
+      ]
     },
     {
       "id": 11,
@@ -233,9 +402,16 @@
       "description": "Casa accogliente in montagna, perfetta per escursioni.",
       "price": 130,
       "availability": true,
-      "location": { "latitude": 38.987654, "longitude": 13.321098 },
+      "location": {
+        "latitude": 38.987654,
+        "longitude": 13.321098
+      },
       "rooms": 2,
-      "services": ["Wi-Fi", "Caminetto", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "Caminetto",
+        "Cucina"
+      ],
       "squaremeters": 70,
       "hostId": 111,
       "coverImage": "https://example.com/images/casa_di_montagna.jpg",
@@ -244,10 +420,19 @@
         "https://example.com/images/casa_di_montagna_2.jpg"
       ],
       "reviews": [
-        { "userId": 221, "comment": "Posto ideale per una fuga in montagna." },
-        { "userId": 222, "comment": "Atmosfera calda e accogliente." }
+        {
+          "userId": 221,
+          "comment": "Posto ideale per una fuga in montagna."
+        },
+        {
+          "userId": 222,
+          "comment": "Atmosfera calda e accogliente."
+        }
       ],
-      "category": ["montagna", "natura"]
+      "category": [
+        "montagna",
+        "natura"
+      ]
     },
     {
       "id": 12,
@@ -255,9 +440,16 @@
       "description": "Spazioso appartamento ideale per gruppi di amici.",
       "price": 300,
       "availability": true,
-      "location": { "latitude": 39.123456, "longitude": 14.123456 },
+      "location": {
+        "latitude": 39.123456,
+        "longitude": 14.123456
+      },
       "rooms": 4,
-      "services": ["Wi-Fi", "Cucina", "TV"],
+      "services": [
+        "Wi-Fi",
+        "Cucina",
+        "TV"
+      ],
       "squaremeters": 110,
       "hostId": 112,
       "coverImage": "https://example.com/images/appartamento_per_gruppi.jpg",
@@ -266,10 +458,19 @@
         "https://example.com/images/appartamento_per_gruppi_2.jpg"
       ],
       "reviews": [
-        { "userId": 223, "comment": "Ottimo per un viaggio con gli amici!" },
-        { "userId": 224, "comment": "Spazioso e ben attrezzato." }
+        {
+          "userId": 223,
+          "comment": "Ottimo per un viaggio con gli amici!"
+        },
+        {
+          "userId": 224,
+          "comment": "Spazioso e ben attrezzato."
+        }
       ],
-      "category": ["gruppi", "città"]
+      "category": [
+        "gruppi",
+        "città"
+      ]
     }
   ]
 }
