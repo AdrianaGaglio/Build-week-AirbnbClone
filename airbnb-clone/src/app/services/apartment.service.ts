@@ -19,4 +19,10 @@ export class ApartmentService {
   addApartament(apartament: Partial<iApartment>) {
     return this.http.post('http://localhost:3000/apartments', apartament);
   }
+
+  getApartamentByUser(userId: number) {
+    return this.http.get<iApartment[]>(
+      `http://localhost:3000/apartments/userId=${userId}`
+    );
+  }
 }
