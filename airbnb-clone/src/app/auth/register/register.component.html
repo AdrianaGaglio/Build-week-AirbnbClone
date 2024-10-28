@@ -14,7 +14,7 @@
           <div class="d-flex justify-content-between">
             <label for="firstName" class="form-label mb-0">Nome: *</label>
             <span *ngIf="isInvalidTouched('firstName')" class="text-danger"
-              >Errore</span
+              >Campo obbligatorio</span
             >
           </div>
 
@@ -30,7 +30,7 @@
           <div class="d-flex justify-content-between">
             <label for="lastName" class="form-label mb-0">Cognome: *</label>
             <span *ngIf="isInvalidTouched('lastName')" class="text-danger"
-              >Errore</span
+              >Campo obbligatorio</span
             >
           </div>
           <input
@@ -47,7 +47,7 @@
               >Indirizzo email: *</label
             >
             <span *ngIf="isInvalidTouched('email')" class="text-danger"
-              >Errore</span
+              >Campo obbligatorio | Email non valida</span
             >
           </div>
           <input
@@ -62,7 +62,7 @@
           <div class="d-flex justify-content-between">
             <label for="password" class="form-label mb-0">Password: *</label>
             <span *ngIf="isInvalidTouched('password')" class="text-danger"
-              >Errore</span
+              >Campo obbligatorio | Password non valida</span
             >
           </div>
           <input
@@ -87,7 +87,7 @@
           <div class="d-flex justify-content-between">
             <label for="role" class="form-label mb-0">Ruolo: *</label>
             <span *ngIf="isInvalidTouched('role')" class="text-danger"
-              >Errore</span
+              >Campo obbligatorio</span
             >
           </div>
           <select formControlName="role" class="form-control" id="role">
