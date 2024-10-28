@@ -24,6 +24,7 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     ProfileRoutingModule,
+    SharedModule,
     NgIconsModule.withIcons({
       ionEyeOutline,
       ionDocumentLockOutline,

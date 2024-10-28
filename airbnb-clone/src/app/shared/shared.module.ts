@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { NgIconsModule } from '@ng-icons/core';
 import { ionHeartOutline, ionHeart } from '@ng-icons/ionicons';
-import { ReviewCardComponent } from './review/review-card.component';
+import { ReviewCardComponent } from './review-card/review-card.component';
 
 @NgModule({
   declarations: [CardComponent, ReviewCardComponent],
