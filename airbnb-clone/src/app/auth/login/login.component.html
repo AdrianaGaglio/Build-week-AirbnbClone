@@ -15,7 +15,7 @@
             <label for="email" class="form-label mb-0"
               >Indirizzo email: *</label
             >
-            <span *ngIf="isInvalidTouched('email')" class="text-danger">{{
+            <span *ngIf="isInvalidTouched('email')" class="text-pink-airbnb">{{
               getError("email")
             }}</span>
           </div>
@@ -30,7 +30,7 @@
         <div class="mb-3">
           <div class="d-flex justify-content-between">
             <label for="password" class="form-label mb-0">Password: *</label>
-            <span *ngIf="isInvalidTouched('password')" class="text-danger"
+            <span *ngIf="isInvalidTouched('password')" class="text-pink-airbnb"
               >Campo obbligatorio</span
             >
           </div>

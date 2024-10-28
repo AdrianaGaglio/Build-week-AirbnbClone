@@ -13,7 +13,7 @@
         <div class="mb-3">
           <div class="d-flex justify-content-between">
             <label for="firstName" class="form-label mb-0">Nome: *</label>
-            <span *ngIf="isInvalidTouched('firstName')" class="text-danger"
+            <span *ngIf="isInvalidTouched('firstName')" class="text-pink-airbnb"
               >Campo obbligatorio</span
             >
           </div>
@@ -29,7 +29,7 @@
         <div class="mb-3">
           <div class="d-flex justify-content-between">
             <label for="lastName" class="form-label mb-0">Cognome: *</label>
-            <span *ngIf="isInvalidTouched('lastName')" class="text-danger"
+            <span *ngIf="isInvalidTouched('lastName')" class="text-pink-airbnb"
               >Campo obbligatorio</span
             >
           </div>
@@ -46,7 +46,7 @@
             <label for="email" class="form-label mb-0"
               >Indirizzo email: *</label
             >
-            <span *ngIf="isInvalidTouched('email')" class="text-danger">{{
+            <span *ngIf="isInvalidTouched('email')" class="text-pink-airbnb">{{
               getError("email")
             }}</span>
           </div>
@@ -61,9 +61,11 @@
         <div class="mb-3">
           <div class="d-flex justify-content-between">
             <label for="password" class="form-label mb-0">Password: *</label>
-            <span *ngIf="isInvalidTouched('password')" class="text-danger">{{
-              getError("password")
-            }}</span>
+            <span
+              *ngIf="isInvalidTouched('password')"
+              class="text-pink-airbnb"
+              >{{ getError("password") }}</span
+            >
           </div>
           <input
             formControlName="password"
@@ -86,7 +88,7 @@
         <div class="mb-3">
           <div class="d-flex justify-content-between">
             <label for="role" class="form-label mb-0">Ruolo: *</label>
-            <span *ngIf="isInvalidTouched('role')" class="text-danger"
+            <span *ngIf="isInvalidTouched('role')" class="text-pink-airbnb"
               >Campo obbligatorio</span
             >
           </div>
