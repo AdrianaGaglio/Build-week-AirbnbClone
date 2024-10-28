@@ -12,6 +12,7 @@ import {
   ionDocumentLockOutline,
   ionLockClosedOutline,
 } from '@ng-icons/ionicons';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {
       ionDocumentLockOutline,
       ionLockClosedOutline,
     }),
+    SharedModule,
   ],
 })
 export class ProfileModule {}
