@@ -1,4 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+$pink-airbnb: #ff385c;
+
+$new-theme-colors: (
+  "pink-airbnb": $pink-airbnb,
+);
+
+$theme-colors: map-merge($theme-colors, $new-theme-colors);
+
+$widths: (
+  50: 50px,
+  100: 100px,
+  150: 150px,
+  200: 200px,
+);
+
+@each $label, $value in $widths {
+  .w-fixed-#{$label} {
+    width: #{$value};
+  }
+}
+
+$heights: (
+  50: 50px,
+  100: 100px,
+  150: 150px,
+  200: 200px,
+);
+
+@each $label, $value in $heights {
+  .h-fixed-#{$label} {
+    height: #{$value};
+  }
+}
+
+@import "bootstrap/scss/bootstrap";
+
+.fs-7 {
+  font-size: 0.8rem;
+}
+
+.fs-8 {
+  font-size: 0.7rem;
+}
+
+body,
+*,
+input,
+textarea,
+button {
+  font-family: "Nunito Sans", sans-serif;
+}
