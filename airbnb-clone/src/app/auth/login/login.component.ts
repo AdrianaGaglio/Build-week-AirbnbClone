@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +11,12 @@ import { AuthService } from '../auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  constructor(private fb: FormBuilder, private authSvc: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authSvc: AuthService,
+    private router: Router
+  ) {}
+  private modalService = inject(NgbModal);
 
   loginForm!: FormGroup;
   message!: string;
@@ -42,11 +50,22 @@ export class LoginComponent implements OnInit {
         next: () => {
           this.loginForm.reset();
           this.message = 'Login avvenuto con successo';
+          this.openModal(this.message, true);
+          setTimeout(() => {
+            this.router.navigate(['/']);
+            this.modalService.dismissAll();
+          }, 2000);
         },
         error: (err) => {
           this.message = err;
+          this.openModal(this.message, false);
         },
       });
     }
+  }
+  openModal(message: string, value: boolean) {
+    const modalRef = this.modalService.open(PopupComponent);
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.isOk = value;
   }
 }
