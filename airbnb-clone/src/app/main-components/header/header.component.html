@@ -1,1 +1,75 @@
-<p>header works!</p>
+<header class="container-fluid padding-lg border-bottom py-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <!-- logo -->
+    <img
+      src="https://images-ext-1.discordapp.net/external/jD0Gjp_45OhK5u15FOSEH_GYXcbKycyJf-q1SqHzCQs/https/upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%25C3%25A9lo.svg/1200px-Airbnb_Logo_B%25C3%25A9lo.svg.png?format=webp&quality=lossless&width=1114&height=348"
+      alt="logo Airbnb"
+      height="30"
+    />
+    <!-- search bar -->
+    <div class="input-group w-25">
+      <input
+        type="text"
+        class="form-control rounded-start-pill border-end-0 input-button-search"
+        placeholder="Bahamas"
+      />
+      <button
+        class="rounded-end-pill bg-white border-start-0 p-0 input-button-search"
+        type="button"
+      >
+        <ng-icon
+          name="ionSearchCircleSharp"
+          class="fs-1 iconaSearch text-pink-airbnb"
+        ></ng-icon>
+      </button>
+    </div>
+    <!-- menu profilo -->
+    <div class="flex-shrink-0 dropdown">
+      <a
+        (click)="show()"
+        [ngClass]="{ show: showBol }"
+        class="d-block text-decoration-none text-secondary"
+      >
+        <div
+          class="d-flex align-items-center rounded-pill border border-secondary-subtle shadow-sm px-2 py-2"
+        >
+          <ng-icon name="ionMenuOutline" class="fs-4 text-black"></ng-icon>
+
+          <img
+            src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=G&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
+            height="30"
+            class="ms-1 ps-1"
+          />
+        </div>
+      </a>
+      <ul
+        [ngClass]="{ show: showBol }"
+        class="dropdown-menu text-small shadow hoverMenu border-0 rounded-3"
+        style="
+          position: absolute;
+          inset: 0px 0px auto auto;
+          margin: 0px;
+          transform: translate(0px, 58px);
+        "
+      >
+        <li>
+          <a class="dropdown-item text-dark hoverMenu">Settings</a>
+        </li>
+        <li>
+          <a
+            routerLink="profile"
+            (click)="show()"
+            class="dropdown-item text-dark hoverMenu"
+            >Profile</a
+          >
+        </li>
+        <li><hr class="my-2" /></li>
+        <li>
+          <a (click)="show()" class="dropdown-item text-dark hoverMenu"
+            >Sign out</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

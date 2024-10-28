@@ -14,20 +14,27 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GuestGuard implements CanActivate, CanActivateChild {
+export class HostGuard implements CanActivate, CanActivateChild {
   constructor(private authSvc: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
-    return this.authSvc.isLoggedIn$.pipe(
-      map((value) => {
-        if (value) {
-          this.router.navigate(['/home']);
+    return this.authSvc.authResponse$.pipe(
+      map((data) => {
+        if (!data) {
+          this.router.navigate(['/login']);
+          return false;
+        }
+        if (data) {
+          if (data.user.role !== 'host') {
+            this.router.navigate(['/profile']);
+            return false;
+          }
         }
 
-        return !value;
+        return true;
       })
     );
   }

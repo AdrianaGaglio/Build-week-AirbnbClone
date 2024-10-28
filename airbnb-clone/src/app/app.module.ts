@@ -6,11 +6,31 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './main-components/header/header.component';
 import { FooterComponent } from './main-components/footer/footer.component';
+import { NgIconsModule } from '@ng-icons/core';
+import {
+  ionMenuOutline,
+  ionLogoInstagram,
+  ionLogoFacebook,
+  ionLogoTwitter,
+  ionSearchCircleSharp,
+} from '@ng-icons/ionicons';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    NgIconsModule.withIcons({
+      ionMenuOutline,
+      ionLogoInstagram,
+      ionLogoFacebook,
+      ionLogoTwitter,
+
+      ionSearchCircleSharp,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

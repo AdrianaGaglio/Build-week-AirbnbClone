@@ -1,1 +1,108 @@
-<p>register works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 mx-auto">
+      <form (submit)="register()" [formGroup]="registerForm">
+        <div class="text-center">
+          <img
+            class="w-fixed-100 mb-2"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
+          />
+          <h1 class="mb-2">Crea un account gratuito</h1>
+          <p>Fornisci le tue informazioni personali per procedere</p>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="firstName" class="form-label mb-0">Nome: *</label>
+            <span *ngIf="isInvalidTouched('firstName')" class="text-pink-airbnb"
+              >Campo obbligatorio</span
+            >
+          </div>
+
+          <input
+            formControlName="firstName"
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="Inserisci il tuo nome"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="lastName" class="form-label mb-0">Cognome: *</label>
+            <span *ngIf="isInvalidTouched('lastName')" class="text-pink-airbnb"
+              >Campo obbligatorio</span
+            >
+          </div>
+          <input
+            formControlName="lastName"
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Inserisci il tuo cognome"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="email" class="form-label mb-0"
+              >Indirizzo email: *</label
+            >
+            <span *ngIf="isInvalidTouched('email')" class="text-pink-airbnb">{{
+              getError("email")
+            }}</span>
+          </div>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Inserisci il tuo indirizzo email"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="password" class="form-label mb-0">Password: *</label>
+            <span
+              *ngIf="isInvalidTouched('password')"
+              class="text-pink-airbnb"
+              >{{ getError("password") }}</span
+            >
+          </div>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Scegli una password"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="avatar" class="form-label mb-0">Immagine profilo:</label>
+          <input
+            formControlName="profileImg"
+            class="form-control"
+            type="file"
+            id="avatar"
+            accept="image/png, image/jpeg"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="role" class="form-label mb-0">Ruolo: *</label>
+            <span *ngIf="isInvalidTouched('role')" class="text-pink-airbnb"
+              >Campo obbligatorio</span
+            >
+          </div>
+          <select formControlName="role" class="form-control" id="role">
+            <option value="">-- seleziona ruolo --</option>
+            <option value="host">Host</option>
+            <option value="guest">Guest</option>
+          </select>
+        </div>
+        <button class="btn btn-pink-airbnb text-light fw-medium">
+          Registrati
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="message"></ng-container>
