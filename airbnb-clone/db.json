@@ -14,6 +14,216 @@
       },
       "reviews": [],
       "id": 1
+    },
+    {
+      "email": "laura.bianchi@example.com",
+      "password": "$2a$10$0KIYu9yMdfhhGbunov.nGOUQhYO.n3svfmVa1eQYVzM9Cpza9F47O",
+      "firstName": "Laura",
+      "lastName": "Bianchi",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 2
+    },
+    {
+      "email": "giovanni.verdi@example.com",
+      "password": "$2a$10$UJFvVYKHcuWvpHWFwjhOBeCnuNdUQrfcag8.NJ0a/og0.KeGA1W7S",
+      "firstName": "Giovanni",
+      "lastName": "Verdi",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 3
+    },
+    {
+      "email": "francesca.neri@example.com",
+      "password": "$2a$10$fJrVhxrXCvvIcwqgDy08ieQOTpnLtcxff0Cv0efwjWfjv9pGtDbcS",
+      "firstName": "Francesca",
+      "lastName": "Neri",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 4
+    },
+    {
+      "email": "antonio.ruggeri@example.com",
+      "password": "$2a$10$fxDJ4/lrFXorvUCxuD6IH.seGcNpWxFt1sUoOsHcd/7NP03XZlt6C",
+      "firstName": "Antonio",
+      "lastName": "Ruggeri",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 5
+    },
+    {
+      "email": "sara.moretti@example.com",
+      "password": "$2a$10$HYaMB/SZThacXRc5CQb8WuwAcLiRf8KGAep/x9o9yfD6OrBIF5WpW",
+      "firstName": "Sara",
+      "lastName": "Moretti",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 6
+    },
+    {
+      "email": "luca.fontana@example.com",
+      "password": "$2a$10$Kj/W2.c1A1RYF.mnuelfE.t2bD9WXG2sObdNTMKUTXezqyZDxdKjS",
+      "firstName": "Luca",
+      "lastName": "Fontana",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 7
+    },
+    {
+      "email": "martina.gallo@example.com",
+      "password": "$2a$10$AQs.ltICo.Zc0P2uFcb0iekPqWiiLucF6wK7RPyY3H4gXftIGvXvu",
+      "firstName": "Martina",
+      "lastName": "Gallo",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 8
+    },
+    {
+      "email": "stefano.rinaldi@example.com",
+      "password": "$2a$10$H8g2F6tTYsEU.GrNEsztCetczlhBxs/l0AIL5ilsGYVdn9ub6kVwO",
+      "firstName": "Stefano",
+      "lastName": "Rinaldi",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 9
+    },
+    {
+      "email": "claudia.ferrari@example.com",
+      "password": "$2a$10$LHRWgqFVqOewXQcYanqkiOguuTH2L5OzxC79IPWx9S8deaUCTXuWO",
+      "firstName": "Claudia",
+      "lastName": "Ferrari",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 10
+    },
+    {
+      "email": "alessandro.gatti@example.com",
+      "password": "$2a$10$qJ6b5BYZoOWICvhxJEuPPeQO1MFtYm7.asi8KDt.TSAJlHwyWZSfC",
+      "firstName": "Alessandro",
+      "lastName": "Gatti",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 11
+    },
+    {
+      "email": "valentina.conti@example.com",
+      "password": "$2a$10$zfFDg3e4Bd9izpzS/fHlVONTJFV93ghmnPqeEyyMpVClvavdzraii",
+      "firstName": "Valentina",
+      "lastName": "Conti",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 12
+    },
+    {
+      "email": "francesco.marconi@example.com",
+      "password": "$2a$10$i3EyU/WknJRhLklFVoRqm.Ah2jP2bFW8yuMBFkzrWgkHX9hPlj7le",
+      "firstName": "Francesco",
+      "lastName": "Marconi",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 13
+    },
+    {
+      "email": "elena.rossi@example.com",
+      "password": "$2a$10$0ZXKhh5oEqhINxpTND.BC.UBN1UPq9ENXCjT4ViVSOMU9nQwA25G6",
+      "firstName": "Elena",
+      "lastName": "Rossi",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 14
+    },
+    {
+      "email": "matteo.giordano@example.com",
+      "password": "$2a$10$o6oRNyVATu.1/HM3WvIrzeZY7NVvZJTt4yQizX2se7HT89cM7RLMi",
+      "firstName": "Matteo",
+      "lastName": "Giordano",
+      "profileImg": "",
+      "role": "host",
+      "num_of_apartments": 0,
+      "ratings": {
+        "vote": 0,
+        "count": 0
+      },
+      "reviews": [],
+      "id": 15
     }
   ],
   "apartments": [
@@ -28,13 +238,9 @@
         "longitude": 13.456789
       },
       "rooms": 2,
-      "services": [
-        "Wi-Fi",
-        "TV",
-        "Cucina"
-      ],
+      "services": ["Wi-Fi", "TV", "Cucina"],
       "squaremeters": 50,
-      "hostId": 101,
+      "hostId": 1,
       "coverImage": "https://example.com/images/casa_al_mare.jpg",
       "otherImages": [
         "https://example.com/images/casa_al_mare_1.jpg",
@@ -42,18 +248,15 @@
       ],
       "reviews": [
         {
-          "userId": 201,
+          "userId": 1,
           "comment": "Posto stupendo e accogliente!"
         },
         {
-          "userId": 202,
+          "userId": 2,
           "comment": "Perfetto per una vacanza al mare."
         }
       ],
-      "category": [
-        "spiaggia",
-        "famiglia"
-      ]
+      "category": ["spiaggia", "famiglia"]
     },
     {
       "id": 2,
@@ -66,13 +269,9 @@
         "longitude": 13.987654
       },
       "rooms": 1,
-      "services": [
-        "Wi-Fi",
-        "TV",
-        "Aria Condizionata"
-      ],
+      "services": ["Wi-Fi", "TV", "Aria Condizionata"],
       "squaremeters": 30,
-      "hostId": 102,
+      "hostId": 2,
       "coverImage": "https://example.com/images/appartamento_in_centro.jpg",
       "otherImages": [
         "https://example.com/images/appartamento_in_centro_1.jpg",
@@ -80,18 +279,15 @@
       ],
       "reviews": [
         {
-          "userId": 203,
+          "userId": 3,
           "comment": "Un soggiorno fantastico, tornerò sicuramente!"
         },
         {
-          "userId": 204,
+          "userId": 4,
           "comment": "Posizione ideale per esplorare la città."
         }
       ],
-      "category": [
-        "città",
-        "lusso"
-      ]
+      "category": ["città", "lusso"]
     },
     {
       "id": 3,
@@ -104,13 +300,9 @@
         "longitude": 13.123456
       },
       "rooms": 4,
-      "services": [
-        "Wi-Fi",
-        "Piscina",
-        "Giardino"
-      ],
+      "services": ["Wi-Fi", "Piscina", "Giardino"],
       "squaremeters": 120,
-      "hostId": 103,
+      "hostId": 3,
       "coverImage": "https://example.com/images/villa_relax.jpg",
       "otherImages": [
         "https://example.com/images/villa_relax_1.jpg",
@@ -118,18 +310,15 @@
       ],
       "reviews": [
         {
-          "userId": 205,
+          "userId": 5,
           "comment": "Ottima esperienza, villa bellissima."
         },
         {
-          "userId": 206,
+          "userId": 6,
           "comment": "Adatta per famiglie, molto spazio."
         }
       ],
-      "category": [
-        "famiglia",
-        "natura"
-      ]
+      "category": ["famiglia", "natura"]
     },
     {
       "id": 4,
@@ -142,13 +331,9 @@
         "longitude": 13.345678
       },
       "rooms": 2,
-      "services": [
-        "Wi-Fi",
-        "TV",
-        "Terrazzo"
-      ],
+      "services": ["Wi-Fi", "TV", "Terrazzo"],
       "squaremeters": 60,
-      "hostId": 104,
+      "hostId": 4,
       "coverImage": "https://example.com/images/attico_panoramico.jpg",
       "otherImages": [
         "https://example.com/images/attico_panoramico_1.jpg",
@@ -156,18 +341,15 @@
       ],
       "reviews": [
         {
-          "userId": 207,
+          "userId": 7,
           "comment": "Vista incredibile!"
         },
         {
-          "userId": 208,
+          "userId": 8,
           "comment": "Un attico che offre privacy e comfort."
         }
       ],
-      "category": [
-        "lusso",
-        "città"
-      ]
+      "category": ["lusso", "città"]
     },
     {
       "id": 5,
@@ -180,12 +362,9 @@
         "longitude": 13.56789
       },
       "rooms": 1,
-      "services": [
-        "Wi-Fi",
-        "Cucina"
-      ],
+      "services": ["Wi-Fi", "Cucina"],
       "squaremeters": 25,
-      "hostId": 105,
+      "hostId": 5,
       "coverImage": "https://example.com/images/monolocale_in_spiaggia.jpg",
       "otherImages": [
         "https://example.com/images/monolocale_in_spiaggia_1.jpg",
@@ -193,18 +372,15 @@
       ],
       "reviews": [
         {
-          "userId": 209,
+          "userId": 9,
           "comment": "Perfetto per un weekend romantico."
         },
         {
-          "userId": 210,
+          "userId": 10,
           "comment": "Pulito e ben posizionato."
         }
       ],
-      "category": [
-        "spiaggia",
-        "romantico"
-      ]
+      "category": ["spiaggia", "romantico"]
     },
     {
       "id": 6,
@@ -217,13 +393,9 @@
         "longitude": 13.678901
       },
       "rooms": 3,
-      "services": [
-        "Wi-Fi",
-        "Giardino",
-        "Cucina"
-      ],
+      "services": ["Wi-Fi", "Giardino", "Cucina"],
       "squaremeters": 90,
-      "hostId": 106,
+      "hostId": 6,
       "coverImage": "https://example.com/images/appartamento_per_famiglie.jpg",
       "otherImages": [
         "https://example.com/images/appartamento_per_famiglie_1.jpg",
@@ -231,18 +403,15 @@
       ],
       "reviews": [
         {
-          "userId": 211,
+          "userId": 11,
           "comment": "Molto spazioso e confortevole."
         },
         {
-          "userId": 212,
+          "userId": 12,
           "comment": "Ottimo per famiglie con bambini."
         }
       ],
-      "category": [
-        "famiglia",
-        "natura"
-      ]
+      "category": ["famiglia", "natura"]
     },
     {
       "id": 7,
@@ -255,13 +424,9 @@
         "longitude": 13.876543
       },
       "rooms": 1,
-      "services": [
-        "Wi-Fi",
-        "Servizio in Camera",
-        "Spa"
-      ],
+      "services": ["Wi-Fi", "Servizio in Camera", "Spa"],
       "squaremeters": 80,
-      "hostId": 107,
+      "hostId": 7,
       "coverImage": "https://example.com/images/suite_di_lusso.jpg",
       "otherImages": [
         "https://example.com/images/suite_di_lusso_1.jpg",
@@ -269,18 +434,15 @@
       ],
       "reviews": [
         {
-          "userId": 213,
+          "userId": 13,
           "comment": "Servizio eccellente, tornerò sicuramente."
         },
         {
-          "userId": 214,
+          "userId": 14,
           "comment": "Una vera esperienza di lusso!"
         }
       ],
-      "category": [
-        "lusso",
-        "città"
-      ]
+      "category": ["lusso", "città"]
     },
     {
       "id": 8,
@@ -293,13 +455,9 @@
         "longitude": 13.098765
       },
       "rooms": 3,
-      "services": [
-        "Wi-Fi",
-        "Giardino",
-        "Caminetto"
-      ],
+      "services": ["Wi-Fi", "Giardino", "Caminetto"],
       "squaremeters": 100,
-      "hostId": 108,
+      "hostId": 8,
       "coverImage": "https://example.com/images/casa_di_campagna.jpg",
       "otherImages": [
         "https://example.com/images/casa_di_campagna_1.jpg",
@@ -307,18 +465,15 @@
       ],
       "reviews": [
         {
-          "userId": 215,
+          "userId": 15,
           "comment": "Un angolo di paradiso!"
         },
         {
-          "userId": 216,
+          "userId": 16,
           "comment": "Perfetta per una fuga dalla città."
         }
       ],
-      "category": [
-        "campagna",
-        "natura"
-      ]
+      "category": ["campagna", "natura"]
     },
     {
       "id": 9,
@@ -331,13 +486,9 @@
         "longitude": 13.234567
       },
       "rooms": 1,
-      "services": [
-        "Wi-Fi",
-        "TV",
-        "Cucina"
-      ],
+      "services": ["Wi-Fi", "TV", "Cucina"],
       "squaremeters": 35,
-      "hostId": 109,
+      "hostId": 9,
       "coverImage": "https://example.com/images/studio_moderno.jpg",
       "otherImages": [
         "https://example.com/images/studio_moderno_1.jpg",
@@ -345,18 +496,15 @@
       ],
       "reviews": [
         {
-          "userId": 217,
+          "userId": 17,
           "comment": "Ottima posizione e molto elegante."
         },
         {
-          "userId": 218,
+          "userId": 18,
           "comment": "Perfetto per un soggiorno breve."
         }
       ],
-      "category": [
-        "città",
-        "modernità"
-      ]
+      "category": ["città", "modernità"]
     },
     {
       "id": 10,
@@ -369,13 +517,9 @@
         "longitude": 13.123456
       },
       "rooms": 2,
-      "services": [
-        "Wi-Fi",
-        "Cucina",
-        "Balcone"
-      ],
+      "services": ["Wi-Fi", "Cucina", "Balcone"],
       "squaremeters": 60,
-      "hostId": 110,
+      "hostId": 10,
       "coverImage": "https://example.com/images/bungalow_al_lago.jpg",
       "otherImages": [
         "https://example.com/images/bungalow_al_lago_1.jpg",
@@ -383,18 +527,15 @@
       ],
       "reviews": [
         {
-          "userId": 219,
+          "userId": 19,
           "comment": "Bellissimo soggiorno, molto tranquillo."
         },
         {
-          "userId": 220,
+          "userId": 20,
           "comment": "Ideale per rilassarsi."
         }
       ],
-      "category": [
-        "natura",
-        "lago"
-      ]
+      "category": ["natura", "lago"]
     },
     {
       "id": 11,
@@ -407,13 +548,9 @@
         "longitude": 13.321098
       },
       "rooms": 2,
-      "services": [
-        "Wi-Fi",
-        "Caminetto",
-        "Cucina"
-      ],
+      "services": ["Wi-Fi", "Caminetto", "Cucina"],
       "squaremeters": 70,
-      "hostId": 111,
+      "hostId": 11,
       "coverImage": "https://example.com/images/casa_di_montagna.jpg",
       "otherImages": [
         "https://example.com/images/casa_di_montagna_1.jpg",
@@ -421,18 +558,15 @@
       ],
       "reviews": [
         {
-          "userId": 221,
+          "userId": 21,
           "comment": "Posto ideale per una fuga in montagna."
         },
         {
-          "userId": 222,
+          "userId": 22,
           "comment": "Atmosfera calda e accogliente."
         }
       ],
-      "category": [
-        "montagna",
-        "natura"
-      ]
+      "category": ["montagna", "natura"]
     },
     {
       "id": 12,
@@ -445,13 +579,9 @@
         "longitude": 14.123456
       },
       "rooms": 4,
-      "services": [
-        "Wi-Fi",
-        "Cucina",
-        "TV"
-      ],
+      "services": ["Wi-Fi", "Cucina", "TV"],
       "squaremeters": 110,
-      "hostId": 112,
+      "hostId": 12,
       "coverImage": "https://example.com/images/appartamento_per_gruppi.jpg",
       "otherImages": [
         "https://example.com/images/appartamento_per_gruppi_1.jpg",
@@ -459,18 +589,15 @@
       ],
       "reviews": [
         {
-          "userId": 223,
+          "userId": 23,
           "comment": "Ottimo per un viaggio con gli amici!"
         },
         {
-          "userId": 224,
+          "userId": 24,
           "comment": "Spazioso e ben attrezzato."
         }
       ],
-      "category": [
-        "gruppi",
-        "città"
-      ]
+      "category": ["gruppi", "città"]
     }
   ]
 }
