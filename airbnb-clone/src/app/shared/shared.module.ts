@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { NgIconsModule } from '@ng-icons/core';
 import { ionHeartOutline, ionHeart } from '@ng-icons/ionicons';
-import { ReviewComponent } from './review/review.component';
+import { ReviewCardComponent } from './review/review-card.component';
 
 @NgModule({
-  declarations: [CardComponent, ReviewComponent],
+  declarations: [CardComponent, ReviewCardComponent],
   imports: [
     CommonModule,
     NgIconsModule.withIcons({ ionHeart, ionHeartOutline }),
   ],
-  exports: [CardComponent, ReviewComponent],
+  exports: [CardComponent, ReviewCardComponent],
 })
 export class SharedModule {}

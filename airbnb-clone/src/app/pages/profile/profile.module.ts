@@ -29,7 +29,6 @@ import { SharedModule } from '../../shared/shared.module';
       ionDocumentLockOutline,
       ionLockClosedOutline,
     }),
-    SharedModule,
   ],
 })
 export class ProfileModule {}
