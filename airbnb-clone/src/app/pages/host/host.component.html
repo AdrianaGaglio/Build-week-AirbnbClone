@@ -90,13 +90,13 @@
           <app-review> </app-review>
         </div>
       </div>
-      <!-- sezione annucci del utente -->
 
-      <h2 class="fw-bolder mt-5">Annunci di Kevin Hart</h2>
-
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <div class="row" *ngIf="apartments">
+        <h2 class="fw-bolder mt-5">Annunci di Kevin Hart</h2>
+        <div class="col-6" *ngFor="let apartment of apartments">
+          <app-card [apartment]="apartment"></app-card>
+        </div>
+      </div>
     </div>
   </div>
 </div>

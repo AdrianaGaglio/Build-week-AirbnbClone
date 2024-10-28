@@ -8,10 +8,10 @@ import { iApartment } from '../../interfaces/iapartment';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  apartaments: iApartment[] = [];
+  apartments: iApartment[] = [];
   constructor(private apartmentSvc: ApartmentService) {
     this.apartmentSvc.getApartments().subscribe((res) => {
-      this.apartaments = res;
+      this.apartments = res;
     });
   }
 }

@@ -1,11 +1,11 @@
 <div>filtri</div>
-<div *ngIf="apartaments.length === 0">Non ci sono ancora alloggi caricati</div>
-<div *ngIf="apartaments.length > 0" class="container-fluid padding-lg">
+<div *ngIf="apartments.length === 0">Non ci sono ancora alloggi caricati</div>
+<div *ngIf="apartments.length > 0" class="container-fluid padding-lg">
   <div
     class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4"
   >
-    <div *ngFor="let apartament of apartaments" class="col">
-      <app-card [apartament]="apartament"></app-card>
+    <div *ngFor="let apartment of apartments" class="col">
+      <app-card [apartment]="apartment"></app-card>
     </div>
   </div>
 </div>

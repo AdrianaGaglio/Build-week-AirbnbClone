@@ -7,7 +7,7 @@ import { iApartment } from '../../interfaces/iapartment';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() apartament!: iApartment;
+  @Input() apartment!: iApartment;
   isFavorite = false;
 
   toggleFavorite() {

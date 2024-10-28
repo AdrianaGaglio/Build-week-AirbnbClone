@@ -9,15 +9,15 @@
   ></ng-icon>
   <img src="https://picsum.photos/300/200" alt="Room image" />
   <div class="card-body">
-    <h5 class="card-title">{{ apartament.name }}</h5>
+    <h5 class="card-title">{{ apartment.name }}</h5>
     <p class="card-text">
-      {{ apartament.rooms === 1 ? "1 stanza" : apartament.rooms + " stanze" }} ·
-      {{ apartament.squaremeters }}m²
+      {{ apartment.rooms === 1 ? "1 stanza" : apartment.rooms + " stanze" }} ·
+      {{ apartment.squaremeters }}m²
     </p>
     <!-- <p class="card-text">2 guests · 1 bedroom · 1 bed · 1 bath</p> -->
   </div>
   <div class="card-footer d-flex justify-content-between">
-    <span>{{ apartament.price | currency : "EUR" }} / notte</span>
+    <span>{{ apartment.price | currency : "EUR" }} / notte</span>
     <span>★ 4.8</span>
   </div>
 </div>
