@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 mx-auto">
+      <form (submit)="login()" [formGroup]="loginForm">
+        <div class="text-center">
+          <img
+            class="w-fixed-100 mb-2"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
+          />
+          <h1 class="mb-2">Accedi al tuo account</h1>
+          <p>Inserisci le tue credenziali</p>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="email" class="form-label mb-0"
+              >Indirizzo email: *</label
+            >
+            <span *ngIf="isInvalidTouched('email')" class="text-pink-airbnb">{{
+              getError("email")
+            }}</span>
+          </div>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Inserisci il tuo indirizzo email"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="password" class="form-label mb-0">Password: *</label>
+            <span *ngIf="isInvalidTouched('password')" class="text-pink-airbnb"
+              >Campo obbligatorio</span
+            >
+          </div>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Inserisci la password"
+          />
+        </div>
+
+        <button class="btn btn-pink-airbnb text-light fw-medium">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
