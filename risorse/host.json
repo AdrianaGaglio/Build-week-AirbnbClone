@@ -1,0 +1,227 @@
+[
+    {
+        "id": 101,
+        "firstName": "Marco",
+        "lastName": "Rossi",
+        "profileImg": "https://example.com/images/marco_rossi.jpg",
+        "email": "marco.rossi@example.com",
+        "password": "password123",
+        "num_of_apartments": 3,
+        "ratings": { "vote": 72, "count": 15 },
+        "role": "host",
+        "reviews": [
+            { "userId": 201, "comment": "Appartamento eccellente! Molto pulito e ben attrezzato." },
+            { "userId": 202, "comment": "Ottima esperienza, consigliatissimo!" }
+        ]
+    },
+    {
+        "id": 102,
+        "firstName": "Laura",
+        "lastName": "Bianchi",
+        "profileImg": "https://example.com/images/laura_bianchi.jpg",
+        "email": "laura.bianchi@example.com",
+        "password": "password456",
+        "num_of_apartments": 2,
+        "ratings": { "vote": 45, "count": 10 },
+        "role": "host",
+        "reviews": [
+            { "userId": 203, "comment": "Posizione fantastica, tornerò sicuramente!" },
+            { "userId": 204, "comment": "Un po' rumoroso, ma nel complesso una buona esperienza." }
+        ]
+    },
+    {
+        "id": 103,
+        "firstName": "Giovanni",
+        "lastName": "Verdi",
+        "profileImg": "https://example.com/images/giovanni_verdi.jpg",
+        "email": "giovanni.verdi@example.com",
+        "password": "password789",
+        "num_of_apartments": 1,
+        "ratings": { "vote": 100, "count": 20 },
+        "role": "host",
+        "reviews": [
+            { "userId": 205, "comment": "Superbo! È stato tutto perfetto." },
+            { "userId": 206, "comment": "Lo raccomando vivamente a tutti." }
+        ]
+    },
+    {
+        "id": 104,
+        "firstName": "Francesca",
+        "lastName": "Neri",
+        "profileImg": "https://example.com/images/francesca_neri.jpg",
+        "email": "francesca.neri@example.com",
+        "password": "password101",
+        "num_of_apartments": 2,
+        "ratings": { "vote": 56, "count": 12 },
+        "role": "host",
+        "reviews": [
+            { "userId": 207, "comment": "Molto accogliente e confortevole." },
+            { "userId": 208, "comment": "Servizi buoni, ma alcune cose da migliorare." }
+        ]
+    },
+    {
+        "id": 105,
+        "firstName": "Antonio",
+        "lastName": "Ruggeri",
+        "profileImg": "https://example.com/images/antonio_ruggeri.jpg",
+        "email": "antonio.ruggeri@example.com",
+        "password": "password102",
+        "num_of_apartments": 4,
+        "ratings": { "vote": 98, "count": 25 },
+        "role": "host",
+        "reviews": [
+            { "userId": 209, "comment": "L'appartamento era perfetto per la mia famiglia." },
+            { "userId": 210, "comment": "Ottimo servizio, ci tornerò!" }
+        ]
+    },
+    {
+        "id": 106,
+        "firstName": "Sara",
+        "lastName": "Moretti",
+        "profileImg": "https://example.com/images/sara_moretti.jpg",
+        "email": "sara.moretti@example.com",
+        "password": "password103",
+        "num_of_apartments": 3,
+        "ratings": { "vote": 83, "count": 18 },
+        "role": "host",
+        "reviews": [
+            { "userId": 211, "comment": "Un'esperienza meravigliosa, lo consiglio." },
+            { "userId": 212, "comment": "Tutto molto bello e curato." }
+        ]
+    },
+    {
+        "id": 107,
+        "firstName": "Luca",
+        "lastName": "Fontana",
+        "profileImg": "https://example.com/images/luca_fontana.jpg",
+        "email": "luca.fontana@example.com",
+        "password": "password104",
+        "num_of_apartments": 1,
+        "ratings": { "vote": 35, "count": 8 },
+        "role": "host",
+        "reviews": [
+            { "userId": 213, "comment": "Non male, ma ci sono stati alcuni problemi." },
+            { "userId": 214, "comment": "Servizi di base ma adatti." }
+        ]
+    },
+    {
+        "id": 108,
+        "firstName": "Martina",
+        "lastName": "Gallo",
+        "profileImg": "https://example.com/images/martina_gallo.jpg",
+        "email": "martina.gallo@example.com",
+        "password": "password105",
+        "num_of_apartments": 2,
+        "ratings": { "vote": 76, "count": 16 },
+        "role": "host",
+        "reviews": [
+            { "userId": 215, "comment": "Appartamento ben arredato e pulito." },
+            { "userId": 216, "comment": "Ritornerò sicuramente!" }
+        ]
+    },
+    {
+        "id": 109,
+        "firstName": "Stefano",
+        "lastName": "Rinaldi",
+        "profileImg": "https://example.com/images/stefano_rinaldi.jpg",
+        "email": "stefano.rinaldi@example.com",
+        "password": "password106",
+        "num_of_apartments": 1,
+        "ratings": { "vote": 31, "count": 7 },
+        "role": "host",
+        "reviews": [
+            { "userId": 217, "comment": "Non del tutto soddisfatto." },
+            { "userId": 218, "comment": "Prezzo alto per quello che offre." }
+        ]
+    },
+    {
+        "id": 110,
+        "firstName": "Claudia",
+        "lastName": "Ferrari",
+        "profileImg": "https://example.com/images/claudia_ferrari.jpg",
+        "email": "claudia.ferrari@example.com",
+        "password": "password107",
+        "num_of_apartments": 1,
+        "ratings": { "vote": 36, "count": 9 },
+        "role": "host",
+        "reviews": [
+            { "userId": 219, "comment": "Ottima posizione, ma il letto era scomodo." },
+            { "userId": 220, "comment": "Buon rapporto qualità-prezzo." }
+        ]
+    },
+    {
+        "id": 111,
+        "firstName": "Alessandro",
+        "lastName": "Gatti",
+        "profileImg": "https://example.com/images/alessandro_gatti.jpg",
+        "email": "alessandro.gatti@example.com",
+        "password": "password108",
+        "num_of_apartments": 2,
+        "ratings": { "vote": 69, "count": 14 },
+        "role": "host",
+        "reviews": [
+            { "userId": 221, "comment": "Eccellente servizio, tornerò." },
+            { "userId": 222, "comment": "L'appartamento era bellissimo." }
+        ]
+    },
+    {
+        "id": 112,
+        "firstName": "Valentina",
+        "lastName": "Conti",
+        "profileImg": "https://example.com/images/valentina_conti.jpg",
+        "email": "valentina.conti@example.com",
+        "password": "password109",
+        "num_of_apartments": 1,
+        "ratings": { "vote": 52, "count": 11 },
+        "role": "host",
+        "reviews": [
+            { "userId": 223, "comment": "Tutto perfetto, grazie!" },
+            { "userId": 224, "comment": "Consiglio vivamente!" }
+        ]
+    },
+    {
+        "id": 113,
+        "firstName": "Francesco",
+        "lastName": "Marconi",
+        "profileImg": "https://example.com/images/francesco_marconi.jpg",
+        "email": "francesco.marconi@example.com",
+        "password": "password110",
+        "num_of_apartments": 1,
+        "ratings": { "vote": 96, "count": 22 },
+        "role": "host",
+        "reviews": [
+            { "userId": 225, "comment": "Appartamento stupendo!" },
+            { "userId": 226, "comment": "Spero di tornare presto." }
+        ]
+    },
+    {
+        "id": 114,
+        "firstName": "Elena",
+        "lastName": "Rossi",
+        "profileImg": "https://example.com/images/elena_rossi.jpg",
+        "email": "elena.rossi@example.com",
+        "password": "password111",
+        "num_of_apartments": 2,
+        "ratings": { "vote": 76, "count": 13 },
+        "role": "host",
+        "reviews": [
+            { "userId": 227, "comment": "Ottima esperienza, grazie!" },
+            { "userId": 228, "comment": "Molto gentile e disponibile." }
+        ]
+    },
+    {
+        "id": 115,
+        "firstName": "Matteo",
+        "lastName": "Giordano",
+        "profileImg": "https://example.com/images/matteo_giordano.jpg",
+        "email": "matteo.giordano@example.com",
+        "password": "password112",
+        "num_of_apartments": 3,
+        "ratings": { "vote": 59, "count": 17 },
+        "role": "host",
+        "reviews": [
+            { "userId": 229, "comment": "Soddisfatto del soggiorno." },
+            { "userId": 230, "comment": "Servizio buono e accogliente." }
+        ]
+    }
+]
