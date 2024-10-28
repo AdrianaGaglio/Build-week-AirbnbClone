@@ -21,6 +21,7 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -36,6 +37,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 
       ionSearchCircleSharp,
     }),
+    SharedModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

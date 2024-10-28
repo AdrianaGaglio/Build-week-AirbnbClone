@@ -1,9 +1,12 @@
-<div class="card airbnb-card">
+<div class="card airbnb-card position-relative">
   <div class="badge-popular">Amato dagli ospiti</div>
-  <i
-    class="fas fa-heart favorite-icon empty"
-    onclick="toggleFavorite(this)"
-  ></i>
+  <ng-icon
+    [name]="isFavorite ? 'ionHeart' : 'ionHeartOutline'"
+    (click)="toggleFavorite()"
+    [class.filled]="isFavorite"
+    [class.empty]="!isFavorite"
+    class="favorite-icon"
+  ></ng-icon>
   <img src="https://picsum.photos/300/200" alt="Room image" />
   <div class="card-body">
     <h5 class="card-title">Elegant Apartment in City Center</h5>
