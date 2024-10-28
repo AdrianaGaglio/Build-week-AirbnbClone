@@ -1,0 +1,55 @@
+.airbnb-card {
+  position: relative;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.airbnb-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.airbnb-card .card-body {
+  padding: 15px;
+}
+.airbnb-card .card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.airbnb-card .card-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+.airbnb-card .card-footer {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+}
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.favorite-icon.empty {
+  color: rgba(255, 90, 95, 0.3); /* Colore trasparente */
+}
+.favorite-icon.filled {
+  color: #ff5a5f; /* Colore rosso */
+}
+.badge-popular {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  color: #333;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
