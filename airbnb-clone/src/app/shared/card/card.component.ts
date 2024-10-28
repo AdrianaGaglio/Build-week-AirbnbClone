@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { iApartment } from '../../interfaces/iapartment';
 
 @Component({
   selector: 'app-card',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
+  @Input() apartament!: iApartment;
   isFavorite = false;
 
   toggleFavorite() {
