@@ -7,12 +7,12 @@
             class="w-fixed-100 mb-2"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
           />
-          <h1 class="mb-2">Create a free account</h1>
-          <p>Provide your personal information</p>
+          <h1 class="mb-2">Crea un account gratuito</h1>
+          <p>Fornisci le tue informazioni personali per procedere</p>
         </div>
         <div class="mb-3">
           <div class="d-flex justify-content-between">
-            <label for="firstName" class="form-label mb-0">First name: *</label>
+            <label for="firstName" class="form-label mb-0">Nome: *</label>
             <span *ngIf="isInvalidTouched('firstName')" class="text-danger"
               >Errore</span
             >
@@ -23,12 +23,12 @@
             type="text"
             class="form-control"
             id="firstName"
-            placeholder="Enter your first name"
+            placeholder="Inserisci il tuo nome"
           />
         </div>
         <div class="mb-3">
           <div class="d-flex justify-content-between">
-            <label for="lastName" class="form-label mb-0">Last name: *</label>
+            <label for="lastName" class="form-label mb-0">Cognome: *</label>
             <span *ngIf="isInvalidTouched('lastName')" class="text-danger"
               >Errore</span
             >
@@ -38,12 +38,14 @@
             type="text"
             class="form-control"
             id="lastName"
-            placeholder="Enter your last name"
+            placeholder="Inserisci il tuo cognome"
           />
         </div>
         <div class="mb-3">
           <div class="d-flex justify-content-between">
-            <label for="email" class="form-label mb-0">Email address: *</label>
+            <label for="email" class="form-label mb-0"
+              >Indirizzo email: *</label
+            >
             <span *ngIf="isInvalidTouched('email')" class="text-danger"
               >Errore</span
             >
@@ -53,7 +55,7 @@
             type="email"
             class="form-control"
             id="email"
-            placeholder="Enter your email address"
+            placeholder="Inserisci il tuo indirizzo email"
           />
         </div>
         <div class="mb-3">
@@ -68,11 +70,11 @@
             type="password"
             class="form-control"
             id="password"
-            placeholder="Choose a password"
+            placeholder="Scegli una password"
           />
         </div>
         <div class="mb-3">
-          <label for="avatar" class="form-label mb-0">Profile image:</label>
+          <label for="avatar" class="form-label mb-0">Immagine profilo:</label>
           <input
             formControlName="profileImg"
             class="form-control"
@@ -83,19 +85,19 @@
         </div>
         <div class="mb-3">
           <div class="d-flex justify-content-between">
-            <label for="role" class="form-label mb-0">Role: *</label>
+            <label for="role" class="form-label mb-0">Ruolo: *</label>
             <span *ngIf="isInvalidTouched('role')" class="text-danger"
               >Errore</span
             >
           </div>
           <select formControlName="role" class="form-control" id="role">
-            <option value="">-- select role --</option>
+            <option value="">-- seleziona ruolo --</option>
             <option value="host">Host</option>
             <option value="guest">Guest</option>
           </select>
         </div>
         <button class="btn btn-pink-airbnb text-light fw-medium">
-          Register
+          Registrati
         </button>
       </form>
     </div>
