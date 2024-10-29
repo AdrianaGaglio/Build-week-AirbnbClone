@@ -114,8 +114,12 @@
           <div *ngIf="host">
             <p class="mb-0">
               <strong
-                >Nome dell'host: {{ host.firstName }}
-                {{ host.lastName }}</strong
+                >Nome dell'host:
+                <a
+                  class="text-decoration-none text-black"
+                  [routerLink]="['/host', host.id]"
+                  >{{ host.firstName }} {{ host.lastName }}</a
+                ></strong
               >
             </p>
           </div>
@@ -124,7 +128,7 @@
     </div>
     <!-- App Reservation -->
     <div class="col-4">
-      <app-reservation></app-reservation>
+      <app-reservation [apartment]="apartment"></app-reservation>
     </div>
   </div>
 

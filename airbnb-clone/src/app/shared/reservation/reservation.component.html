@@ -1,14 +1,16 @@
 <div class="booking-card">
   <div class="price text-left">Contatta l'host</div>
-  <textarea
-    class="form-control mb-3"
-    rows="4"
-    placeholder="Scrivi un messaggio per l'host"
-  ></textarea>
-  <button class="btn btn-block submit-button">Invia</button>
+  <form (submit)="sendMessage()" [formGroup]="commentForm">
+    <textarea
+      formControlName="message"
+      class="form-control mb-3"
+      rows="4"
+      placeholder="Scrivi un messaggio per l'host"
+    ></textarea>
+    <button class="btn btn-block submit-button">Invia</button>
+  </form>
 
-  <div class="cost-details d-flex justify-content-between">
-    <span>140 € x 1 notte</span>
-    <span>140 €</span>
+  <div class="cost-details d-flex justify-content-between" *ngIf="isApartment">
+    <span>{{ apartment.price | currency : "EUR" }} x 1 notte</span>
   </div>
 </div>
