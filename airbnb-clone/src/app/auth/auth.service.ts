@@ -1,10 +1,22 @@
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
-import { iAuthData } from '../interfaces/iauthdata';
-import { BehaviorSubject, catchError, map, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  User,
+  onAuthStateChanged,
+} from '@angular/fire/auth';
+import { Firestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
+import {
+  BehaviorSubject,
+  catchError,
+  from,
+  map,
+  switchMap,
+  throwError,
+} from 'rxjs';
 import { iUser } from '../interfaces/iuser';
 import { iLoginData } from '../interfaces/ilogindata';
 
@@ -12,103 +24,101 @@ import { iLoginData } from '../interfaces/ilogindata';
   providedIn: 'root',
 })
 export class AuthService {
-  jwt: JwtHelperService = new JwtHelperService();
+  authState$ = new BehaviorSubject<User | null>(null);
+  isLoggedIn$ = this.authState$.pipe(map((user) => !!user));
 
-  registerUrl: string = environment.registerUrl;
-  loginUrl: string = environment.loginUrl;
-
-  authResponse$ = new BehaviorSubject<iAuthData | null>(null);
-
-  user$ = this.authResponse$
-    .asObservable()
-    .pipe(map((data) => (data ? data.user : null)));
-
-  isLoggedIn$ = this.user$.pipe(map((user) => !!user));
-
-  constructor(private http: HttpClient, private router: Router) {
-    this.getSavedUser();
+  constructor(
+    public auth: Auth,
+    private firestore: Firestore,
+    private router: Router
+  ) {
+    onAuthStateChanged(this.auth, (user) => {
+      this.authState$.next(user); // Aggiorna lo stato in base alla sessione Firebase
+    });
   }
 
   register(user: Partial<iUser>) {
-    return this.http
-      .post<iAuthData>(this.registerUrl, user)
-      .pipe(
-        catchError((error) => {
-          return throwError(() => {
-            let message = '';
-            if (error.status >= 400 && error.status < 500) {
-              message = 'Not found';
-            } else if (error.status === 500) {
-              message = 'Errore nella richiesta';
-            }
-            return message;
-          });
-        })
-      )
-      .pipe(
-        tap((authData) => {
-          this.router.navigate(['/auth/login']);
-        })
-      );
+    if (!user.email || !user.password) {
+      return throwError(() => new Error('Email e password sono richiesti'));
+    }
+
+    return from(
+      createUserWithEmailAndPassword(this.auth, user.email!, user.password!)
+    ).pipe(
+      switchMap((userCredential) => {
+        const uid = userCredential.user.uid;
+        console.log('Utente creato con UID:', uid);
+
+        const userDocRef = doc(this.firestore, `users/${uid}`);
+        return from(
+          setDoc(userDocRef, {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            profileImg: user.profileImg || '',
+            role: user.role || 'user',
+            num_of_apartments: user.num_of_apartments || 0,
+            ratings: user.ratings || { vote: 0, count: 0 },
+            reviews: user.reviews || [],
+          })
+        ).pipe(
+          map(() => console.log('Dati utente salvati in Firestore.')),
+          catchError((error) => {
+            console.error('Errore durante il salvataggio in Firestore:', error);
+            return throwError(() => new Error('Errore nella registrazione'));
+          })
+        );
+      })
+    );
   }
 
   login(user: iLoginData) {
-    return this.http
-      .post<iAuthData>(this.loginUrl, user)
-      .pipe(
-        catchError((error) => {
+    return from(
+      signInWithEmailAndPassword(this.auth, user.email, user.password)
+        .then((userCredential) => {
+          this.authState$.next(userCredential.user);
+          localStorage.setItem(
+            'loginData',
+            JSON.stringify(userCredential.user)
+          );
+        })
+        .catch((error) => {
           return throwError(() => {
             let message = '';
-            if (error.status >= 400 && error.status < 500) {
+            if (error.code === 'auth/user-not-found') {
               message = 'Utente non trovato';
-            } else if (error.status === 500) {
+            } else if (error.code === 'auth/wrong-password') {
+              message = 'Password errata';
+            } else {
               message = 'Errore nella richiesta';
             }
-            return message;
+            return new Error(message);
           });
         })
-      )
-      .pipe(
-        tap((authData) => {
-          console.log(authData);
-
-          this.authResponse$.next(authData);
-
-          localStorage.setItem('loginData', JSON.stringify(authData));
-
-          const expData = this.jwt.getTokenExpirationDate(authData.accessToken);
-
-          if (expData) {
-            this.autoLogout(expData);
-          }
-        })
-      );
+    );
   }
 
   logout() {
-    localStorage.removeItem('loginData');
-    this.authResponse$.next(null);
-    this.router.navigate(['/auth/login']);
-  }
-
-  autoLogout(expData: Date) {
-    const expTime = expData.getTime() - new Date().getTime();
-
-    setTimeout(() => {
-      this.logout();
-    }, expTime);
+    signOut(this.auth).then(() => {
+      this.authState$.next(null);
+      localStorage.removeItem('loginData');
+      this.router.navigate(['/auth/login']);
+    });
   }
 
   getSavedUser() {
     const savedUser = localStorage.getItem('loginData');
 
     if (!savedUser) return;
-    const loginResponse: iAuthData = JSON.parse(savedUser);
 
-    if (this.jwt.isTokenExpired(loginResponse.accessToken)) {
-      localStorage.removeItem('loginData');
-      return;
+    const user: User = JSON.parse(savedUser);
+
+    // Controlla se il token è scaduto
+    if (this.auth.currentUser && !this.auth.currentUser.emailVerified) {
+      localStorage.removeItem('loginData'); // Rimuovi l'utente se la sessione è scaduta
+      this.authState$.next(null);
+    } else {
+      this.authState$.next(this.auth.currentUser); // Imposta l'utente come loggato
     }
-    this.authResponse$.next(loginResponse);
   }
 }
