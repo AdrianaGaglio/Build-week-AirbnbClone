@@ -9,7 +9,7 @@
               class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
               type="checkbox"
               id="nameCheck"
-              [checked]="true"
+              [checked]="form.value.name"
             />
             <label for="nameCheck">Nome</label>
           </div>
@@ -20,7 +20,7 @@
               class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
               type="checkbox"
               id="descriptionCheck"
-              [checked]="false"
+              [checked]="form.value.description"
             />
             <label for="descriptionCheck">Descrizione</label>
           </div>
@@ -31,9 +31,86 @@
               class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
               type="checkbox"
               id="nameCheck"
-              [checked]="false"
+              [checked]="form.value.rooms"
             />
             <label for="nameCheck">stanze</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              type="checkbox"
+              id="servicesCheck"
+              [checked]="form.value.services"
+            />
+            <label for="servicesCheck">Servizi</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              type="checkbox"
+              id="descriptionCheck"
+              [checked]="form.value.coverImage"
+            />
+            <label for="descriptionCheck">Cover</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              type="checkbox"
+              id="otherImagesCheck"
+              [checked]="form.value.otherImages"
+            />
+            <label for="otherImagesCheck">Immagini</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              type="checkbox"
+              id="categoryCheck"
+              [checked]="form.value.category"
+            />
+            <label for="categoryCheck">Categoria</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              type="checkbox"
+              id="squaremetersCheck"
+              [checked]="form.value.squaremeters"
+            />
+            <label for="squaremetersCheck">Dimensioni</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              type="checkbox"
+              id="locationCheck"
+              [checked]="form.value.location"
+            />
+            <label for="locationCheck">Posizione</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              type="checkbox"
+              id="priceCheck"
+              [checked]="form.value.price"
+            />
+            <label for="priceCheck">Prezzo</label>
           </div>
         </div>
       </div>
@@ -138,7 +215,7 @@
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Prezzo di vendita per notte</h5>
             <input
-              type="text"
+              type="number"
               class="form-contrl px-3 py-2 rounded border"
               placeholder="Villa Licata"
               formControlName="price"

@@ -2,6 +2,18 @@
   pointer-events: none;
 }
 
+.pointerNone::before {
+  content: "";
+  border-radius: 5px;
+  height: 14px;
+  width: 3px;
+  background-color: #e5e5e5;
+  z-index: 990;
+  position: absolute;
+  bottom: -14px;
+  transform: translateX(-1.5px);
+}
+
 .posStickyNav {
   position: sticky;
   top: 5rem;
