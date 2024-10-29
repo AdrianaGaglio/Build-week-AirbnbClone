@@ -2,7 +2,7 @@ import { iRatings } from './iratings';
 import { iReview } from './ireview';
 
 export interface iUser {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   profileImg: string;

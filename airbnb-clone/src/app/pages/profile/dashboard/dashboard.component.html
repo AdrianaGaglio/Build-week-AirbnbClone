@@ -17,20 +17,8 @@
   <div
     class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 px-3 pb-4 my-3 bg-secondary-subtle rounded-2"
   >
-    <!-- <div class="col">
-      <app-card></app-card>
+    <div *ngFor="let apartment of apartments" class="col">
+      <app-card [apartment]="apartment"></app-card>
     </div>
-    <div class="col">
-      <app-card></app-card>
-    </div>
-    <div class="col">
-      <app-card></app-card>
-    </div>
-    <div class="col">
-      <app-card></app-card>
-    </div>
-    <div class="col">
-      <app-card></app-card>
-    </div> -->
   </div>
 </div>
