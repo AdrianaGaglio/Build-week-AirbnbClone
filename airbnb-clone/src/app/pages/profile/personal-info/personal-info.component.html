@@ -1,44 +1,147 @@
-<div class="container-fluid padding-lg">
+<div class="container" *ngIf="user">
   <h1 class="fw-bold mb-5">Informazioni personali</h1>
   <div class="row">
     <div class="col-9 pe-5">
       <div class="row py-3 border-bottom">
         <div class="col">
           <h6 class="fw-bold mb-1">Nome legale</h6>
-          <p class="text-secondary mb-0">Nome utente</p>
+          <p class="text-secondary mb-0" *ngIf="!toggleName">
+            {{ user.firstName }} {{ user.lastName }}
+          </p>
+          <div class="d-flex gap-1" *ngIf="toggleName">
+            <input
+              type="text"
+              class="form-control"
+              name="firstName"
+              id="firstName"
+              [(ngModel)]="user.firstName"
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="firstName"
+              id="firstName"
+              [(ngModel)]="user.lastName"
+            />
+            <button
+              (click)="updateName()"
+              class="btn btn-pink-airbnb btn-sm text-light fw-medium"
+              type="button"
+            >
+              Salva
+            </button>
+          </div>
         </div>
         <div class="col-2 text-end">
-          <a class="text-decoration-underline text-black fw-medium">Modifica</a>
+          <a
+            (click)="changeName()"
+            class="text-decoration-underline text-black fw-medium"
+            >Modifica</a
+          >
         </div>
       </div>
       <div class="row py-3 border-bottom">
         <div class="col">
           <h6 class="fw-bold mb-1">Nome preferito</h6>
-          <p class="text-secondary mb-0">Username</p>
+          <p class="text-secondary mb-0" *ngIf="!toggleUsername">
+            {{ user.username ? user.username : "Aggiungi un nome breve" }}
+          </p>
+          <div class="d-flex gap-1" *ngIf="toggleUsername">
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              id="username"
+              [(ngModel)]="user.username"
+              placeholder="{{
+                user.username ? user.username : 'Scegli uno username'
+              }}"
+            />
+            <button
+              (click)="updateUsername()"
+              class="btn btn-pink-airbnb btn-sm text-light fw-medium"
+              type="button"
+            >
+              Salva
+            </button>
+          </div>
         </div>
         <div class="col-2 text-end">
-          <a class="text-decoration-underline text-black fw-medium">Aggiungi</a>
+          <a
+            (click)="changeUsername()"
+            class="text-decoration-underline text-black fw-medium"
+            >Aggiungi</a
+          >
         </div>
       </div>
       <div class="row py-3 border-bottom">
         <div class="col">
           <h6 class="fw-bold mb-1">Indirizzo email</h6>
-          <p class="text-secondary mb-0">Email</p>
+          <p class="text-secondary mb-0" *ngIf="!toggleEmail">
+            {{ user.email }}
+          </p>
+          <div class="d-flex gap-1" *ngIf="toggleEmail">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              [(ngModel)]="user.email"
+            />
+            <button
+              (click)="updateEmail()"
+              class="btn btn-pink-airbnb btn-sm text-light fw-medium"
+              type="button"
+            >
+              Salva
+            </button>
+          </div>
         </div>
         <div class="col-2 text-end">
-          <a class="text-decoration-underline text-black fw-medium">Modifica</a>
+          <a
+            (click)="changeEmail()"
+            class="text-decoration-underline text-black fw-medium"
+            >Modifica</a
+          >
         </div>
       </div>
       <div class="row py-3 border-bottom">
         <div class="col">
           <h6 class="fw-bold mb-1">Numeri di telefono</h6>
-          <p class="text-secondary mb-0">
-            Aggiungi un numero in modo che gli ospiti confermati e Airbnb
-            possano contattarti.
+          <p class="text-secondary mb-0" *ngIf="!togglePhone">
+            {{
+              user.phone
+                ? user.phone
+                : "Aggiungi un numero in modo che gli ospiti confermati e Airbnb possano contattarti"
+            }}
           </p>
+          <div class="d-flex gap-1" *ngIf="togglePhone">
+            <input
+              type="tel"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              class="form-control"
+              name="phone"
+              id="phone"
+              [(ngModel)]="user.phone"
+              placeholder="{{
+                user.phone ? user.phone : 'Aggiungi un numero di telefono'
+              }}"
+            />
+            <button
+              (click)="updatePhone()"
+              class="btn btn-pink-airbnb btn-sm text-light fw-medium"
+              type="button"
+            >
+              Salva
+            </button>
+          </div>
         </div>
         <div class="col-2 text-end">
-          <a class="text-decoration-underline text-black fw-medium">Aggiungi</a>
+          <a
+            (click)="changePhone()"
+            class="text-decoration-underline text-black fw-medium"
+            >Aggiungi</a
+          >
         </div>
       </div>
       <div class="row row-cols-3 py-5">

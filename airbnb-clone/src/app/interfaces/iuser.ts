@@ -8,6 +8,8 @@ export interface iUser {
   profileImg: string;
   email: string;
   password: string;
+  username?: string;
+  phone?: string;
   num_of_apartments: number;
   ratings: iRatings;
   role: string;

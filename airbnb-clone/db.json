@@ -17,7 +17,7 @@
     },
     {
       "email": "laura.bianchi@example.com",
-      "password": "$2a$10$0KIYu9yMdfhhGbunov.nGOUQhYO.n3svfmVa1eQYVzM9Cpza9F47O",
+      "password": "$2a$10$8dr/zgPZRlppoAU5xs98LOlozGKaJBF.AAG.K228oW9ITV.JcMA52",
       "firstName": "Laura",
       "lastName": "Bianchi",
       "profileImg": "",
@@ -28,7 +28,8 @@
         "count": 0
       },
       "reviews": [],
-      "id": 2
+      "id": 2,
+      "username": ""
     },
     {
       "email": "giovanni.verdi@example.com",
@@ -238,7 +239,11 @@
         "longitude": 13.456789
       },
       "rooms": 2,
-      "services": ["Wi-Fi", "TV", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Cucina"
+      ],
       "squaremeters": 50,
       "hostId": 1,
       "coverImage": "https://example.com/images/casa_al_mare.jpg",
@@ -256,7 +261,10 @@
           "comment": "Perfetto per una vacanza al mare."
         }
       ],
-      "category": ["spiaggia", "famiglia"]
+      "category": [
+        "spiaggia",
+        "famiglia"
+      ]
     },
     {
       "id": 2,
@@ -269,7 +277,11 @@
         "longitude": 13.987654
       },
       "rooms": 1,
-      "services": ["Wi-Fi", "TV", "Aria Condizionata"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Aria Condizionata"
+      ],
       "squaremeters": 30,
       "hostId": 2,
       "coverImage": "https://example.com/images/appartamento_in_centro.jpg",
@@ -287,7 +299,10 @@
           "comment": "Posizione ideale per esplorare la città."
         }
       ],
-      "category": ["città", "lusso"]
+      "category": [
+        "città",
+        "lusso"
+      ]
     },
     {
       "id": 3,
@@ -300,7 +315,11 @@
         "longitude": 13.123456
       },
       "rooms": 4,
-      "services": ["Wi-Fi", "Piscina", "Giardino"],
+      "services": [
+        "Wi-Fi",
+        "Piscina",
+        "Giardino"
+      ],
       "squaremeters": 120,
       "hostId": 3,
       "coverImage": "https://example.com/images/villa_relax.jpg",
@@ -318,7 +337,10 @@
           "comment": "Adatta per famiglie, molto spazio."
         }
       ],
-      "category": ["famiglia", "natura"]
+      "category": [
+        "famiglia",
+        "natura"
+      ]
     },
     {
       "id": 4,
@@ -331,7 +353,11 @@
         "longitude": 13.345678
       },
       "rooms": 2,
-      "services": ["Wi-Fi", "TV", "Terrazzo"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Terrazzo"
+      ],
       "squaremeters": 60,
       "hostId": 4,
       "coverImage": "https://example.com/images/attico_panoramico.jpg",
@@ -349,7 +375,10 @@
           "comment": "Un attico che offre privacy e comfort."
         }
       ],
-      "category": ["lusso", "città"]
+      "category": [
+        "lusso",
+        "città"
+      ]
     },
     {
       "id": 5,
@@ -362,7 +391,10 @@
         "longitude": 13.56789
       },
       "rooms": 1,
-      "services": ["Wi-Fi", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "Cucina"
+      ],
       "squaremeters": 25,
       "hostId": 5,
       "coverImage": "https://example.com/images/monolocale_in_spiaggia.jpg",
@@ -380,7 +412,10 @@
           "comment": "Pulito e ben posizionato."
         }
       ],
-      "category": ["spiaggia", "romantico"]
+      "category": [
+        "spiaggia",
+        "romantico"
+      ]
     },
     {
       "id": 6,
@@ -393,7 +428,11 @@
         "longitude": 13.678901
       },
       "rooms": 3,
-      "services": ["Wi-Fi", "Giardino", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "Giardino",
+        "Cucina"
+      ],
       "squaremeters": 90,
       "hostId": 6,
       "coverImage": "https://example.com/images/appartamento_per_famiglie.jpg",
@@ -411,7 +450,10 @@
           "comment": "Ottimo per famiglie con bambini."
         }
       ],
-      "category": ["famiglia", "natura"]
+      "category": [
+        "famiglia",
+        "natura"
+      ]
     },
     {
       "id": 7,
@@ -424,7 +466,11 @@
         "longitude": 13.876543
       },
       "rooms": 1,
-      "services": ["Wi-Fi", "Servizio in Camera", "Spa"],
+      "services": [
+        "Wi-Fi",
+        "Servizio in Camera",
+        "Spa"
+      ],
       "squaremeters": 80,
       "hostId": 7,
       "coverImage": "https://example.com/images/suite_di_lusso.jpg",
@@ -442,7 +488,10 @@
           "comment": "Una vera esperienza di lusso!"
         }
       ],
-      "category": ["lusso", "città"]
+      "category": [
+        "lusso",
+        "città"
+      ]
     },
     {
       "id": 8,
@@ -455,7 +504,11 @@
         "longitude": 13.098765
       },
       "rooms": 3,
-      "services": ["Wi-Fi", "Giardino", "Caminetto"],
+      "services": [
+        "Wi-Fi",
+        "Giardino",
+        "Caminetto"
+      ],
       "squaremeters": 100,
       "hostId": 8,
       "coverImage": "https://example.com/images/casa_di_campagna.jpg",
@@ -473,7 +526,10 @@
           "comment": "Perfetta per una fuga dalla città."
         }
       ],
-      "category": ["campagna", "natura"]
+      "category": [
+        "campagna",
+        "natura"
+      ]
     },
     {
       "id": 9,
@@ -486,7 +542,11 @@
         "longitude": 13.234567
       },
       "rooms": 1,
-      "services": ["Wi-Fi", "TV", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "TV",
+        "Cucina"
+      ],
       "squaremeters": 35,
       "hostId": 9,
       "coverImage": "https://example.com/images/studio_moderno.jpg",
@@ -504,7 +564,10 @@
           "comment": "Perfetto per un soggiorno breve."
         }
       ],
-      "category": ["città", "modernità"]
+      "category": [
+        "città",
+        "modernità"
+      ]
     },
     {
       "id": 10,
@@ -517,7 +580,11 @@
         "longitude": 13.123456
       },
       "rooms": 2,
-      "services": ["Wi-Fi", "Cucina", "Balcone"],
+      "services": [
+        "Wi-Fi",
+        "Cucina",
+        "Balcone"
+      ],
       "squaremeters": 60,
       "hostId": 10,
       "coverImage": "https://example.com/images/bungalow_al_lago.jpg",
@@ -535,7 +602,10 @@
           "comment": "Ideale per rilassarsi."
         }
       ],
-      "category": ["natura", "lago"]
+      "category": [
+        "natura",
+        "lago"
+      ]
     },
     {
       "id": 11,
@@ -548,7 +618,11 @@
         "longitude": 13.321098
       },
       "rooms": 2,
-      "services": ["Wi-Fi", "Caminetto", "Cucina"],
+      "services": [
+        "Wi-Fi",
+        "Caminetto",
+        "Cucina"
+      ],
       "squaremeters": 70,
       "hostId": 11,
       "coverImage": "https://example.com/images/casa_di_montagna.jpg",
@@ -566,7 +640,10 @@
           "comment": "Atmosfera calda e accogliente."
         }
       ],
-      "category": ["montagna", "natura"]
+      "category": [
+        "montagna",
+        "natura"
+      ]
     },
     {
       "id": 12,
@@ -579,7 +656,11 @@
         "longitude": 14.123456
       },
       "rooms": 4,
-      "services": ["Wi-Fi", "Cucina", "TV"],
+      "services": [
+        "Wi-Fi",
+        "Cucina",
+        "TV"
+      ],
       "squaremeters": 110,
       "hostId": 12,
       "coverImage": "https://example.com/images/appartamento_per_gruppi.jpg",
@@ -597,7 +678,10 @@
           "comment": "Spazioso e ben attrezzato."
         }
       ],
-      "category": ["gruppi", "città"]
+      "category": [
+        "gruppi",
+        "città"
+      ]
     }
   ]
 }

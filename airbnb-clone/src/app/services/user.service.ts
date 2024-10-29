@@ -27,4 +27,8 @@ export class UserService {
       })
     );
   }
+
+  changeUserInfo(user: iUser): Observable<iUser> {
+    return this.http.put<iUser>(`${this.userUrl}/${user.id}`, user);
+  }
 }
