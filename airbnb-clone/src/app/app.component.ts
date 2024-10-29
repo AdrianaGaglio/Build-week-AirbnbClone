@@ -17,12 +17,12 @@ export class AppComponent {
   ) {}
   isLoggedIn: boolean = false;
 
-  // ngOnInit() {
-  //   this.apartmentSvc.getApartments().subscribe((res) => {
-  //     this.apartmentSvc.apartments$.next(res);
-  //   });
-  //   this.authSvc.isLoggedIn$.subscribe((value) => {
-  //     this.isLoggedIn = value;
-  //   });
-  // }
+  ngOnInit() {
+    this.apartmentSvc.getApartments().subscribe((res) => {
+      this.apartmentSvc.apartments$.next(res);
+    });
+    this.authSvc.isLoggedIn$.subscribe((value) => {
+      this.isLoggedIn = value;
+    });
+  }
 }

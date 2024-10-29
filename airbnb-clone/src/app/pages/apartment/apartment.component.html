@@ -1,10 +1,11 @@
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="apartment">
   <!-- Sezione Titolo e Preferiti -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="mb-0">Botte Montepulciano</h2>
+    <h2 class="mb-0">{{ apartment.name }}</h2>
     <ng-icon
       [name]="isFavorite ? 'ionHeart' : 'ionHeartOutline'"
       (click)="toggleFavorite()"
+      (click)="addRemoveFavourite()"
       [class.filled]="isFavorite"
       [class.empty]="!isFavorite"
       class="favorite-icon"
@@ -68,28 +69,40 @@
   <div class="container1 d-flex justify-content-between">
     <div class="row mt-4">
       <!-- Sezione Recensioni e Host -->
-      <div class="col-8">
-        <p class="text-muted mb-0" style="font-size: 23px">
+      <div class="col">
+        <p class="text-muted mb-0 fs-4">
           <strong>Torano nuovo, Italia. Cupola</strong>
         </p>
-        <p>4 ospiti · 1 camera da letto · 3 letti · 1 bagno</p>
+        <p>{{ apartment.description }}</p>
+        <p>
+          {{ apartment.rooms > 1 ? apartment.rooms + " stanze" : "1 stanza" }} ·
+          {{ apartment.squaremeters }}m²
+        </p>
+        <!-- <p>4 ospiti · 1 camera da letto · 3 letti · 1 bagno</p> -->
 
         <!-- Sezione "Amato dagli ospiti" -->
-        <div class="card p-3 mb-3" style="display: inline-block">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center mb-2">
-              <span class="badge bg-success me-2">Amato dagli ospiti</span>
+
+        <ng-container *ngIf="rating">
+          <div class="card p-3 mb-3">
+            <div
+              class="d-flex justify-content-between align-items-center p-2 gap-2"
+            >
+              <div>
+                <span *ngIf="rating > 3" class="badge bg-success me-2"
+                  >Amato dagli ospiti</span
+                >
+              </div>
               <p class="mb-0 fs-6">
                 Uno degli alloggi più amati dagli ospiti di Airbnb
               </p>
-            </div>
-            <div class="d-flex align-items-center">
-              <h4 class="mb-0 me-2 fs-6">4.91</h4>
-              <span class="mx-2">|</span>
-              <small class="text-muted fs-6">33 recensioni</small>
+              <div class="">
+                <h4 class="mb-0 fs-6 text-center">{{ rating }}</h4>
+              </div>
+              <div><span>|</span></div>
+              <div><small class="text-muted fs-6">33 recensioni</small></div>
             </div>
           </div>
-        </div>
+        </ng-container>
 
         <div class="d-flex align-items-center mb-2">
           <img
@@ -98,9 +111,13 @@
             style="width: 30px; height: 30px"
             class="me-2 align-self-center"
           />
-          <div>
-            <p class="mb-0"><strong>Nome dell'host: Gaia Giulia</strong></p>
-            <p class="mb-0"><small>9 anni di esperienza come host</small></p>
+          <div *ngIf="host">
+            <p class="mb-0">
+              <strong
+                >Nome dell'host: {{ host.firstName }}
+                {{ host.lastName }}</strong
+              >
+            </p>
           </div>
         </div>
       </div>

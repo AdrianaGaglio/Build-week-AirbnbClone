@@ -19,6 +19,7 @@ import {
 } from '@ng-icons/material-icons/baseline';
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { FilterComponent } from './filter/filter.component';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CardComponent, ReviewCardComponent, FilterComponent],
@@ -40,6 +41,7 @@ import { FilterComponent } from './filter/filter.component';
       matDiversity3,
       matDashboard,
     }),
+    RouterLink,
   ],
   exports: [CardComponent, ReviewCardComponent, FilterComponent],
 })

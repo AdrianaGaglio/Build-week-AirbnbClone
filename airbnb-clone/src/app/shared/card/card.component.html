@@ -11,7 +11,13 @@
     ></ng-icon>
   </ng-container>
 
-  <img src="https://picsum.photos/300/200" alt="Room image" />
+  <img
+    src="https://picsum.photos/300/200"
+    alt="Room image"
+    role="button"
+    [routerLink]="['/apartment', apartment.id]"
+    routerLinkActive="router-link-active"
+  />
   <div class="card-body">
     <h5 class="card-title">{{ apartment.name }}</h5>
     <p class="card-text">
