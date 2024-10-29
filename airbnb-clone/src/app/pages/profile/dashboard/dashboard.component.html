@@ -1,1 +1,36 @@
-<p>dashboard works!</p>
+<div class="container">
+  <!-- welcome cliente -->
+  <h2 class="fw-semibold">Ciao Giuseppe!</h2>
+  <br />
+  <!-- titolo e button -->
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">I tuoi annunci</h2>
+    <button
+      (click)="addNewApartment()"
+      type="button"
+      class="btn btn-outline-dark-an py-1 fw-semibold"
+    >
+      Inserisci un nuovo annuncio +
+    </button>
+  </div>
+  <!-- sezzione annunci -->
+  <div
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 px-3 pb-4 my-3 bg-secondary-subtle rounded-2"
+  >
+    <div class="col">
+      <app-card></app-card>
+    </div>
+    <div class="col">
+      <app-card></app-card>
+    </div>
+    <div class="col">
+      <app-card></app-card>
+    </div>
+    <div class="col">
+      <app-card></app-card>
+    </div>
+    <div class="col">
+      <app-card></app-card>
+    </div>
+  </div>
+</div>

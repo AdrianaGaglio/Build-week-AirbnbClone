@@ -1,10 +1,81 @@
 <div *ngIf="categories">
-  <ul class="d-flex justify-content-center">
+  <ul class="d-flex justify-content-center gap-3">
+    <li class="nav-link mb-0 px-2 py-1 text-secondary mb-2">
+      <div
+        (click)="selectAll(true)"
+        class="d-flex flex-column align-items-center"
+        role="button"
+      >
+        <ng-icon name="matDashboard" class="fs-5"></ng-icon>
+        All
+      </div>
+    </li>
     <li
-      class="nav-link px-2 py-1 text-secondary"
+      class="nav-link mb-0 px-2 py-1 text-secondary mb-2"
       *ngFor="let category of categories"
     >
-      {{ category | titlecase }}
+      <div
+        (click)="selectCategory(category)"
+        class="d-flex flex-column align-items-center"
+        role="button"
+      >
+        <ng-icon
+          class="fs-5"
+          name="matBeachAccess"
+          *ngIf="category === 'spiaggia'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matFamilyRestroom"
+          *ngIf="category === 'famiglia'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matLocationCity"
+          *ngIf="category === 'città'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matLocalFireDepartment"
+          *ngIf="category === 'lusso'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matPark"
+          *ngIf="category === 'natura'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matFavoriteBorder"
+          *ngIf="category === 'romantico'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matEmojiNature"
+          *ngIf="category === 'campagna'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matArchitecture"
+          *ngIf="category === 'modernità'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matKayaking"
+          *ngIf="category === 'lago'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matLandscape"
+          *ngIf="category === 'montagna'"
+        ></ng-icon>
+        <ng-icon
+          class="fs-5"
+          name="matDiversity3"
+          *ngIf="category === 'gruppi'"
+        ></ng-icon>
+        {{ category | titlecase }}
+      </div>
     </li>
   </ul>
 </div>

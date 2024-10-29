@@ -1,6 +1,8 @@
+import { ApartmentService } from './../../services/apartment.service';
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { environment } from '../../../environments/environment.development';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,16 @@ import { environment } from '../../../environments/environment.development';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(private authSvc: AuthService) {}
+  constructor(
+    private authSvc: AuthService,
+    private ApartmentSvc: ApartmentService,
+    private router: Router
+  ) {}
 
   showBol: boolean = false;
   isLoggedIn!: boolean;
   logo: string = environment.logo;
+  searchQuery!: string;
 
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
@@ -26,5 +33,20 @@ export class HeaderComponent {
 
   logout() {
     this.authSvc.logout();
+  }
+
+  search() {
+    if (this.searchQuery) {
+      this.ApartmentSvc.getApartmentsBySearch(this.searchQuery).subscribe({
+        next: (res) => {
+          this.ApartmentSvc.apartments$.next(res);
+          this.searchQuery = '';
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
+        },
+      });
+    }
   }
 }

@@ -15,6 +15,7 @@ import {
   matKayaking,
   matLandscape,
   matDiversity3,
+  matDashboard,
 } from '@ng-icons/material-icons/baseline';
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { FilterComponent } from './filter/filter.component';
@@ -37,6 +38,7 @@ import { FilterComponent } from './filter/filter.component';
       matKayaking,
       matLandscape,
       matDiversity3,
+      matDashboard,
     }),
   ],
   exports: [CardComponent, ReviewCardComponent, FilterComponent],

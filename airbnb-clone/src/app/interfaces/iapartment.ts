@@ -1,3 +1,4 @@
+import { iRatings } from './iratings';
 import { iLocation } from './ilocation';
 import { iReview } from './ireview';
 
@@ -15,5 +16,6 @@ export interface iApartment {
   coverImage: string;
   otherImages: string[];
   reviews: iReview[];
+  ratings: iRatings;
   category: string[];
 }

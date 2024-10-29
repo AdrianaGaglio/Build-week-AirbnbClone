@@ -9,9 +9,33 @@ import { iApartment } from '../../interfaces/iapartment';
 })
 export class HomeComponent {
   apartments: iApartment[] = [];
-  constructor(private apartmentSvc: ApartmentService) {
+  message!: string;
+  constructor(private apartmentSvc: ApartmentService) {}
+
+  ngOnInit() {
+    this.apartmentSvc.apartments$.subscribe((res) => {
+      if (typeof res !== 'string') {
+        this.apartments = res;
+      } else {
+        this.message = res;
+      }
+    });
+  }
+
+  filterByCategory(category: string) {
+    this.apartmentSvc.getApartmentsByCategory(category).subscribe({
+      next: (res) => {
+        this.apartmentSvc.apartments$.next(res);
+      },
+      error: (err) => {
+        this.message = err;
+      },
+    });
+  }
+
+  allCategories(all: boolean) {
     this.apartmentSvc.getApartments().subscribe((res) => {
-      this.apartments = res;
+      this.apartmentSvc.apartments$.next(res);
     });
   }
 }

@@ -2,7 +2,7 @@ import { iApartment } from './../interfaces/iapartment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
@@ -12,6 +12,8 @@ export class ApartmentService {
   constructor(private http: HttpClient) {}
 
   apartmentsUrl = environment.apartmentsUrl;
+
+  apartments$ = new BehaviorSubject<iApartment[] | string>([]);
 
   getApartments(): Observable<iApartment[]> {
     return this.http.get<iApartment[]>(this.apartmentsUrl).pipe(
@@ -112,5 +114,39 @@ export class ApartmentService {
           });
         })
       );
+  }
+
+  getApartmentsByCategory(category: string): Observable<iApartment[]> {
+    return this.getApartments()
+      .pipe(
+        map((apartments) =>
+          apartments.filter((apartment) =>
+            apartment.category.includes(category)
+          )
+        )
+      )
+      .pipe(
+        catchError((error) => {
+          return throwError(() => {
+            let message = '';
+            if (error.status >= 400 && error.status < 500) {
+              message = 'Appartamento non trovato';
+            } else if (error.status === 500) {
+              message = 'Errore nella richiesta';
+            }
+            return message;
+          });
+        })
+      );
+  }
+
+  getApartmentsBySearch(search: string): Observable<iApartment[]> {
+    return this.getApartments().pipe(
+      map((apartments) =>
+        apartments.filter((apartment) =>
+          apartment.name.toLowerCase().includes(search.toLowerCase())
+        )
+      )
+    );
   }
 }

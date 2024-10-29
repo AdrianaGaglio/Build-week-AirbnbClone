@@ -9,11 +9,13 @@
       height="30"
     />
     <!-- search bar -->
-    <div class="input-group w-25">
+    <form (submit)="search()" class="input-group w-25">
       <input
         type="text"
         class="form-control rounded-start-pill border-end-0 input-button-search"
         placeholder="Bahamas"
+        name="searchQuery"
+        [(ngModel)]="searchQuery"
       />
       <button
         class="rounded-end-pill bg-white border-start-0 p-0 input-button-search"
@@ -24,7 +26,7 @@
           class="fs-1 iconaSearch text-pink-airbnb"
         ></ng-icon>
       </button>
-    </div>
+    </form>
     <!-- menu profilo -->
     <div class="flex-shrink-0 dropdown">
       <a
