@@ -27,7 +27,9 @@ export class ReservationComponent {
         this.senderId = user.uid;
         this.commentForm = this.fb.group({
           senderId: this.fb.control(this.senderId),
-          receiverId: this.fb.control(this.apartment.hostId),
+          receiverId: this.fb.control(
+            this.apartment.hostId ? this.apartment.hostId : null
+          ),
           message: this.fb.control('', Validators.required),
           apartment: this.fb.control(this.apartment ? this.apartment : null),
           isRead: this.fb.control(false),
