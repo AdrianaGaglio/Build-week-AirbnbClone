@@ -2,7 +2,7 @@
   pointer-events: none;
 }
 
-.pointerNone::before {
+.pointerBefore::before {
   content: "";
   border-radius: 5px;
   height: 14px;
@@ -24,4 +24,11 @@ form {
   textarea {
     width: 378px;
   }
+}
+
+.posSpan {
+  position: absolute;
+  transform: translatey(48px);
+  bottom: 0;
+  right: 0;
 }
