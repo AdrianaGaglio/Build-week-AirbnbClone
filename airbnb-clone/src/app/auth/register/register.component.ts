@@ -79,7 +79,16 @@ export class RegisterComponent implements OnInit {
         },
         error: (err) => {
           this.authSvc.isRegistering = false;
-          this.message = err;
+          console.log(err.code);
+
+          if (err.code == 'auth/email-already-in-use') {
+            this.message = 'Email esistente';
+          } else if (err.code == 'auth/invalid-email') {
+            this.message = 'Email non valida';
+          } else {
+            this.message = 'Errore nella registrazione';
+          }
+
           this.openModal(this.message, false);
         },
       });
