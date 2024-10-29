@@ -65,33 +65,46 @@
     </div>
   </div>
 
-  <div class="row mt-4">
-    <!-- Sezione Recensioni e Host -->
-    <div class="col-8">
-      <p class="text-muted">Torano nuovo, Italia. Cupola</p>
-      <p>4 ospiti · 1 camera da letto · 3 letti · 1 bagno</p>
+  <div class="container1 d-flex justify-content-between">
+    <div class="row mt-4">
+      <!-- Sezione Recensioni e Host -->
+      <div class="col-8">
+        <p class="text-muted mb-0" style="font-size: 23px">
+          <strong>Torano nuovo, Italia. Cupola</strong>
+        </p>
+        <p>4 ospiti · 1 camera da letto · 3 letti · 1 bagno</p>
 
-      <!-- Sezione "Amato dagli ospiti" -->
-      <div class="card p-3 mb-3" style="display: inline-block">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center mb-2">
-            <span class="badge bg-success me-2">Amato dagli ospiti</span>
-            <p class="mb-0">
-              Uno degli alloggi più amati dagli ospiti di Airbnb
-            </p>
+        <!-- Sezione "Amato dagli ospiti" -->
+        <div class="card p-3 mb-3" style="display: inline-block">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-success me-2">Amato dagli ospiti</span>
+              <p class="mb-0 fs-6">
+                Uno degli alloggi più amati dagli ospiti di Airbnb
+              </p>
+            </div>
+            <div class="d-flex align-items-center">
+              <h4 class="mb-0 me-2 fs-6">4.91</h4>
+              <span class="mx-2">|</span>
+              <small class="text-muted fs-6">33 recensioni</small>
+            </div>
           </div>
-          <div class="d-flex align-items-center">
-            <h4 class="mb-0 me-2">4.91</h4>
-            <span class="mx-2">|</span>
-            <small class="text-muted">33 recensioni</small>
+        </div>
+
+        <div class="d-flex align-items-center mb-2">
+          <img
+            src="https://cdn3.iconfinder.com/data/icons/avatar-and-people-4/510/Avatar_Woman_C-21-512.png"
+            alt="Immagine dell'host"
+            style="width: 30px; height: 30px"
+            class="me-2 align-self-center"
+          />
+          <div>
+            <p class="mb-0"><strong>Nome dell'host: Gaia Giulia</strong></p>
+            <p class="mb-0"><small>9 anni di esperienza come host</small></p>
           </div>
         </div>
       </div>
-
-      <p><strong>Nome dell'host:</strong> Gaia Giulia</p>
-      <p><small>9 anni di esperienza come host</small></p>
     </div>
-
     <!-- App Reservation -->
     <div class="col-4">
       <app-reservation></app-reservation>
@@ -104,7 +117,10 @@
   <div class="row mt-3">
     <div class="col-8">
       <h4>Dove dormirai</h4>
-      <div class="card p-3" style="max-width: 400px; display: inline-block">
+      <div class="card p-3" style="max-width: 200px; display: inline-block">
+        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
+        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
+        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
         <h5>Camera da letto</h5>
         <p>1 letto matrimoniale, 2 letti singoli</p>
       </div>
@@ -120,14 +136,38 @@
       <div class="row">
         <div class="col-6">
           <ul class="list-unstyled">
-            <li><i class="bi bi-wifi"></i> Wi-Fi gratuito</li>
-            <li><i class="bi bi-tv"></i> TV con Netflix</li>
+            <li class="d-flex align-items-center mb-2">
+              <ng-icon
+                name="ionWifiOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              Wi-Fi gratuito
+            </li>
+            <li class="d-flex align-items-center mb-2">
+              <ng-icon
+                name="ionTvOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              TV con Netflix
+            </li>
           </ul>
         </div>
         <div class="col-6">
           <ul class="list-unstyled">
-            <li><i class="bi bi-air-conditioner"></i> Aria condizionata</li>
-            <li><i class="bi bi-cup-hot"></i> Macchina da caffè</li>
+            <li class="d-flex align-items-center mb-2">
+              <ng-icon
+                name="ionSnowOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              Aria condizionata
+            </li>
+            <li class="d-flex align-items-center mb-2">
+              <ng-icon
+                name="ionCafeOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              Macchina da caffè
+            </li>
             <!-- Aggiungere altri servizi qui -->
           </ul>
         </div>
