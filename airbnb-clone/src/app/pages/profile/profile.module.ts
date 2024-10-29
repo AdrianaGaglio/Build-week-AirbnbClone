@@ -13,7 +13,8 @@ import {
   ionLockClosedOutline,
 } from '@ng-icons/ionicons';
 import { SharedModule } from '../../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,13 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     PersonalInfoComponent,
     SidebarComponent,
+    AddNewApartmentComponent,
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
     NgIconsModule.withIcons({
       ionEyeOutline,
       ionDocumentLockOutline,

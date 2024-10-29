@@ -1,0 +1,164 @@
+<div class="container">
+  <div class="row mt-3">
+    <!-- colonna step -->
+    <div class="col-2">
+      <div class="posStickyNav">
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              type="checkbox"
+              id="nameCheck"
+              [checked]="true"
+            />
+            <label for="nameCheck">Nome</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              type="checkbox"
+              id="descriptionCheck"
+              [checked]="false"
+            />
+            <label for="descriptionCheck">Descrizione</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              type="checkbox"
+              id="nameCheck"
+              [checked]="false"
+            />
+            <label for="nameCheck">stanze</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- colonna form -->
+    <div class="col ms-4 me-3 pe-0">
+      <h2>Dettagli del nuovo annuncio</h2>
+      <form [formGroup]="form">
+        <div class="form-group ps-4">
+          <!-- name -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Il nome del tuo appartamento</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="name"
+            />
+          </div>
+          <!-- description -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Descrizione dell'appartamento</h5>
+            <textarea
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Bellissima villa con..."
+              formControlName="description"
+            >
+            </textarea>
+          </div>
+          <!-- rooms -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Numero di stanze</h5>
+            <input
+              type="number"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="2-3"
+              formControlName="rooms"
+            />
+          </div>
+          <!-- services -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Servizi offerti</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="services"
+            />
+          </div>
+          <!-- coverImage -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Cover annunci</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="coverImage"
+            />
+          </div>
+          <!-- otherImages -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Immagini dell'appartamento</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="otherImages"
+            />
+          </div>
+          <!-- category -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Categoria</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="category"
+            />
+          </div>
+          <!-- squaremeters -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Metri Quadrati</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="squaremeters"
+            />
+          </div>
+          <!-- location -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Posizione dell'appartament</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="location"
+            />
+          </div>
+          <!-- price -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Prezzo di vendita per notte</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="Villa Licata"
+              formControlName="price"
+            />
+          </div>
+          <button
+            (click)="onSubmit()"
+            class="btn btn-pink-airbnb text-white fw-semibold px-3"
+          >
+            Invia
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-3 d-none d-xl-block">
+      <div class="posStickyNav">
+        <ng-container>
+          <app-card [apartment]="form.value"></app-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.pointerNone {
+  pointer-events: none;
+}
+
+.posStickyNav {
+  position: sticky;
+  top: 5rem;
+}
+
+form {
+  input,
+  textarea {
+    width: 378px;
+  }
+}
