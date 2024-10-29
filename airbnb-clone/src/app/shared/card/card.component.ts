@@ -30,11 +30,9 @@ export class CardComponent implements OnInit {
         if (uid) {
           this.userSvc.getUserById(uid).subscribe((user) => {
             this.user = user; // Assegna i dati dell'utente alla proprietà `user`
-            // this.favSvc
-            //   .checkIfPresent(this.user.id, this.apartment)
-            //   .subscribe((isPresent) => {
-            //     this.isFavorite = isPresent;
-            //   });
+            this.favSvc
+              .getFavouritesByUserId(uid)
+              .subscribe((res) => console.log(res));
           });
         }
       }
