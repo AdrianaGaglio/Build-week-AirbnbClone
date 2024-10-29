@@ -12,7 +12,7 @@ export interface iApartment {
   rooms: number;
   services: string[];
   squaremeters: number;
-  hostId: number;
+  hostId: string;
   coverImage: string;
   otherImages: string[];
   reviews: iReview[];

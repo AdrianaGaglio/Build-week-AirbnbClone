@@ -23,6 +23,8 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
+      console.log(isLoggedIn);
+
       this.isLoggedIn = isLoggedIn;
     });
   }

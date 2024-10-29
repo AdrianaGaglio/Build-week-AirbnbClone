@@ -72,11 +72,13 @@ export class RegisterComponent implements OnInit {
           this.message = 'Registrazione avvenuta con successo';
           this.openModal(this.message, true);
           setTimeout(() => {
+            this.authSvc.isRegistering = false;
             this.router.navigate(['/auth/login']);
             this.modalService.dismissAll();
           }, 2000);
         },
         error: (err) => {
+          this.authSvc.isRegistering = false;
           this.message = err;
           this.openModal(this.message, false);
         },
