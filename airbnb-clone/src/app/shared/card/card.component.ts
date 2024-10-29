@@ -13,7 +13,8 @@ import { AuthService } from '../../auth/auth.service';
 export class CardComponent implements OnInit {
   constructor(
     private favSvc: FavouritesService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private userSvc: UserService
   ) {}
 
   @Input() apartment!: iApartment;
@@ -25,12 +26,17 @@ export class CardComponent implements OnInit {
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
       if (isLoggedIn) {
-        this.user = this.authSvc.authResponse$.getValue()!.user!;
-        this.favSvc
-          .checkIfPresent(this.user.id, this.apartment)
-          .subscribe((isPresent) => {
-            this.isFavorite = isPresent;
+        const uid = this.authSvc.authState$.value?.uid; // Ottieni l'uid dell'utente loggato
+        if (uid) {
+          this.userSvc.getUserById(uid).subscribe((user) => {
+            this.user = user; // Assegna i dati dell'utente alla proprietà `user`
+            this.favSvc
+              .checkIfPresent(this.user.id, this.apartment)
+              .subscribe((isPresent) => {
+                this.isFavorite = isPresent;
+              });
           });
+        }
       }
     });
 

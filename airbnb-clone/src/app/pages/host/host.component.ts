@@ -48,7 +48,7 @@ export class HostComponent implements OnInit {
       this.apartmentSvc.getApartments().subscribe({
         next: (apartments) => {
           this.apartments = apartments.filter(
-            (apartment) => apartment.hostId === +params['id']
+            (apartment) => apartment.hostId === params['id']
           );
           console.log(apartments);
         },

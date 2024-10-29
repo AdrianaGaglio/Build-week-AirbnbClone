@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { importProvidersFrom } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +27,7 @@ import {
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../environments/environment.development';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -39,10 +44,14 @@ import { FormsModule } from '@angular/forms';
     }),
     FormsModule,
     SharedModule,
+    BrowserModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   bootstrap: [AppComponent],
 })

@@ -63,7 +63,7 @@ export class ApartmentService {
     );
   }
 
-  getApartmentsByUser(userId: number): Observable<iApartment[]> {
+  getApartmentsByUser(userId: string): Observable<iApartment[]> {
     return this.http
       .get<iApartment[]>(this.apartmentsUrl)
       .pipe(
