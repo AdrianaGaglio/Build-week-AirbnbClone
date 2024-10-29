@@ -52,8 +52,8 @@ export class CardComponent implements OnInit {
     });
   }
 
-  addToFavourite() {
-    this.favSvc.addToFavourite(this.user.id, this.apartment).subscribe();
+  addRemoveFavourite() {
+    this.favSvc.addRemoveFavourite(this.user.id, this.apartment).subscribe();
   }
 
   removeFromFavourite() {}

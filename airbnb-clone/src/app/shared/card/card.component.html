@@ -2,19 +2,11 @@
   <div class="badge-popular" *ngIf="isAppreciated">Amato dagli ospiti</div>
   <ng-container *ngIf="user">
     <ng-icon
-      *ngIf="!isFavorite"
-      name="ionHeartOutline"
-      (click)="addToFavourite()"
+      name="{{ isFavorite ? 'ionHeart' : 'ionHeartOutline' }}"
+      (click)="addRemoveFavourite()"
       (click)="toggleFavorite()"
-      class="favorite-icon empty"
-      role="button"
-    ></ng-icon>
-    <ng-icon
-      *ngIf="isFavorite"
-      name="ionHeart"
-      (click)="toggleFavorite()"
-      (click)="removeFromFavourite()"
-      class="favorite-icon filled"
+      class="favorite-icon"
+      [ngClass]="{ filled: isFavorite, empty: !isFavorite }"
       role="button"
     ></ng-icon>
   </ng-container>

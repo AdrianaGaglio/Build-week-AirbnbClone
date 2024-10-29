@@ -83,7 +83,7 @@ export class FavouritesService {
       );
   }
 
-  addToFavourite(
+  addRemoveFavourite(
     userId: string,
     apartment: iApartment
   ): Observable<iFavourite> {
@@ -108,7 +108,16 @@ export class FavouritesService {
           userFav.apartments.push(apartment);
           this.userFavourites$.next(userFav.apartments);
         } else {
-          alert('Appartamento già aggiunto');
+          let id = userFav.id;
+          let index = userFav.apartments.findIndex(
+            (userApartment) => userApartment.id === apartment.id
+          );
+          userFav.apartments.splice(index, 1);
+          this.userFavourites$.next(userFav.apartments);
+          return this.http.put<iFavourite>(
+            `${this.favouritesUrl}/${id}`,
+            userFav
+          );
         }
         return this.http.put<iFavourite>(
           `${this.favouritesUrl}/${userFav.id}`,
