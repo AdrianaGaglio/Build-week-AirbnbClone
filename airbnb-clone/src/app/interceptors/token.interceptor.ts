@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { from, Observable, switchMap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()
@@ -16,17 +16,24 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const data = this.authSvc.authResponse$.getValue();
-    if (data) {
-      const newrequest = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${data.accessToken}`,
-        },
-      });
+    const currentUser = this.authSvc.auth.currentUser;
 
-      return next.handle(newrequest);
+    // Verifica se c'è un utente loggato
+    if (currentUser) {
+      // Ottieni il token dell'utente e lo aggiunge all'header di autorizzazione
+      return from(currentUser.getIdToken()).pipe(
+        switchMap((token) => {
+          const newRequest = request.clone({
+            setHeaders: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          return next.handle(newRequest);
+        })
+      );
     }
 
+    // Se non c'è un utente loggato, continua senza token
     return next.handle(request);
   }
 }

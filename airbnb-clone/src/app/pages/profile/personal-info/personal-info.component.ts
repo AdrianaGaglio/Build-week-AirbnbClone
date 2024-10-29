@@ -20,11 +20,12 @@ export class PersonalInfoComponent implements OnInit {
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe((logged) => {
       if (logged) {
-        this.userSvc
-          .getUserById(this.authSvc.authResponse$.getValue()!.user!.id)
-          .subscribe((user) => {
-            this.user = user;
+        const uid = this.authSvc.authState$.value?.uid; // Ottieni l'uid dell'utente loggato
+        if (uid) {
+          this.userSvc.getUserById(uid).subscribe((user) => {
+            this.user = user; // Assegna i dati dell'utente alla proprietà `user`
           });
+        }
       }
     });
   }
