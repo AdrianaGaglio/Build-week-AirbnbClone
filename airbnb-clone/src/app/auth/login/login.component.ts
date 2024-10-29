@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   private modalService = inject(NgbModal);
 
   loginForm!: FormGroup;
+  logo: string = environment.logo;
   message!: string;
 
   ngOnInit() {

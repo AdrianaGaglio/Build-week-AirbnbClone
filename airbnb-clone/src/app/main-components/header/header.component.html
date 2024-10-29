@@ -1,11 +1,7 @@
 <header class="container-fluid padding-lg border-bottom py-3">
   <div class="d-flex justify-content-between align-items-center">
     <!-- logo -->
-    <img
-      src="https://images-ext-1.discordapp.net/external/jD0Gjp_45OhK5u15FOSEH_GYXcbKycyJf-q1SqHzCQs/https/upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%25C3%25A9lo.svg/1200px-Airbnb_Logo_B%25C3%25A9lo.svg.png?format=webp&quality=lossless&width=1114&height=348"
-      alt="logo Airbnb"
-      height="30"
-    />
+    <img src="{{ logo }}" alt="logo Airbnb" height="30" />
     <!-- search bar -->
     <div class="input-group w-25">
       <input
@@ -53,22 +49,51 @@
         "
       >
         <li>
-          <a class="dropdown-item text-dark hoverMenu">Settings</a>
-        </li>
-        <li>
           <a
-            routerLink="profile"
             (click)="show()"
+            routerLink="/profile/personal-info"
             class="dropdown-item text-dark hoverMenu"
             >Profile</a
           >
         </li>
-        <li><hr class="my-2" /></li>
         <li>
-          <a (click)="show()" class="dropdown-item text-dark hoverMenu"
-            >Sign out</a
+          <a
+            (click)="show()"
+            routerLink="/profile/dashboard"
+            class="dropdown-item text-dark hoverMenu"
+            >Dashboard</a
           >
         </li>
+        <li><hr class="my-2" /></li>
+        <li *ngIf="isLoggedIn">
+          <button
+            (click)="logout()"
+            (click)="show()"
+            class="dropdown-item text-dark hoverMenu"
+          >
+            Sign Logout
+          </button>
+        </li>
+        <ng-container *ngIf="!isLoggedIn">
+          <li>
+            <a
+              (click)="show()"
+              routerLink="/auth/login"
+              class="dropdown-item text-dark hoverMenu"
+            >
+              Accedi
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/auth/register"
+              (click)="show()"
+              class="dropdown-item text-dark hoverMenu"
+            >
+              Registrati!
+            </a>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>

@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-register',
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
   private modalService = inject(NgbModal);
 
   registerForm!: FormGroup;
+  logo: string = environment.logo;
   message!: string;
 
   ngOnInit() {

@@ -88,7 +88,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('loginData');
     this.authResponse$.next(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 
   autoLogout(expData: Date) {
