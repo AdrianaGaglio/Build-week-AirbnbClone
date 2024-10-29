@@ -20,22 +20,35 @@ export class HostComponent implements OnInit {
   user!: iUser;
   message!: string;
   apartments!: iApartment[];
+  ratings!: number;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.userSvc.getUserById(params['id']).subscribe({
         next: (user) => {
           this.user = user;
+          if (user.ratings) {
+            this.ratings = Math.floor(user.ratings.vote / user.ratings.count);
+          }
         },
         error: (err) => {
           this.message = err;
         },
       });
 
+      this.userSvc.getReviewByUserId(params['id']).subscribe({
+        next: (reviews) => {
+          this.user.reviews = reviews;
+        },
+        error: (error) => {
+          this.message = error;
+        },
+      });
+
       this.apartmentSvc.getApartments().subscribe({
         next: (apartments) => {
           this.apartments = apartments.filter(
-            (apartment) => apartment.hostId === params['id']
+            (apartment) => apartment.hostId === +params['id']
           );
           console.log(apartments);
         },

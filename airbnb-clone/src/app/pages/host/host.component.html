@@ -28,11 +28,13 @@
           class="list-group list-group-flush d-flex flex-column justify-content-between"
         >
           <li class="list-group-item ps-0 py-1">
-            <h4 class="mb-0 fw-bold">30</h4>
+            <h4 class="mb-0 fw-bold">
+              {{ user.reviews.length > 0 ? user.reviews.length : 0 }}
+            </h4>
             <p class="fs-7 fw-semibold m-0">Recensioni</p>
           </li>
           <li class="list-group-item ps-0 py-1">
-            <h4 class="mb-0 fw-bold">4.97</h4>
+            <h4 class="mb-0 fw-bold">{{ ratings ? ratings : 0 }}</h4>
             <p class="fs-7 fw-semibold m-0">Valutazione</p>
           </li>
           <li class="list-group-item ps-0 py-1">
@@ -67,34 +69,38 @@
     <!-- side 2 -->
     <div class="border rounded-3 p-4">
       <!-- titolo review -->
-      <div class="d-flex justify-content-between">
-        <h2 class="fw-bolder">Recensioni di Kevin Hart</h2>
-        <div>
-          <button
-            type="button"
-            class="btn border rounded-pill mx-1 py-2 fs-7 hoverScale"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            class="btn border rounded-pill mx-1 py-2 fs-7 hoverScale"
-          >
-            →
-          </button>
+      <div *ngIf="user.reviews && user.reviews.length > 0" class="mb-5">
+        <div class="d-flex justify-content-between">
+          <h2 class="fw-bolder">Recensioni di Kevin Hart</h2>
+          <div>
+            <button
+              type="button"
+              class="btn border rounded-pill mx-1 py-2 fs-7 hoverScale"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              class="btn border rounded-pill mx-1 py-2 fs-7 hoverScale"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <app-review> </app-review>
+          </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-6">
-          <app-review> </app-review>
-        </div>
-      </div>
-
-      <div class="row" *ngIf="apartments">
-        <h2 class="fw-bolder mt-5">Annunci di Kevin Hart</h2>
-        <div class="col-6" *ngFor="let apartment of apartments">
-          <app-card [apartment]="apartment"></app-card>
+      <div *ngIf="apartments">
+        <h2 class="fw-bolder">Annunci di Kevin Hart</h2>
+        <div class="row row-cols-3">
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
         </div>
       </div>
     </div>
