@@ -17,7 +17,6 @@ export class FilterComponent {
   ngOnInit() {
     this.apartmentSvc.getCategories().subscribe((res) => {
       this.categories = res;
-      console.log(this.categories);
     });
   }
 

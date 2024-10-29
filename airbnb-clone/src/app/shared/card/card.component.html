@@ -1,11 +1,20 @@
 <div class="card airbnb-card position-relative">
-  <div class="badge-popular">Amato dagli ospiti</div>
+  <div class="badge-popular" *ngIf="isAppreciated">Amato dagli ospiti</div>
   <ng-icon
-    [name]="isFavorite ? 'ionHeart' : 'ionHeartOutline'"
+    *ngIf="!isFavorite"
+    name="ionHeartOutline"
+    (click)="addToFavourite()"
     (click)="toggleFavorite()"
-    [class.filled]="isFavorite"
-    [class.empty]="!isFavorite"
-    class="favorite-icon"
+    class="favorite-icon empty"
+    role="button"
+  ></ng-icon>
+  <ng-icon
+    *ngIf="isFavorite"
+    name="ionHeart"
+    (click)="toggleFavorite()"
+    (click)="removeFromFavourite()"
+    class="favorite-icon filled"
+    role="button"
   ></ng-icon>
   <img src="https://picsum.photos/300/200" alt="Room image" />
   <div class="card-body">
@@ -18,6 +27,6 @@
   </div>
   <div class="card-footer d-flex justify-content-between">
     <span>{{ apartment.price | currency : "EUR" }} / notte</span>
-    <span>★ 4.8</span>
+    <span *ngIf="rating">★ {{ rating }}</span>
   </div>
 </div>
