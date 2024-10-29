@@ -13,15 +13,19 @@ export class HomeComponent {
   constructor(private apartmentSvc: ApartmentService) {}
 
   ngOnInit() {
-    this.apartmentSvc.getApartments().subscribe((res) => {
-      this.apartments = res;
+    this.apartmentSvc.apartments$.subscribe((res) => {
+      if (typeof res !== 'string') {
+        this.apartments = res;
+      } else {
+        this.message = res;
+      }
     });
   }
 
   filterByCategory(category: string) {
     this.apartmentSvc.getApartmentsByCategory(category).subscribe({
-      next: (apartments) => {
-        this.apartments = apartments;
+      next: (res) => {
+        this.apartmentSvc.apartments$.next(res);
       },
       error: (err) => {
         this.message = err;
@@ -31,7 +35,7 @@ export class HomeComponent {
 
   allCategories(all: boolean) {
     this.apartmentSvc.getApartments().subscribe((res) => {
-      this.apartments = res;
+      this.apartmentSvc.apartments$.next(res);
     });
   }
 }

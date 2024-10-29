@@ -22,6 +22,7 @@ import {
 } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -36,6 +37,7 @@ import { SharedModule } from './shared/shared.module';
       ionLogoTwitter,
       ionSearchCircleSharp,
     }),
+    FormsModule,
     SharedModule,
   ],
   providers: [
