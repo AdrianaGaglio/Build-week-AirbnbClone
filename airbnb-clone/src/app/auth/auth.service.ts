@@ -80,26 +80,30 @@ export class AuthService {
   login(user: iLoginData) {
     return from(
       signInWithEmailAndPassword(this.auth, user.email, user.password)
-        .then((userCredential) => {
-          this.authState$.next(userCredential.user);
-          localStorage.setItem(
-            'loginData',
-            JSON.stringify(userCredential.user)
-          );
-        })
-        .catch((error) => {
-          return throwError(() => {
-            let message = '';
-            if (error.code === 'auth/user-not-found') {
-              message = 'Utente non trovato';
-            } else if (error.code === 'auth/wrong-password') {
-              message = 'Password errata';
-            } else {
-              message = 'Errore nella richiesta';
-            }
-            return new Error(message);
-          });
-        })
+    ).pipe(
+      map((userCredential) => {
+        console.log(userCredential);
+
+        // Aggiorna lo stato dell'autenticazione e salva i dati di login
+        this.authState$.next(userCredential.user);
+        localStorage.setItem('loginData', JSON.stringify(userCredential.user));
+
+        return userCredential.user; // Passa l'utente al next
+      }),
+      catchError((error) => {
+        // Gestisci gli errori di autenticazione
+        let message = '';
+        if (error.code === 'auth/user-not-found') {
+          message = 'Utente non trovato';
+        } else if (error.code === 'auth/wrong-password') {
+          message = 'Password errata';
+        } else if (error.code === 'auth/invalid-credential') {
+          message = 'Credenziali errate';
+        } else {
+          message = 'Errore nella richiesta';
+        }
+        return throwError(() => new Error(message));
+      })
     );
   }
 
