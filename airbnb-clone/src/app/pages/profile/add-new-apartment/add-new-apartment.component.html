@@ -6,7 +6,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="nameCheck"
               [checked]="form.value.name"
@@ -17,7 +17,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="descriptionCheck"
               [checked]="form.value.description"
@@ -28,7 +28,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
               type="checkbox"
               id="nameCheck"
               [checked]="form.value.rooms"
@@ -39,7 +39,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="servicesCheck"
               [checked]="form.value.services"
@@ -50,7 +50,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="descriptionCheck"
               [checked]="form.value.coverImage"
@@ -61,7 +61,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
               type="checkbox"
               id="otherImagesCheck"
               [checked]="form.value.otherImages"
@@ -72,7 +72,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="categoryCheck"
               [checked]="form.value.category"
@@ -83,7 +83,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="squaremetersCheck"
               [checked]="form.value.squaremeters"
@@ -94,7 +94,7 @@
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
-              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
               type="checkbox"
               id="locationCheck"
               [checked]="form.value.location"
@@ -195,7 +195,7 @@
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Metri Quadrati</h5>
             <input
-              type="text"
+              type="number"
               class="form-contrl px-3 py-2 rounded border"
               placeholder="Villa Licata"
               formControlName="squaremeters"
@@ -222,6 +222,7 @@
             />
           </div>
           <button
+            [disabled]="form.valid"
             (click)="onSubmit()"
             class="btn btn-pink-airbnb text-white fw-semibold px-3"
           >
@@ -230,7 +231,7 @@
         </div>
       </form>
     </div>
-    <div class="col-3 d-none d-xl-block">
+    <div class="col-3 d-none d-xxl-block">
       <div class="posStickyNav">
         <ng-container>
           <app-card [apartment]="form.value"></app-card>

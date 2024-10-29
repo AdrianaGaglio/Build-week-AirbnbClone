@@ -12,16 +12,16 @@ export class AddNewApartmentComponent implements OnInit {
   form!: FormGroup;
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: this.fb.control(''),
+      name: this.fb.control('', [Validators.required, Validators.minLength(4)]),
       description: this.fb.control('', [Validators.required]),
-      rooms: this.fb.control(''),
-      services: this.fb.control(''),
-      coverImage: this.fb.control(''),
-      otherImages: this.fb.control(''),
-      category: this.fb.control(''),
-      squaremeters: this.fb.control(''),
-      location: this.fb.control(''),
-      price: this.fb.control(''),
+      rooms: this.fb.control('', [Validators.required]),
+      services: this.fb.control('', [Validators.required]),
+      coverImage: this.fb.control('', [Validators.required]),
+      otherImages: this.fb.control('', [Validators.required]),
+      category: this.fb.control('', [Validators.required]),
+      squaremeters: this.fb.control('', [Validators.required]),
+      location: this.fb.control('', [Validators.required]),
+      price: this.fb.control('', [Validators.required]),
       // vuote?!
       hostId: this.fb.control(''),
       availability: this.fb.control(true),
@@ -30,6 +30,6 @@ export class AddNewApartmentComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
+    console.log(this.form.valid);
   }
 }
