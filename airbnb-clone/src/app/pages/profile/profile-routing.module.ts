@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'new-apartment',
     component: AddNewApartmentComponent,
   },
+  {
+    path: 'edit-apartment/:id',
+    component: AddNewApartmentComponent,
+  },
 ];
 
 @NgModule({

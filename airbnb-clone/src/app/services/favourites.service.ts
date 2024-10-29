@@ -12,15 +12,29 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { iFavourite } from '../interfaces/ifavourite';
 import { iApartment } from '../interfaces/iapartment';
+import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavouritesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authSvc: AuthService) {
+    this.authSvc.authState$.subscribe((user) => {
+      if (user) {
+        this.getFavouritesByUserId(user.uid).subscribe((favourites) => {
+          if (favourites) {
+            this.userFavourites$.next(favourites);
+          } else {
+            this.userFavourites$.next([]);
+          }
+        });
+      }
+    });
+  }
 
   favouritesUrl = environment.favouritesUrl;
-  userFavourites$ = new BehaviorSubject<iApartment[] | null>([]);
+  userFavourites$ = new BehaviorSubject<iApartment[]>([]);
 
   getFavourites(): Observable<iFavourite[]> {
     return this.http.get<iFavourite[]>(this.favouritesUrl).pipe(
@@ -69,7 +83,7 @@ export class FavouritesService {
       );
   }
 
-  addToFavourite(
+  addRemoveFavourite(
     userId: string,
     apartment: iApartment
   ): Observable<iFavourite> {
@@ -83,19 +97,28 @@ export class FavouritesService {
         if (!userFav) {
           // Aggiungi userId come proprietà dell'oggetto invece di sovrascrivere `id`
           let newFav: iFavourite = { userId, apartments: [apartment] };
+          this.userFavourites$.next(newFav.apartments);
           return this.http.post<iFavourite>(this.favouritesUrl, newFav);
         }
 
         let favFound = userFav.apartments.find(
           (userApartment: iApartment) => userApartment.id === apartment.id
         );
-
         if (!favFound) {
           userFav.apartments.push(apartment);
+          this.userFavourites$.next(userFav.apartments);
         } else {
-          alert('Appartamento già aggiunto');
+          let id = userFav.id;
+          let index = userFav.apartments.findIndex(
+            (userApartment) => userApartment.id === apartment.id
+          );
+          userFav.apartments.splice(index, 1);
+          this.userFavourites$.next(userFav.apartments);
+          return this.http.put<iFavourite>(
+            `${this.favouritesUrl}/${id}`,
+            userFav
+          );
         }
-
         return this.http.put<iFavourite>(
           `${this.favouritesUrl}/${userFav.id}`,
           userFav
@@ -114,21 +137,4 @@ export class FavouritesService {
       })
     );
   }
-
-  // checkIfPresent(userId: number, apartment: iApartment): Observable<boolean> {
-  //   return this.getFavouritesByUserId(userId).pipe(
-  //     map((apartments: iApartment[]) => {
-  //       if (apartments && apartments.length > 0) {
-  //         let found = apartments.find(
-  //           (userApartment) => userApartment.id === apartment.id
-  //         );
-  //         if (found) {
-  //           return true;
-  //         }
-  //         return false;
-  //       }
-  //       return false;
-  //     })
-  //   );
-  // }
 }

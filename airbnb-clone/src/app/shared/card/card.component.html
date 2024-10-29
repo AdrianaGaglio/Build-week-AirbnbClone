@@ -1,21 +1,16 @@
 <div class="h-100 card airbnb-card position-relative">
   <div class="badge-popular" *ngIf="isAppreciated">Amato dagli ospiti</div>
-  <ng-icon
-    *ngIf="!isFavorite"
-    name="ionHeartOutline"
-    (click)="addToFavourite()"
-    (click)="toggleFavorite()"
-    class="favorite-icon empty"
-    role="button"
-  ></ng-icon>
-  <ng-icon
-    *ngIf="isFavorite"
-    name="ionHeart"
-    (click)="toggleFavorite()"
-    (click)="removeFromFavourite()"
-    class="favorite-icon filled"
-    role="button"
-  ></ng-icon>
+  <ng-container *ngIf="user">
+    <ng-icon
+      name="{{ isFavorite ? 'ionHeart' : 'ionHeartOutline' }}"
+      (click)="addRemoveFavourite()"
+      (click)="toggleFavorite()"
+      class="favorite-icon"
+      [ngClass]="{ filled: isFavorite, empty: !isFavorite }"
+      role="button"
+    ></ng-icon>
+  </ng-container>
+
   <img src="https://picsum.photos/300/200" alt="Room image" />
   <div class="card-body">
     <h5 class="card-title">{{ apartment.name }}</h5>
@@ -31,4 +26,5 @@
       ><span *ngIf="rating">★ {{ rating }}</span></ng-container
     >
   </div>
+  <ng-content></ng-content>
 </div>
