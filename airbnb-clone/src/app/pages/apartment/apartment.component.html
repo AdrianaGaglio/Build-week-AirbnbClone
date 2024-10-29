@@ -1,9 +1,123 @@
-<div class="container">
-  <p>apartment works!</p>
+<div class="container mt-4">
+  <!-- Sezione Titolo e Preferiti -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Botte Montepulciano</h2>
+    <ng-icon
+      [name]="isFavorite ? 'ionHeart' : 'ionHeartOutline'"
+      (click)="toggleFavorite()"
+      [class.filled]="isFavorite"
+      [class.empty]="!isFavorite"
+      class="favorite-icon"
+    ></ng-icon>
+  </div>
+
+  <!-- Sezione Immagini -->
   <div class="row">
-    <div class="col"></div>
-    <div class="col-3">
+    <!-- Immagine principale -->
+    <div class="col-7">
+      <img
+        src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
+        alt="Main Image"
+        class="img-fluid rounded mb-2"
+        style="width: 100%; height: 100%; object-fit: cover"
+      />
+    </div>
+
+    <!-- Colonna destra con immagini impilate -->
+    <div class="col-5 position-relative">
+      <div class="d-flex flex-column h-100">
+        <div class="d-flex mb-2" style="height: 49%">
+          <img
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
+            alt="Image 1"
+            class="img-fluid rounded me-1"
+            style="width: 49%; object-fit: cover"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
+            alt="Image 2"
+            class="img-fluid rounded"
+            style="width: 49%; object-fit: cover"
+          />
+        </div>
+        <div class="d-flex mb-2 position-relative" style="height: 49%">
+          <img
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
+            alt="Image 3"
+            class="img-fluid rounded me-1"
+            style="width: 49%; object-fit: cover"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
+            alt="Image 4"
+            class="img-fluid rounded"
+            style="width: 49%; object-fit: cover"
+          />
+          <!-- Pulsante "Mostra tutte le foto" in basso a destra -->
+          <button
+            class="btn custom-button position-absolute"
+            style="bottom: 10px; right: 10px"
+          >
+            Mostra tutte le foto
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <!-- Sezione Recensioni e Host -->
+    <div class="col-8">
+      <p class="text-muted">Torano nuovo, Italia. Cupola</p>
+      <p>4 ospiti · 1 camera da letto · 3 letti · 1 bagno</p>
+      <div class="card p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <div>
+            <span class="badge bg-success">Amato dagli ospiti</span>
+            <p>Uno degli alloggi più amati dagli ospiti di Airbnb</p>
+          </div>
+          <div class="ms-4">
+            <h4 class="mb-0">4.91</h4>
+            <small class="text-muted">33 recensioni</small>
+          </div>
+        </div>
+      </div>
+      <p><strong>Nome dell'host:</strong> Gaia Giulia</p>
+      <p><small>9 anni di esperienza come host</small></p>
+    </div>
+
+    <!-- App Reservation -->
+    <div class="col-4">
       <app-reservation></app-reservation>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- Sezione "Dove dormirai" -->
+  <div class="row mt-3">
+    <div class="col-8">
+      <h4>Dove dormirai</h4>
+      <div class="card p-3">
+        <h5>Camera da letto</h5>
+        <p>1 letto matrimoniale, 2 letti singoli</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- Servizi Offerti -->
+  <div class="row mt-3">
+    <div class="col-8">
+      <h4>Cosa troverai</h4>
+      <ul class="list-unstyled">
+        <li><i class="bi bi-wifi"></i> Wi-Fi gratuito</li>
+        <li><i class="bi bi-tv"></i> TV con Netflix</li>
+        <li><i class="bi bi-air-conditioner"></i> Aria condizionata</li>
+        <li><i class="bi bi-cup-hot"></i> Macchina da caffè</li>
+        <!-- Aggiungere altri servizi qui -->
+      </ul>
     </div>
   </div>
 </div>
