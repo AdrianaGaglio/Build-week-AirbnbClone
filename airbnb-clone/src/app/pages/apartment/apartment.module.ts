@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ApartmentRoutingModule } from './apartment-routing.module';
 import { ApartmentComponent } from './apartment.component';
-import { ReservationComponent } from './components/reservation/reservation.component';
+
 import { NgIconsModule } from '@ng-icons/core';
 import {
   ionHeart,
@@ -14,9 +14,10 @@ import {
   ionSnowOutline,
   ionCafeOutline,
 } from '@ng-icons/ionicons';
+import { SharedResModule } from '../../shared/reservation/sharedRes.module';
 
 @NgModule({
-  declarations: [ApartmentComponent, ReservationComponent],
+  declarations: [ApartmentComponent],
   imports: [
     CommonModule,
     ApartmentRoutingModule,
@@ -29,6 +30,7 @@ import {
       ionSnowOutline,
       ionCafeOutline,
     }),
+    SharedResModule,
   ],
 })
 export class ApartmentModule {}

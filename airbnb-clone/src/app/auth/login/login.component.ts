@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
           }, 2000);
         },
         error: (err) => {
-          this.message = err;
+          this.message = err.message;
+
           this.openModal(this.message, false);
         },
       });
