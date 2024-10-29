@@ -1,6 +1,7 @@
 import { iApartment } from './iapartment';
 
 export interface iFavourite {
-  id: number;
+  id?: number;
+  userId: string;
   apartments: iApartment[];
 }
