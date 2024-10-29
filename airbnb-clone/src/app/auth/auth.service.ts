@@ -27,17 +27,22 @@ export class AuthService {
   authState$ = new BehaviorSubject<User | null>(null);
   isLoggedIn$ = this.authState$.pipe(map((user) => !!user));
 
+  isRegistering: boolean = false;
+
   constructor(
     public auth: Auth,
     private firestore: Firestore,
     private router: Router
   ) {
     onAuthStateChanged(this.auth, (user) => {
-      this.authState$.next(user); // Aggiorna lo stato in base alla sessione Firebase
+      if (!this.isRegistering) {
+        this.authState$.next(user);
+      } // Aggiorna lo stato in base alla sessione Firebase
     });
   }
 
   register(user: Partial<iUser>) {
+    this.isRegistering = true;
     if (!user.email || !user.password) {
       return throwError(() => new Error('Email e password sono richiesti'));
     }
