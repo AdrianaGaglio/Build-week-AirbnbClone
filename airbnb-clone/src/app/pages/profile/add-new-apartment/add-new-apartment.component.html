@@ -10,6 +10,7 @@
               type="checkbox"
               id="nameCheck"
               [checked]="form.value.name"
+              [ngClass]="{ 'bg-warning': minlength('name') }"
             />
             <label for="nameCheck">Nome</label>
           </div>
@@ -21,6 +22,7 @@
               type="checkbox"
               id="descriptionCheck"
               [checked]="form.value.description"
+              [ngClass]="{ 'bg-warning': minlength('description') }"
             />
             <label for="descriptionCheck">Descrizione</label>
           </div>
@@ -121,7 +123,9 @@
       <form [formGroup]="form">
         <div class="form-group ps-4">
           <!-- name -->
-          <div class="d-flex my-5 gap-5 justify-content-between">
+          <div
+            class="d-flex my-5 gap-5 justify-content-between position-relative"
+          >
             <h5>Il nome del tuo appartamento</h5>
             <input
               type="text"
@@ -129,9 +133,18 @@
               placeholder="Villa Licata"
               formControlName="name"
             />
+            <span
+              class="alert alert-warning my-1 p-2 posSpan fs-6"
+              role="alert"
+              *ngIf="minlength('name')"
+            >
+              Almeno 4 caratteri
+            </span>
           </div>
           <!-- description -->
-          <div class="d-flex my-5 gap-5 justify-content-between">
+          <div
+            class="d-flex my-5 gap-5 justify-content-between position-relative"
+          >
             <h5>Descrizione dell'appartamento</h5>
             <textarea
               type="text"
@@ -140,6 +153,13 @@
               formControlName="description"
             >
             </textarea>
+            <span
+              class="alert alert-warning my-1 p-2 posSpan fs-6"
+              role="alert"
+              *ngIf="minlength('description')"
+            >
+              Almeno 30 caratteri
+            </span>
           </div>
           <!-- rooms -->
           <div class="d-flex my-5 gap-5 justify-content-between">
@@ -222,7 +242,7 @@
             />
           </div>
           <button
-            [disabled]="form.valid"
+            [disabled]="form.invalid"
             (click)="onSubmit()"
             class="btn btn-pink-airbnb text-white fw-semibold px-3"
           >

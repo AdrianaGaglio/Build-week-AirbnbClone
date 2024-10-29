@@ -25,3 +25,10 @@ form {
     width: 378px;
   }
 }
+
+.posSpan {
+  position: absolute;
+  transform: translatey(48px);
+  bottom: 0;
+  right: 0;
+}
