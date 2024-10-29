@@ -21,11 +21,11 @@
           <h2 class="fw-bolder mb-0 mt-2">
             {{ user.firstName }} {{ user.lastName }}
           </h2>
-          <p class="fw-bolder">{{ user.role }}</p>
+          <p class="fw-bolder mb-0">{{ user.role }}</p>
         </div>
         <!-- container -->
         <ul
-          class="list-group list-group-flush d-flex flex-column justify-content-between"
+          class="list-group list-group-flush d-flex flex-column justify-content-center"
         >
           <li class="list-group-item ps-0 py-1">
             <h4 class="mb-0 fw-bold">
@@ -37,13 +37,13 @@
             <h4 class="mb-0 fw-bold">{{ ratings ? ratings : 0 }}</h4>
             <p class="fs-7 fw-semibold m-0">Valutazione</p>
           </li>
-          <li class="list-group-item ps-0 py-1">
+          <!-- <li class="list-group-item ps-0 py-1">
             <h4 class="mb-0 fw-bold">6</h4>
             <p class="fs-7 fw-semibold m-0">
               Mesi di esperienza <br />
               come host
             </p>
-          </li>
+          </li> -->
         </ul>
       </div>
       <!-- card info profile -->
@@ -58,7 +58,7 @@
           <li>
             <p class="fs-5 mb-2"><span class="me-3">✓</span>Indirizzo email</p>
           </li>
-          <li>
+          <li *ngIf="user.phone">
             <p class="fs-5 mb-2">
               <span class="me-3">✓</span>Numero di telefono
             </p>

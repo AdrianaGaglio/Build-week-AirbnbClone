@@ -1,0 +1,7 @@
+<div *ngIf="categories">
+  <ul class="d-flex justify-content-center">
+    <li class="nav-link px-2 py-1" *ngFor="let category of categories">
+      {{ category | titlecase }}
+    </li>
+  </ul>
+</div>
