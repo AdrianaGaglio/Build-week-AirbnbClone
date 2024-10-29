@@ -15,6 +15,7 @@ import {
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.component';
+import { SharedmodalModule } from '../../shared/sharedmodal/sharedmodal.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.
     CommonModule,
     ProfileRoutingModule,
     SharedModule,
+    SharedmodalModule,
     ReactiveFormsModule,
     NgIconsModule.withIcons({
       ionEyeOutline,
