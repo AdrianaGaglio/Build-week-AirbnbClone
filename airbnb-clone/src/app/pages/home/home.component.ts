@@ -9,7 +9,27 @@ import { iApartment } from '../../interfaces/iapartment';
 })
 export class HomeComponent {
   apartments: iApartment[] = [];
-  constructor(private apartmentSvc: ApartmentService) {
+  message!: string;
+  constructor(private apartmentSvc: ApartmentService) {}
+
+  ngOnInit() {
+    this.apartmentSvc.getApartments().subscribe((res) => {
+      this.apartments = res;
+    });
+  }
+
+  filterByCategory(category: string) {
+    this.apartmentSvc.getApartmentsByCategory(category).subscribe({
+      next: (apartments) => {
+        this.apartments = apartments;
+      },
+      error: (err) => {
+        this.message = err;
+      },
+    });
+  }
+
+  allCategories(all: boolean) {
     this.apartmentSvc.getApartments().subscribe((res) => {
       this.apartments = res;
     });

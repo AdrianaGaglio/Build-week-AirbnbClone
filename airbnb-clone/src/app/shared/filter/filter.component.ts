@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ApartmentService } from '../../services/apartment.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { ApartmentService } from '../../services/apartment.service';
 export class FilterComponent {
   constructor(private apartmentSvc: ApartmentService) {}
 
+  @Output() category = new EventEmitter<string>();
+  @Output() all = new EventEmitter<boolean>();
+
   categories!: string[];
 
   ngOnInit() {
@@ -16,5 +19,13 @@ export class FilterComponent {
       this.categories = res;
       console.log(this.categories);
     });
+  }
+
+  selectCategory(category: string) {
+    this.category.emit(category);
+  }
+
+  selectAll(all: boolean) {
+    this.all.emit(all);
   }
 }

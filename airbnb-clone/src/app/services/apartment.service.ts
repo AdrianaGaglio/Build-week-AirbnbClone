@@ -113,4 +113,28 @@ export class ApartmentService {
         })
       );
   }
+
+  getApartmentsByCategory(category: string): Observable<iApartment[]> {
+    return this.getApartments()
+      .pipe(
+        map((apartments) =>
+          apartments.filter((apartment) =>
+            apartment.category.includes(category)
+          )
+        )
+      )
+      .pipe(
+        catchError((error) => {
+          return throwError(() => {
+            let message = '';
+            if (error.status >= 400 && error.status < 500) {
+              message = 'Appartamento non trovato';
+            } else if (error.status === 500) {
+              message = 'Errore nella richiesta';
+            }
+            return message;
+          });
+        })
+      );
+  }
 }
