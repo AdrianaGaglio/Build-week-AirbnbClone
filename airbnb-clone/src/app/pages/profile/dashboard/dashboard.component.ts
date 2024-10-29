@@ -32,4 +32,13 @@ export class DashboardComponent {
   addNewApartment() {
     this.router.navigate(['/profile/new-apartment']);
   }
+
+  editApartment(id: number) {
+    this.router.navigate([`/profile/edit-apartment/${id}`]);
+  }
+
+  deleteApartment(id: number) {
+    this.apartmentSvc.deleteApartmentById(id).subscribe();
+    this.apartments = this.apartments.filter((data) => data.id !== id);
+  }
 }

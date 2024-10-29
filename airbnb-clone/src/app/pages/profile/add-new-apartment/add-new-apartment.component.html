@@ -185,29 +185,41 @@
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Cover annunci</h5>
             <input
-              type="text"
-              class="form-contrl px-3 py-2 rounded border"
               formControlName="coverImage"
+              class="form-control"
+              type="file"
+              id="avatar"
+              accept="image/png, image/jpeg"
             />
           </div>
           <!-- otherImages -->
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Immagini dell'appartamento</h5>
             <input
-              type="text"
-              class="form-contrl px-3 py-2 rounded border"
               formControlName="otherImages"
+              class="form-control"
+              type="file"
+              id="avatar"
+              accept="image/png, image/jpeg"
             />
           </div>
           <!-- category -->
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Categoria</h5>
-            <input
-              type="text"
-              class="form-contrl px-3 py-2 rounded border"
-              placeholder="es. Lusso..."
+            <select
+              id="category"
               formControlName="category"
-            />
+              name="category"
+              multiple
+            >
+              <option value="">Scegli delle categorie</option>
+              <option
+                *ngFor="let category of categories"
+                value="{{ category }}"
+              >
+                {{ category | titlecase }}
+              </option>
+            </select>
           </div>
           <!-- squaremeters -->
           <div class="d-flex my-5 gap-5 justify-content-between">
@@ -221,7 +233,7 @@
           </div>
           <!-- location -->
           <div class="d-flex my-5 gap-5 justify-content-between">
-            <h5>Posizione dell'appartament</h5>
+            <h5>Posizione dell'appartamento</h5>
             <input
               type="text"
               class="form-contrl px-3 py-2 rounded border"

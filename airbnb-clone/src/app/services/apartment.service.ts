@@ -149,4 +149,20 @@ export class ApartmentService {
       )
     );
   }
+
+  deleteApartmentById(id: number): Observable<iApartment> {
+    return this.http.delete<iApartment>(`${this.apartmentsUrl}/${id}`).pipe(
+      catchError((error) => {
+        return throwError(() => {
+          let message = '';
+          if (error.status >= 400 && error.status < 500) {
+            message = 'Appartamento non trovato';
+          } else if (error.status === 500) {
+            message = 'Errore nella richiesta';
+          }
+          return message;
+        });
+      })
+    );
+  }
 }

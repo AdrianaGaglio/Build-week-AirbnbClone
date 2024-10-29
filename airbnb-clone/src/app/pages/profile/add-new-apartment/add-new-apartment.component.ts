@@ -3,9 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
 import { ApartmentService } from '../../../services/apartment.service';
 import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -18,15 +17,31 @@ export class AddNewApartmentComponent implements OnInit {
     private authSvc: AuthService,
     private apartSvc: ApartmentService,
     private router: Router,
-    private modalSvc: NgbModal
+    private modalSvc: NgbModal,
+    private route: ActivatedRoute
   ) {}
+
+  idEditPost!: number;
 
   form!: FormGroup;
   uid!: string;
 
+  categories!: string[];
+
   message!: string;
 
   ngOnInit(): void {
+    this.apartSvc.getCategories().subscribe((res) => {
+      this.categories = res;
+    });
+
+    this.route.params.subscribe((params) => {
+      if (params['id']) {
+        this.idEditPost = params['id'];
+        console.log('ID:', this.idEditPost);
+      }
+    });
+
     this.authSvc.authState$.subscribe((res) => {
       if (res) {
         this.uid = res.uid;
@@ -45,7 +60,7 @@ export class AddNewApartmentComponent implements OnInit {
         services: this.fb.control('', [Validators.required]),
         coverImage: this.fb.control(''),
         otherImages: this.fb.control(''),
-        category: this.fb.control('', [Validators.required]),
+        category: this.fb.control(''),
         squaremeters: this.fb.control('', [Validators.required]),
         location: this.fb.control(''),
         price: this.fb.control('', [Validators.required]),
