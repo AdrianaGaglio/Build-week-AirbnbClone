@@ -27,6 +27,8 @@
   </div>
   <div class="card-footer d-flex justify-content-between">
     <span>{{ apartment.price | currency : "EUR" }} / notte</span>
-    <span *ngIf="rating">★ {{ rating }}</span>
+    <ng-container *ngIf="apartment.ratings"
+      ><span *ngIf="rating">★ {{ rating }}</span></ng-container
+    >
   </div>
 </div>

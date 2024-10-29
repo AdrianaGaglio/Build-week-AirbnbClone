@@ -4,8 +4,8 @@ import { environment } from '../../environments/environment.development';
 import { catchError, from, map, Observable, switchMap, throwError } from 'rxjs';
 import { iUser } from '../interfaces/iuser';
 import { iReview } from '../interfaces/ireview';
-import { docData, Firestore } from '@angular/fire/firestore';
-import { doc, updateDoc } from 'firebase/firestore';
+import { collectionData, docData, Firestore } from '@angular/fire/firestore';
+import { collection, doc, updateDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +15,15 @@ export class UserService {
 
   userUrl: string = environment.userUrl;
 
+  getUsers(): Observable<iUser[]> {
+    const userDocRef = collection(this.firestore, `users`);
+    return collectionData(userDocRef, { idField: 'id' }) as Observable<iUser[]>;
+  }
+
   getUserById(id: string): Observable<iUser> {
     const userDocRef = doc(this.firestore, `users/${id}`);
     return docData(userDocRef, { idField: 'id' }).pipe(
       map((data) => {
-        console.log(data);
-
         return data as iUser;
       }),
       catchError((error) => {
