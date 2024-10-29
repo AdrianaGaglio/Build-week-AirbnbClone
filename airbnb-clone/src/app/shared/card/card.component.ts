@@ -20,6 +20,7 @@ export class CardComponent implements OnInit {
   @Input() apartment!: iApartment;
   isAppreciated!: boolean;
   isFavorite = false;
+  favourites!: iApartment[];
   rating!: number;
   user!: iUser;
 
@@ -30,9 +31,6 @@ export class CardComponent implements OnInit {
         if (uid) {
           this.userSvc.getUserById(uid).subscribe((user) => {
             this.user = user; // Assegna i dati dell'utente alla proprietà `user`
-            this.favSvc
-              .getFavouritesByUserId(uid)
-              .subscribe((res) => console.log(res));
           });
         }
       }
@@ -45,6 +43,13 @@ export class CardComponent implements OnInit {
         this.isAppreciated = true;
       }
     }
+    this.favSvc.userFavourites$.subscribe((favourites) => {
+      this.favourites = favourites;
+      let found = this.favourites.find(
+        (favourite) => favourite.id === this.apartment.id
+      );
+      if (found) this.isFavorite = true;
+    });
   }
 
   addToFavourite() {
