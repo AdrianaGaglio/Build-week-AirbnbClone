@@ -100,4 +100,20 @@ export class AddNewApartmentComponent implements OnInit {
     modalRef.componentInstance.message = message;
     modalRef.componentInstance.isOk = value;
   }
+
+  infoMultiple: boolean = false;
+
+  showInfo() {
+    this.infoMultiple = !this.infoMultiple;
+
+    setTimeout(() => {
+      this.infoMultiple = !this.infoMultiple;
+    }, 2200);
+  }
+
+  dropDown: boolean = false;
+
+  show() {
+    this.dropDown = !this.dropDown;
+  }
 }
