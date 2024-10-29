@@ -39,11 +39,13 @@ export class CardComponent implements OnInit {
         }
       }
     });
-    this.rating = Math.floor(
-      this.apartment.ratings.vote / this.apartment.ratings.count
-    );
-    if (this.rating > 3) {
-      this.isAppreciated = true;
+    if (this.apartment.ratings) {
+      this.rating = Math.floor(
+        this.apartment.ratings.vote / this.apartment.ratings.count
+      );
+      if (this.rating > 3) {
+        this.isAppreciated = true;
+      }
     }
   }
 
