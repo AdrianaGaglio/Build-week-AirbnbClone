@@ -128,7 +128,9 @@
     </div>
     <!-- App Reservation -->
     <div class="col-4">
-      <app-reservation [apartment]="apartment"></app-reservation>
+      <ng-container *ngIf="loggedUserId"
+        ><app-reservation [apartment]="apartment"></app-reservation
+      ></ng-container>
     </div>
   </div>
 

@@ -46,6 +46,25 @@
           </ul>
         </div>
 
+        <div class="dropdown mt-2">
+          <button
+            (click)="show()"
+            class="btn bg-pink-airbnb-subtle text-white rounded-4 dropdown-toggle button-host"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Valuta l'esperienza!
+          </button>
+          <div
+            [ngClass]="{ show: showRatings }"
+            class="border rounded-4 p-2 text-center dropdown-menu"
+          >
+            <app-ratings-stars></app-ratings-stars>
+            <app-text-review></app-text-review>
+          </div>
+        </div>
+
         <!-- card info profile -->
         <div class="card-host border rounded-4 overflow-hidden p-4 mt-4">
           <h4 class="fw-bolder">Informazioni confermate di Kevin Hart</h4>
@@ -65,7 +84,9 @@
             </li>
           </ul>
         </div>
-        <app-reservation></app-reservation>
+        <ng-container *ngIf="loggedIn"
+          ><app-reservation></app-reservation
+        ></ng-container>
       </div>
     </div>
     <!-- side 2 -->

@@ -5,7 +5,11 @@
 
 .card-host-pos {
   position: sticky;
-  top: 2.5rem;
+  top: 1rem;
+}
+
+.button-host {
+  width: 340px;
 }
 
 .lista {
@@ -28,4 +32,8 @@
 
 .white-space {
   white-space: nowrap;
+}
+
+.bg-pink-airbnb-subtle {
+  background-color: rgba(255, 56, 92, 0.7);
 }

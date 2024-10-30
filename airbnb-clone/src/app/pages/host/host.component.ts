@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { iUser } from '../../interfaces/iuser';
 import { ApartmentService } from '../../services/apartment.service';
 import { iApartment } from '../../interfaces/iapartment';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-host',
@@ -14,15 +15,20 @@ export class HostComponent implements OnInit {
   constructor(
     private userSvc: UserService,
     private route: ActivatedRoute,
-    private apartmentSvc: ApartmentService
+    private apartmentSvc: ApartmentService,
+    private authSvc: AuthService
   ) {}
 
   user!: iUser;
   message!: string;
   apartments!: iApartment[];
   ratings!: number;
+  loggedIn!: boolean;
 
   ngOnInit(): void {
+    this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.loggedIn = isLoggedIn;
+    });
     this.route.params.subscribe((params) => {
       this.userSvc.getUserById(params['id']).subscribe({
         next: (user) => {
@@ -57,5 +63,11 @@ export class HostComponent implements OnInit {
         },
       });
     });
+  }
+
+  showRatings: boolean = false;
+
+  show() {
+    this.showRatings = !this.showRatings;
   }
 }
