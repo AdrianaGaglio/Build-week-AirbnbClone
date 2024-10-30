@@ -38,7 +38,7 @@ export class EditAparmentComponent {
 
   message!: string;
 
-  services: string[] = environment.services;
+  services: { service: string; icon: string }[] = environment.services;
   suggestions: any[] = [];
   private search$ = new Subject<string>();
 

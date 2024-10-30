@@ -32,35 +32,7 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
-  /*services: string[] = [
-    'WiFi', //ionWifiOutline
-    'Aria condizionata', //ionSnowOutline
-    'Riscaldamento', //ionFlameOutline
-    'TV', //ionTvOutline
-    'Lavatrice', //ionShirtOutline
-    'Asciugatrice', //<mat-icon>local_laundry_service</mat-icon>
-    'Cucina attrezzata', //<mat-icon>multicooker</mat-icon>
-    'Frigorifero', //<mat-icon>kitchen</mat-icon>
-    'Microonde', //<mat-icon>microwave</mat-icon>
-    'Macchina del caffè', //ionCafeOtline
-    'Asciugamani inclusi', //ionHandLeftOutline
-    'Parcheggio gratuito', //ionCarOutline
-    'Piscina', //ionWaterOutline
-    'Palestra', //ionFootballOutline
-    'Area barbecue', //ionBonfireOutline
-    'Balcone o terrazza', //<mat-icon>balcony</mat-icon>
-    'Giardino', //ionRoseOutline
-    'Accesso per disabili', //ionBodyOutline
-    'Animali ammessi', //<mat-icon>pets</mat-icon>
-    'Vasca idromassaggio', //<mat-icon>waves</mat-icon>
-    'Servizio di pulizia', //<mat-icon>cleaning_services</mat-icon>
-    'Reception 24 ore', //<mat-icon>concierge</mat-icon>
-    'Vista panoramica', //<mat-icon>landscape</mat-icon>
-    'Servizio in camera', //<mat-icon>room_service</mat-icon>
-    'Minibar', //<mat-icon>local_bar</mat-icon>
-    'Colazione inclusa', //<mat_icon>bakery_dining</mat_icon>
-  ];*/
-  services: string[] = environment.services;
+  services: { service: string; icon: string }[] = environment.services;
   suggestions: any[] = [];
   private search$ = new Subject<string>();
 
@@ -168,5 +140,4 @@ export class AddNewApartmentComponent implements OnInit {
     console.log('Località selezionata:', suggestion);
     this.suggestions = [];
   }
-  //prova merge
 }
