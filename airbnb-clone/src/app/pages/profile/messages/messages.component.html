@@ -1,8 +1,16 @@
 <div class="container">
   <h1 class="fw-bold mb-5">I tuoi messaggi</h1>
   <div class="row gap-3" *ngIf="messages">
-    <div class="col-12" *ngFor="let message of messages">
+    <div class="col-12" *ngFor="let message of messages.slice(0, 5)">
       <app-message-card [message]="message"></app-message-card>
     </div>
+    <a role="button" (click)="showHide()">{{
+      showAll ? "Mostra meno" : "Mostra altri"
+    }}</a>
+    <ng-container *ngIf="messages.slice(6)">
+      <div class="col-12" *ngFor="let message of messages.slice(6)">
+        <app-message-card [message]="message"></app-message-card>
+      </div>
+    </ng-container>
   </div>
 </div>

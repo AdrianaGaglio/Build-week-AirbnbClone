@@ -72,4 +72,8 @@ export class MessageService {
         })
       );
   }
+
+  delete(message: iMessage) {
+    return this.http.delete<iMessage>(`${this.messageUrl}/${message.id}`);
+  }
 }

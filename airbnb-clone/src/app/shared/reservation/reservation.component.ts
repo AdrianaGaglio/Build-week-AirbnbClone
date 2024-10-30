@@ -44,6 +44,7 @@ export class ReservationComponent {
           message: this.fb.control('', Validators.required),
           apartment: this.fb.control(this.apartment ? this.apartment : ''),
           isRead: this.fb.control(false),
+          date: this.fb.control(Date.now()),
         });
       }
     });

@@ -1,40 +1,54 @@
 <div class="card" *ngIf="user">
-  <div class="card-body position-relative">
-    <span
-      role="button"
-      (click)="readMessage()"
-      *ngIf="!message.isRead"
-      class="badge text-light text-bg-pink-airbnb position-absolute top-0 end-0 me-1 mt-1"
-      >Unread</span
-    >
-    <p class="text-body-tertiary">
-      Messaggio da {{ user.firstName }} {{ user.lastName }}
-    </p>
-    <h3>{{ message.message }}</h3>
-    <div *ngIf="message.apartment">
-      <h5>Richiesta per:</h5>
-      <div class="d-flex align-items-center gap-3">
-        <p class="mb-0">
-          <a
-            class="text-decoration-none text-black"
-            [routerLink]="['/apartment', message.apartment.id]"
-            >{{ message.apartment.name }}</a
+  <div
+    class="card-body position-relative d-flex justify-content-between flex-grow-1"
+  >
+    <div class="flex-grow-1 d-flex flex-column">
+      <span
+        role="button"
+        (click)="readMessage()"
+        *ngIf="!message.isRead"
+        class="badge text-light text-bg-pink-airbnb position-absolute top-0 end-0 me-1 mt-1 z-3"
+        >Unread</span
+      >
+      <p class="text-body-tertiary">
+        Messaggio da {{ user.firstName }} {{ user.lastName }} -
+        <span>{{ message.date | date : "dd/MM/yyyy" }}</span>
+      </p>
+      <h3>{{ message.message }}</h3>
+      <div *ngIf="message.apartment">
+        <h5>Richiesta per:</h5>
+        <div class="d-flex align-items-center gap-3">
+          <p class="mb-0">
+            <a
+              class="text-decoration-none text-black"
+              [routerLink]="['/apartment', message.apartment.id]"
+              >{{ message.apartment.name }}</a
+            >
+          </p>
+          <button
+            *ngIf="message.apartment.availability"
+            (click)="changeAvailability()"
+            class="btn btn-sm text-light fw-medium bg-pink-airbnb"
           >
-        </p>
-        <button
-          *ngIf="message.apartment.availability"
-          (click)="changeAvailability()"
-          class="btn btn-sm text-light fw-medium bg-pink-airbnb"
-        >
-          Conferma prenotazione
-        </button>
-        <span class="text-pink-airbnb" *ngIf="!message.apartment.availability"
-          >Prenotazione confermata</span
-        >
+            Conferma prenotazione
+          </button>
+          <span class="text-pink-airbnb" *ngIf="!message.apartment.availability"
+            >Prenotazione confermata</span
+          >
+        </div>
       </div>
+      <div *ngIf="!message.apartment">
+        <h5 class="mb-0">Richiesta informazioni generica</h5>
+      </div>
+
+      <button
+        class="mt-auto align-self-start btn btn-sm btn-pink-airbnb text-light"
+      >
+        Cancella messaggio
+      </button>
     </div>
-    <div *ngIf="!message.apartment">
-      <h5 class="mb-0">Richiesta informazioni generica</h5>
-    </div>
+    <ng-container *ngIf="message.apartment">
+      <app-card [apartment]="message.apartment"></app-card>
+    </ng-container>
   </div>
 </div>
