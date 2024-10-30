@@ -59,4 +59,13 @@ select:active {
 
 .infoLink {
   top: -100px;
+  .locationInput {
+    max-width: 378px;
+    position: relative;
+    .list-group {
+      position: absolute;
+      width: 100%;
+      z-index: 1000;
+    }
+  }
 }
