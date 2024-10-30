@@ -119,7 +119,7 @@
     </div>
     <!-- colonna form -->
     <div class="col ms-4 me-3 pe-0">
-      <h2>Dettagli del nuovo annuncio</h2>
+      <h2>Dettagli di {{ form.get("name")?.value }}</h2>
       <form [formGroup]="form">
         <div class="form-group ps-4">
           <!-- name -->
@@ -231,9 +231,8 @@
             <input
               formControlName="coverImage"
               class="form-control"
-              type="file"
+              type="text"
               id="avatar"
-              accept="image/png, image/jpeg"
             />
           </div>
           <!-- otherImages -->
@@ -242,9 +241,8 @@
             <input
               formControlName="otherImages"
               class="form-control"
-              type="file"
+              type="text"
               id="avatar"
-              accept="image/png, image/jpeg"
             />
           </div>
           <!-- category -->
@@ -252,11 +250,11 @@
             <div class="d-flex flex-column position-relative">
               <h5>
                 Categorie
-                <a (click)="showInfo2()" class="fs-7 ps-1 pointer"
+                <a (click)="showInfo()" class="fs-7 ps-1 pointer"
                   >Selezione Multipla?</a
                 >
                 <div
-                  [ngClass]="{ show: infoMultiple2 }"
+                  [ngClass]="{ show: infoMultiple }"
                   class="bg-primary-subtle rounded-3 p-3 fs-6 dropdown-menu infoLink"
                 >
                   Al click tieni premuto Ctrl per una selezione multipla
@@ -336,7 +334,7 @@
             (click)="onSubmit()"
             class="btn btn-pink-airbnb text-white fw-semibold px-3"
           >
-            Invia
+            Salva
           </button>
         </div>
       </form>
