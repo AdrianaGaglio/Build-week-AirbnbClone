@@ -16,6 +16,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.component';
 import { SharedmodalModule } from '../../shared/sharedmodal/sharedmodal.module';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SharedmodalModule } from '../../shared/sharedmodal/sharedmodal.module';
     PersonalInfoComponent,
     SidebarComponent,
     AddNewApartmentComponent,
+    FavouritesComponent,
   ],
   imports: [
     CommonModule,

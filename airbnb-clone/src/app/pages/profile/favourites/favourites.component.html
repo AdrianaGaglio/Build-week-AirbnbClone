@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="fw-bold mb-5">I tuoi appartamenti preferiti</h1>
+  <div class="row row-cols-5" *ngIf="apartments">
+    <div class="col" *ngFor="let apartment of apartments">
+      <app-card [apartment]="apartment"></app-card>
+    </div>
+  </div>
+</div>

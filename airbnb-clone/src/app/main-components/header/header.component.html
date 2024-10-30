@@ -72,6 +72,14 @@
             >Dashboard</a
           >
         </li>
+        <li>
+          <a
+            (click)="show()"
+            routerLink="/profile/favourites"
+            class="dropdown-item text-dark hoverMenu"
+            >Preferiti</a
+          >
+        </li>
         <li><hr class="my-2" /></li>
         <li *ngIf="isLoggedIn">
           <button
