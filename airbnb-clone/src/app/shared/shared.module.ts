@@ -20,9 +20,17 @@ import {
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { FilterComponent } from './filter/filter.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { RatingsStarsComponent } from './ratings-stars/ratings-stars.component';
+import { TextReviewComponent } from './text-review/text-review.component';
 
 @NgModule({
-  declarations: [CardComponent, ReviewCardComponent, FilterComponent],
+  declarations: [
+    CardComponent,
+    ReviewCardComponent,
+    FilterComponent,
+    RatingsStarsComponent,
+    TextReviewComponent,
+  ],
   imports: [
     CommonModule,
     NgIconsModule.withIcons({
@@ -43,6 +51,12 @@ import { RouterLink, RouterModule } from '@angular/router';
     }),
     RouterLink,
   ],
-  exports: [CardComponent, ReviewCardComponent, FilterComponent],
+  exports: [
+    CardComponent,
+    ReviewCardComponent,
+    FilterComponent,
+    RatingsStarsComponent,
+    TextReviewComponent,
+  ],
 })
 export class SharedModule {}

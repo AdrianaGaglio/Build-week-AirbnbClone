@@ -58,4 +58,10 @@ export class HostComponent implements OnInit {
       });
     });
   }
+
+  showRatings: boolean = false;
+
+  show() {
+    this.showRatings = !this.showRatings;
+  }
 }
