@@ -5,6 +5,8 @@ import { ApartmentService } from '../../../services/apartment.service';
 import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../../../../environments/environment.development';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -58,6 +60,9 @@ export class AddNewApartmentComponent implements OnInit {
     'Minibar', //<mat-icon>local_bar</mat-icon>
     'Colazione inclusa', //<mat_icon>bakery_dining</mat_icon>
   ];*/
+  services: string[] = environment.services;
+  suggestions: any[] = [];
+  private search$ = new Subject<string>();
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
@@ -138,7 +143,7 @@ export class AddNewApartmentComponent implements OnInit {
 
     setTimeout(() => {
       this.infoMultiple = !this.infoMultiple;
-    }, 2200);
+    }, 1000);
   }
 
   showInfo2() {
@@ -146,7 +151,7 @@ export class AddNewApartmentComponent implements OnInit {
 
     setTimeout(() => {
       this.infoMultiple2 = !this.infoMultiple2;
-    }, 2200);
+    }, 1000);
   }
 
   dropDownservices: boolean = false;
