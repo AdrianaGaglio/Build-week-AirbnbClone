@@ -5,9 +5,6 @@ import { ApartmentService } from '../../../services/apartment.service';
 import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { environment } from '../../../../environments/environment.development';
-import { GeocodingService } from '../../../services/geocoding.service';
-import { debounceTime, Subject, switchMap } from 'rxjs';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -21,8 +18,7 @@ export class AddNewApartmentComponent implements OnInit {
     private apartSvc: ApartmentService,
     private router: Router,
     private modalSvc: NgbModal,
-    private route: ActivatedRoute,
-    private geocodingSvc: GeocodingService
+    private route: ActivatedRoute
   ) {}
 
   idEditPost!: number;
@@ -34,38 +30,34 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
-  // services: string[] = [
-  //   'WiFi',
-  //   'Aria condizionata',
-  //   'Riscaldamento',
-  //   'TV',
-  //   'Lavatrice',
-  //   'Asciugatrice',
-  //   'Cucina attrezzata',
-  //   'Frigorifero',
-  //   'Microonde',
-  //   'Macchina del caffè',
-  //   'Asciugamani inclusi',
-  //   'Parcheggio gratuito',
-  //   'Piscina',
-  //   'Palestra',
-  //   'Area barbecue',
-  //   'Balcone o terrazza',
-  //   'Giardino',
-  //   'Accesso per disabili',
-  //   'Animali ammessi',
-  //   'Vasca idromassaggio',
-  //   'Servizio di pulizia',
-  //   'Reception 24 ore',
-  //   'Vista panoramica',
-  //   'Servizio in camera',
-  //   'Minibar',
-  //   'Colazione inclusa',
-  // ];
-
-  services: string[] = environment.services;
-  suggestions: any[] = [];
-  private search$ = new Subject<string>();
+  services: string[] = [
+    'WiFi', //ionWifiOutline
+    'Aria condizionata', //ionSnowOutline
+    'Riscaldamento', //ionFlameOutline
+    'TV', //ionTvOutline
+    'Lavatrice', //ionShirtOutline
+    'Asciugatrice', //<mat-icon>local_laundry_service</mat-icon>
+    'Cucina attrezzata', //<mat-icon>multicooker</mat-icon>
+    'Frigorifero', //<mat-icon>kitchen</mat-icon>
+    'Microonde', //<mat-icon>microwave</mat-icon>
+    'Macchina del caffè', //ionCafeOtline
+    'Asciugamani inclusi', //ionHandLeftOutline
+    'Parcheggio gratuito', //ionCarOutline
+    'Piscina', //ionWaterOutline
+    'Palestra', //ionFootballOutline
+    'Area barbecue', //ionBonfireOutline
+    'Balcone o terrazza', //<mat-icon>balcony</mat-icon>
+    'Giardino', //ionRoseOutline
+    'Accesso per disabili', //ionBodyOutline
+    'Animali ammessi', //<mat-icon>pets</mat-icon>
+    'Vasca idromassaggio', //<mat-icon>waves</mat-icon>
+    'Servizio di pulizia', //<mat-icon>cleaning_services</mat-icon>
+    'Reception 24 ore', //<mat-icon>concierge</mat-icon>
+    'Vista panoramica', //<mat-icon>landscape</mat-icon>
+    'Servizio in camera', //<mat-icon>room_service</mat-icon>
+    'Minibar', //<mat-icon>local_bar</mat-icon>
+    'Colazione inclusa', //<mat_icon>bakery_dining</mat_icon>
+  ];
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
@@ -107,17 +99,6 @@ export class AddNewApartmentComponent implements OnInit {
         reviews: this.fb.control([]),
       });
     });
-
-    this.search$
-      .pipe(
-        debounceTime(300), // Aggiungi un ritardo di 300ms per il debounce
-        switchMap((placeName: string) =>
-          this.geocodingSvc.searchGeocode(placeName)
-        )
-      )
-      .subscribe((data) => {
-        this.suggestions = data.map((item: any) => item.display_name);
-      });
   }
 
   minlength(input: string) {
@@ -170,16 +151,4 @@ export class AddNewApartmentComponent implements OnInit {
 
   dropDownservices: boolean = false;
   dropDownCategory: boolean = false;
-  onSearch(placeName: string): void {
-    if (placeName.length > 2) {
-      this.search$.next(placeName);
-    } else {
-      this.suggestions = [];
-    }
-  }
-  selectSuggestion(suggestion: any): void {
-    this.form.get('location')?.setValue(suggestion);
-    console.log('Località selezionata:', suggestion);
-    this.suggestions = [];
-  }
 }
