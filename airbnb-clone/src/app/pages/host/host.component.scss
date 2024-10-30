@@ -8,11 +8,6 @@
   top: 2.5rem;
 }
 
-.posStickyCardInfo {
-  position: sticky;
-  top: 19rem;
-}
-
 .lista {
   list-style: none;
 }
@@ -29,4 +24,8 @@
 .hoverScale:active {
   transition: 250ms;
   scale: 0.95;
+}
+
+.white-space {
+  white-space: nowrap;
 }
