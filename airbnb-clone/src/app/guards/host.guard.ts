@@ -28,8 +28,27 @@ export class HostGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
-    return this.authSvc.authState$.pipe(
+    return this.authSvc.authStateOb$.pipe(
       map((data) => {
+        console.log('host guardddddd', data?.uid);
+        if (data) {
+          let user: iUser | null = null;
+          this.usersSvc.getUserById(data.uid).subscribe((userFromId) => {
+            if (!userFromId) {
+              this.router.navigate(['/login']);
+              return false;
+            } else {
+              user = userFromId;
+
+              if (user?.role !== 'host') {
+                this.router.navigate(['/profile']);
+                return false;
+              }
+              return true;
+            }
+          });
+        }
+
         // if (!data) {
         //   this.router.navigate(['/login']);
         //   return false;
