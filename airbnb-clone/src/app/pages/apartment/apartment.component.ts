@@ -6,6 +6,7 @@ import { FavouritesService } from '../../services/favourites.service';
 import { AuthService } from '../../auth/auth.service';
 import { UserService } from '../../services/user.service';
 import { iUser } from '../../interfaces/iuser';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-apartment',
