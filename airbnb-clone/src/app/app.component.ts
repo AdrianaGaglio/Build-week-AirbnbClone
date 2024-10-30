@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ApartmentService } from './services/apartment.service';
 import { FavouritesService } from './services/favourites.service';
 import { AuthService } from './auth/auth.service';
+import { MessageService } from './services/message.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
   constructor(
     private apartmentSvc: ApartmentService,
     private favSvc: FavouritesService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private messageSvc: MessageService
   ) {}
   isLoggedIn: boolean = false;
 
@@ -23,6 +25,17 @@ export class AppComponent {
     });
     this.authSvc.isLoggedIn$.subscribe((value) => {
       this.isLoggedIn = value;
+    });
+    this.authSvc.authState$.subscribe((user) => {
+      if (user) {
+        this.messageSvc.getMessages(user.uid).subscribe((msgs) => {
+          if (msgs) {
+            this.messageSvc.allMessages$.next(msgs);
+            let unread = msgs.filter((msg) => !msg.isRead);
+            this.messageSvc.unreadMessages$.next(unread);
+          }
+        });
+      }
     });
   }
 }

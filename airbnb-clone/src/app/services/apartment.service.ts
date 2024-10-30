@@ -181,4 +181,11 @@ export class ApartmentService {
       })
     );
   }
+
+  changeAvailability(apartment: iApartment) {
+    return this.http.put<iApartment>(
+      `${this.apartmentsUrl}/${apartment.id}`,
+      apartment
+    );
+  }
 }

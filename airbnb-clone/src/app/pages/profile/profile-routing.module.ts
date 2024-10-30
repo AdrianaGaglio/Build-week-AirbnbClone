@@ -6,6 +6,7 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { EditAparmentComponent } from './edit-aparment/edit-aparment.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'favourites',
     component: FavouritesComponent,
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent,
   },
 ];
 

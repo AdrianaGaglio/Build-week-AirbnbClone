@@ -6,8 +6,7 @@ import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.componen
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../../environments/environment.development';
-import { GeocodingService } from '../../../services/geocoding.service';
-import { debounceTime, Subject, switchMap } from 'rxjs';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -21,8 +20,7 @@ export class AddNewApartmentComponent implements OnInit {
     private apartSvc: ApartmentService,
     private router: Router,
     private modalSvc: NgbModal,
-    private route: ActivatedRoute,
-    private geocodingSvc: GeocodingService
+    private route: ActivatedRoute
   ) {}
 
   idEditPost!: number;
@@ -34,36 +32,7 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
-  // services: string[] = [
-  //   'WiFi',
-  //   'Aria condizionata',
-  //   'Riscaldamento',
-  //   'TV',
-  //   'Lavatrice',
-  //   'Asciugatrice',
-  //   'Cucina attrezzata',
-  //   'Frigorifero',
-  //   'Microonde',
-  //   'Macchina del caffè',
-  //   'Asciugamani inclusi',
-  //   'Parcheggio gratuito',
-  //   'Piscina',
-  //   'Palestra',
-  //   'Area barbecue',
-  //   'Balcone o terrazza',
-  //   'Giardino',
-  //   'Accesso per disabili',
-  //   'Animali ammessi',
-  //   'Vasca idromassaggio',
-  //   'Servizio di pulizia',
-  //   'Reception 24 ore',
-  //   'Vista panoramica',
-  //   'Servizio in camera',
-  //   'Minibar',
-  //   'Colazione inclusa',
-  // ];
-
-  services: string[] = environment.services;
+  services: { service: string; icon: string }[] = environment.services;
   suggestions: any[] = [];
   private search$ = new Subject<string>();
 
@@ -107,17 +76,6 @@ export class AddNewApartmentComponent implements OnInit {
         reviews: this.fb.control([]),
       });
     });
-
-    this.search$
-      .pipe(
-        debounceTime(300), // Aggiungi un ritardo di 300ms per il debounce
-        switchMap((placeName: string) =>
-          this.geocodingSvc.searchGeocode(placeName)
-        )
-      )
-      .subscribe((data) => {
-        this.suggestions = data.map((item: any) => item.display_name);
-      });
   }
 
   minlength(input: string) {
@@ -157,7 +115,7 @@ export class AddNewApartmentComponent implements OnInit {
 
     setTimeout(() => {
       this.infoMultiple = !this.infoMultiple;
-    }, 2200);
+    }, 1000);
   }
 
   showInfo2() {
@@ -165,7 +123,7 @@ export class AddNewApartmentComponent implements OnInit {
 
     setTimeout(() => {
       this.infoMultiple2 = !this.infoMultiple2;
-    }, 2200);
+    }, 1000);
   }
 
   dropDownservices: boolean = false;

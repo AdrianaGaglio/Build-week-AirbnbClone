@@ -84,11 +84,12 @@
         </div>
         <div class="mb-4">
           <label for="avatar" class="form-label mb-0">Immagine profilo:</label>
+          <input type="text" formControlName="profileImg" hidden />
           <input
-            formControlName="profileImg"
             class="form-control"
             type="file"
             id="avatar"
+            (change)="onFileSelected($event)"
             accept="image/png, image/jpeg"
           />
         </div>

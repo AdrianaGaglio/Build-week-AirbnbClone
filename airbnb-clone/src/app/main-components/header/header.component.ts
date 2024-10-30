@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { environment } from '../../../environments/environment.development';
 import { Router } from '@angular/router';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-header',
@@ -13,17 +14,24 @@ export class HeaderComponent {
   constructor(
     private authSvc: AuthService,
     private ApartmentSvc: ApartmentService,
-    private router: Router
+    private router: Router,
+    private messageSvc: MessageService
   ) {}
 
   showBol: boolean = false;
   isLoggedIn!: boolean;
   logo: string = environment.logo;
   searchQuery!: string;
+  unreadMsg!: number;
 
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
+    });
+    this.messageSvc.unreadMessages$.subscribe((res) => {
+      if (res && res.length > 0) {
+        this.unreadMsg = res.length;
+      }
     });
   }
 
