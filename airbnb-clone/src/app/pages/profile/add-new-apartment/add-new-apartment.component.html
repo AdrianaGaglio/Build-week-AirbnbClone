@@ -325,6 +325,7 @@
                 class="form-contrl px-3 py-2 rounded border"
                 placeholder="es. Licata"
                 formControlName="location"
+                autocomplete="off"
                 (input)="onSearch(form.get('location')?.value)"
               />
               <ul *ngIf="suggestions.length" class="list-group">

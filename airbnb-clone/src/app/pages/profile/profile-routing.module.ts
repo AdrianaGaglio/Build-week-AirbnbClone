@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Host, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -7,27 +7,27 @@ import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.
 import { FavouritesComponent } from './favourites/favourites.component';
 import { EditAparmentComponent } from './edit-aparment/edit-aparment.component';
 import { MessagesComponent } from './messages/messages.component';
+import { HostGuard } from '../../guards/host.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,
+    component: PersonalInfoComponent,
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-  },
-  {
-    path: 'personal-info',
-    component: PersonalInfoComponent,
+    canActivate: [HostGuard],
   },
   {
     path: 'new-apartment',
     component: AddNewApartmentComponent,
+    canActivate: [HostGuard],
   },
   {
     path: 'edit-apartment/:id',
     component: EditAparmentComponent,
+    canActivate: [HostGuard],
   },
   {
     path: 'favourites',

@@ -6,7 +6,8 @@ import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.componen
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../../environments/environment.development';
-import { Subject } from 'rxjs';
+import { debounceTime, Subject, switchMap } from 'rxjs';
+import { GeocodingService } from '../../../services/geocoding.service';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -20,7 +21,8 @@ export class AddNewApartmentComponent implements OnInit {
     private apartSvc: ApartmentService,
     private router: Router,
     private modalSvc: NgbModal,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private geocodingSvc: GeocodingService
   ) {}
 
   idEditPost!: number;
@@ -76,6 +78,16 @@ export class AddNewApartmentComponent implements OnInit {
         reviews: this.fb.control([]),
       });
     });
+    this.search$
+      .pipe(
+        debounceTime(300), // Aggiungi un ritardo di 300ms per il debounce
+        switchMap((placeName: string) =>
+          this.geocodingSvc.searchGeocode(placeName)
+        )
+      )
+      .subscribe((data) => {
+        this.suggestions = data.map((item: any) => item.display_name);
+      });
   }
 
   minlength(input: string) {
