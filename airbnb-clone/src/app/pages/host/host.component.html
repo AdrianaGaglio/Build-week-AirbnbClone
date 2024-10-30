@@ -1,75 +1,75 @@
 <div class="container" *ngIf="user">
   <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
     <!-- side 1 -->
-    <div
-      class="border position-sticky top-0 d-flex align-items-center flex-column py-4"
-    >
-      <!-- card profile -->
-      <div
-        class="card-host-pos card-host shadow-lg d-flex rounded-4 overflow-hidden py-3 my-2"
-      >
-        <!-- img profile -->
+    <div class="d-flex align-items-center flex-column py-4">
+      <div class="card-host-pos">
+        <!-- card profile -->
         <div
-          class="d-flex flex-column flex-grow-1 align-items-center justify-content-center"
+          class="card-host shadow-lg d-flex rounded-4 overflow-hidden py-3 my-2"
         >
-          <img
-            src="https://a0.muscache.com/im/pictures/user/User-571409085/original/5bc91e5a-8b14-4709-96db-74a60dc97da1.jpeg?im_w=240"
-            alt="avatar profile"
-            width="110"
-            class="rounded-pill"
-          />
-          <h2 class="fw-bolder mb-0 mt-2">
-            {{ user.firstName }} {{ user.lastName }}
-          </h2>
-          <p class="fw-bolder mb-0">{{ user.role }}</p>
+          <!-- img profile -->
+          <div
+            class="d-flex flex-column flex-grow-1 align-items-center justify-content-center"
+          >
+            <img
+              src="https://a0.muscache.com/im/pictures/user/User-571409085/original/5bc91e5a-8b14-4709-96db-74a60dc97da1.jpeg?im_w=240"
+              alt="avatar profile"
+              width="110"
+              class="rounded-pill"
+            />
+            <h2 class="fw-bolder mb-0 mt-2">
+              {{ user.firstName }} {{ user.lastName }}
+            </h2>
+            <p class="fw-bolder mb-0">{{ user.role }}</p>
+          </div>
+          <!-- container -->
+          <ul
+            class="list-group list-group-flush d-flex flex-column justify-content-center"
+          >
+            <li class="list-group-item ps-0 py-1">
+              <h4 class="mb-0 fw-bold">
+                {{ user.reviews.length > 0 ? user.reviews.length : 0 }}
+              </h4>
+              <p class="fs-7 fw-semibold m-0">Recensioni</p>
+            </li>
+            <li class="list-group-item ps-0 py-1">
+              <h4 class="mb-0 fw-bold">{{ ratings ? ratings : 0 }}</h4>
+              <p class="fs-7 fw-semibold m-0">Valutazione</p>
+            </li>
+            <!-- <li class="list-group-item ps-0 py-1">
+              <h4 class="mb-0 fw-bold">6</h4>
+              <p class="fs-7 fw-semibold m-0">
+                Mesi di esperienza <br />
+                come host
+              </p>
+            </li> -->
+          </ul>
         </div>
-        <!-- container -->
-        <ul
-          class="list-group list-group-flush d-flex flex-column justify-content-center"
-        >
-          <li class="list-group-item ps-0 py-1">
-            <h4 class="mb-0 fw-bold">
-              {{ user.reviews.length > 0 ? user.reviews.length : 0 }}
-            </h4>
-            <p class="fs-7 fw-semibold m-0">Recensioni</p>
-          </li>
-          <li class="list-group-item ps-0 py-1">
-            <h4 class="mb-0 fw-bold">{{ ratings ? ratings : 0 }}</h4>
-            <p class="fs-7 fw-semibold m-0">Valutazione</p>
-          </li>
-          <!-- <li class="list-group-item ps-0 py-1">
-            <h4 class="mb-0 fw-bold">6</h4>
-            <p class="fs-7 fw-semibold m-0">
-              Mesi di esperienza <br />
-              come host
-            </p>
-          </li> -->
-        </ul>
-      </div>
 
-      <!-- card info profile -->
-      <div
-        class="card-host posStickyCardInfo border rounded-4 overflow-hidden p-4 mt-4"
-      >
-        <h4 class="fw-bolder">Informazioni confermate di Kevin Hart</h4>
-        <ul class="lista p-0 mt-3">
-          <li>
-            <p class="fs-5 mb-2"><span class="me-3">✓</span>Identita</p>
-          </li>
-          <li>
-            <p class="fs-5 mb-2"><span class="me-3">✓</span>Indirizzo email</p>
-          </li>
-          <li *ngIf="user.phone">
-            <p class="fs-5 mb-2">
-              <span class="me-3">✓</span>Numero di telefono
-            </p>
-          </li>
-        </ul>
+        <!-- card info profile -->
+        <div class="card-host border rounded-4 overflow-hidden p-4 mt-4">
+          <h4 class="fw-bolder">Informazioni confermate di Kevin Hart</h4>
+          <ul class="lista p-0 mt-3">
+            <li>
+              <p class="fs-5 mb-2"><span class="me-3">✓</span>Identita</p>
+            </li>
+            <li>
+              <p class="fs-5 mb-2">
+                <span class="me-3">✓</span>Indirizzo email
+              </p>
+            </li>
+            <li *ngIf="user.phone">
+              <p class="fs-5 mb-2">
+                <span class="me-3">✓</span>Numero di telefono
+              </p>
+            </li>
+          </ul>
+        </div>
+        <app-reservation></app-reservation>
       </div>
-      <app-reservation></app-reservation>
     </div>
     <!-- side 2 -->
-    <div class="border rounded-3 p-4">
+    <div class="rounded-3 p-4">
       <!-- titolo review -->
       <div *ngIf="user.reviews && user.reviews.length > 0" class="mb-5">
         <div class="d-flex justify-content-between">
@@ -98,8 +98,20 @@
       </div>
 
       <div *ngIf="apartments">
-        <h2 class="fw-bolder">Annunci di Kevin Hart</h2>
-        <div class="row row-cols-3">
+        <h2 class="fw-bolder white-space">Annunci di Kevin Hart</h2>
+        <div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-5">
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
           <div class="col" *ngFor="let apartment of apartments">
             <app-card [apartment]="apartment"></app-card>
           </div>
