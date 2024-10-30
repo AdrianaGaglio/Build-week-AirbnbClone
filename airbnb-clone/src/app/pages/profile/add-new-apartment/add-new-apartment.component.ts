@@ -6,6 +6,8 @@ import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.componen
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../../environments/environment.development';
+import { GeocodingService } from '../../../services/geocoding.service';
+import { debounceTime, Subject, switchMap } from 'rxjs';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -19,7 +21,8 @@ export class AddNewApartmentComponent implements OnInit {
     private apartSvc: ApartmentService,
     private router: Router,
     private modalSvc: NgbModal,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private geocodingSvc: GeocodingService
   ) {}
 
   idEditPost!: number;
@@ -61,6 +64,8 @@ export class AddNewApartmentComponent implements OnInit {
   // ];
 
   services: string[] = environment.services;
+  suggestions: any[] = [];
+  private search$ = new Subject<string>();
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
@@ -102,6 +107,17 @@ export class AddNewApartmentComponent implements OnInit {
         reviews: this.fb.control([]),
       });
     });
+
+    this.search$
+      .pipe(
+        debounceTime(300), // Aggiungi un ritardo di 300ms per il debounce
+        switchMap((placeName: string) =>
+          this.geocodingSvc.searchGeocode(placeName)
+        )
+      )
+      .subscribe((data) => {
+        this.suggestions = data.map((item: any) => item.display_name);
+      });
   }
 
   minlength(input: string) {
@@ -154,4 +170,16 @@ export class AddNewApartmentComponent implements OnInit {
 
   dropDownservices: boolean = false;
   dropDownCategory: boolean = false;
+  onSearch(placeName: string): void {
+    if (placeName.length > 2) {
+      this.search$.next(placeName);
+    } else {
+      this.suggestions = [];
+    }
+  }
+  selectSuggestion(suggestion: any): void {
+    this.form.get('location')?.setValue(suggestion);
+    console.log('Località selezionata:', suggestion);
+    this.suggestions = [];
+  }
 }
