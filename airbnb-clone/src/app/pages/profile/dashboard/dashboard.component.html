@@ -24,16 +24,24 @@
             <button
               (click)="deleteApartment(apartment.id)"
               type="button"
-              class="btn btn-outline-pink-airbnb m-2 py-1 rounded-4"
+              class="btn btn-sm btn-outline-pink-airbnb m-2 py-1 rounded-4"
             >
               Elimina
             </button>
             <button
               (click)="editApartment(apartment.id)"
               type="button"
-              class="btn btn-pink-airbnb text-white fw-bold m-2 py-1 rounded-4"
+              class="btn btn-sm btn-pink-airbnb text-white fw-bold m-2 py-1 rounded-4"
             >
               Modifica
+            </button>
+            <button
+              *ngIf="!apartment.availability"
+              (click)="checkOut(apartment)"
+              type="button"
+              class="btn btn-sm btn-pink-airbnb text-white fw-bold m-2 py-1 rounded-4"
+            >
+              Check-Out
             </button>
           </div>
         </ng-content>

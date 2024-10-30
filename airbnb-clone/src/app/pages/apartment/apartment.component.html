@@ -127,10 +127,15 @@
       </div>
     </div>
     <!-- App Reservation -->
-    <div class="col-4">
-      <ng-container *ngIf="loggedUserId"
+    <div class="col-4 d-flex flex-column justify-content-center">
+      <ng-container *ngIf="loggedUserId && apartment.availability"
         ><app-reservation [apartment]="apartment"></app-reservation
       ></ng-container>
+      <ng-container *ngIf="loggedUserId && !apartment.availability">
+        <h5 class="text-pink-airbnb">
+          Appartamento al momento non disponibile
+        </h5>
+      </ng-container>
     </div>
   </div>
 

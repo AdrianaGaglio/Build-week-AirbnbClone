@@ -41,4 +41,9 @@ export class DashboardComponent {
     this.apartmentSvc.deleteApartmentById(id).subscribe();
     this.apartments = this.apartments.filter((data) => data.id !== id);
   }
+
+  checkOut(apartment: iApartment) {
+    apartment.availability = true;
+    this.apartmentSvc.changeAvailability(apartment).subscribe();
+  }
 }
