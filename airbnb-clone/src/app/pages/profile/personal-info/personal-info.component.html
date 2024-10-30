@@ -4,6 +4,54 @@
     <div class="col-9 pe-5">
       <div class="row py-3 border-bottom">
         <div class="col">
+          <div [ngClass]="user.profileImg ? ' d-flex gap-3' : ''">
+            <ng-container *ngIf="user.profileImg; else addProfileImg">
+              <img
+                class="profileImg"
+                [src]="user.profileImg"
+                alt="Immagine Profilo"
+              />
+            </ng-container>
+
+            <ng-template #addProfileImg>
+              <p class="text-secondary">
+                Nessuna immagine profilo disponibile. Aggiungine una!
+              </p>
+            </ng-template>
+
+            <div class="d-flex gap-1 align-items-center" *ngIf="toggleImg">
+              <input
+                type="file"
+                class="form-control"
+                (change)="onFileSelected($event)"
+                accept="image/png, image/jpeg"
+              />
+              <button
+                (click)="onUpload()"
+                class="btn btn-pink-airbnb btn-sm text-light fw-medium mt-2"
+                type="button"
+                [disabled]="!selectedImg"
+              >
+                {{
+                  user.profileImg
+                    ? "Modifica Immagine Profilo"
+                    : "Aggiungi Immagine Profilo"
+                }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-end">
+          <a
+            (click)="changeAddImg()"
+            class="text-decoration-underline text-black fw-medium"
+            role="button"
+            >{{ user.profileImg ? "Modifica" : "Aggiungi" }}</a
+          >
+        </div>
+      </div>
+      <div class="row py-3 border-bottom">
+        <div class="col">
           <h6 class="fw-bold mb-1">Nome legale</h6>
           <p class="text-secondary mb-0" *ngIf="!toggleName">
             {{ user.firstName }} {{ user.lastName }}
@@ -27,6 +75,7 @@
               (click)="updateName()"
               class="btn btn-pink-airbnb btn-sm text-light fw-medium"
               type="button"
+              role="button"
             >
               Salva
             </button>
@@ -36,13 +85,14 @@
           <a
             (click)="changeName()"
             class="text-decoration-underline text-black fw-medium"
+            role="button"
             >Modifica</a
           >
         </div>
       </div>
       <div class="row py-3 border-bottom">
         <div class="col">
-          <h6 class="fw-bold mb-1">Nome preferito</h6>
+          <h6 class="fw-bold mb-1">Username</h6>
           <p class="text-secondary mb-0" *ngIf="!toggleUsername">
             {{ user.username ? user.username : "Aggiungi un nome breve" }}
           </p>
@@ -70,6 +120,7 @@
           <a
             (click)="changeUsername()"
             class="text-decoration-underline text-black fw-medium"
+            role="button"
             >Aggiungi</a
           >
         </div>
@@ -101,6 +152,7 @@
           <a
             (click)="changeEmail()"
             class="text-decoration-underline text-black fw-medium"
+            role="button"
             >Modifica</a
           >
         </div>
@@ -140,6 +192,7 @@
           <a
             (click)="changePhone()"
             class="text-decoration-underline text-black fw-medium"
+            role="button"
             >Aggiungi</a
           >
         </div>
