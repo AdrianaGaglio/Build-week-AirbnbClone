@@ -38,12 +38,14 @@ export class MessageCardComponent {
     let unreadMessages = this.messageSvc.unreadMessages$.getValue();
     unreadMessages = unreadMessages.filter((msg) => msg.id !== this.message.id);
     this.messageSvc.unreadMessages$.next(unreadMessages);
-    this.messageSvc.readMessage(this.message).subscribe();
+    this.messageSvc.changeMessageStatus(this.message).subscribe();
   }
 
   changeAvailability() {
+    this.message.isRead = true;
     if (this.message.apartment) {
       this.message.apartment.availability = false;
+      this.messageSvc.changeMessageStatus(this.message).subscribe();
       this.apartmentSvc.changeAvailability(this.message.apartment).subscribe();
     }
   }

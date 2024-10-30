@@ -55,7 +55,7 @@ export class MessageService {
     );
   }
 
-  readMessage(message: iMessage) {
+  changeMessageStatus(message: iMessage) {
     return this.http
       .put<iMessage>(`${this.messageUrl}/${message.id}`, message)
       .pipe(
