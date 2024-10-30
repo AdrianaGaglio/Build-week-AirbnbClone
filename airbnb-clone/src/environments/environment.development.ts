@@ -36,7 +36,7 @@ export const environment = {
     { service: 'Animali ammessi', icon: 'matPets' },
     { service: 'Vasca idromassaggio', icon: 'matWaves' },
     { service: 'Servizio di pulizia', icon: 'matCleaningServices' },
-    { service: 'Reception 24 ore', icon: 'matConcierge' },
+    { service: 'Reception 24 ore', icon: 'matHelpCenter' },
     { service: 'Vista panoramica', icon: 'matLandscape' },
     { service: 'Servizio in camera', icon: 'matRoomService' },
     { service: 'Minibar', icon: 'matLocalBar' },

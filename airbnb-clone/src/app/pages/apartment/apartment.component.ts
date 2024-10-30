@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApartmentService } from '../../services/apartment.service';
 import { iApartment } from '../../interfaces/iapartment';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,14 @@ import { environment } from '../../../environments/environment.development';
   templateUrl: './apartment.component.html',
   styleUrls: ['./apartment.component.scss'],
 })
-export class ApartmentComponent {
+export class ApartmentComponent implements OnInit {
+  apartment!: iApartment;
+  loggedUserId!: string;
+  isFavorite: boolean = false;
+  host!: iUser;
+  rating!: number;
+  displayedServices: { service: string; icon: string }[] = [];
+
   constructor(
     private apartmentSvc: ApartmentService,
     private route: ActivatedRoute,
@@ -21,12 +28,6 @@ export class ApartmentComponent {
     private authSvc: AuthService,
     private userSvc: UserService
   ) {}
-
-  apartment!: iApartment;
-  loggedUserId!: string;
-  isFavorite: boolean = false;
-  host!: iUser;
-  rating!: number;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -36,6 +37,12 @@ export class ApartmentComponent {
           this.rating = Math.floor(
             this.apartment.ratings.vote / this.apartment.ratings.count
           );
+
+          // Mappa i servizi con le icone corrispondenti
+          this.displayedServices = environment.services.filter((service) =>
+            this.apartment.services.includes(service.service)
+          );
+
           this.userSvc.getUserById(this.apartment.hostId).subscribe((user) => {
             this.host = user;
           });
