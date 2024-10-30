@@ -1,8 +1,10 @@
+import { ApartmentComponent } from './../../../apartment/apartment.component';
 import { Component, Input } from '@angular/core';
 import { iMessage } from '../../../../interfaces/imessage';
 import { UserService } from '../../../../services/user.service';
 import { iUser } from '../../../../interfaces/iuser';
 import { MessageService } from '../../../../services/message.service';
+import { ApartmentService } from '../../../../services/apartment.service';
 
 @Component({
   selector: 'app-message-card',
@@ -16,7 +18,8 @@ export class MessageCardComponent {
 
   constructor(
     private userSvc: UserService,
-    private messageSvc: MessageService
+    private messageSvc: MessageService,
+    private apartmentSvc: ApartmentService
   ) {}
 
   ngOnInit() {
@@ -36,5 +39,12 @@ export class MessageCardComponent {
     unreadMessages = unreadMessages.filter((msg) => msg.id !== this.message.id);
     this.messageSvc.unreadMessages$.next(unreadMessages);
     this.messageSvc.readMessage(this.message).subscribe();
+  }
+
+  changeAvailability() {
+    if (this.message.apartment) {
+      this.message.apartment.availability = false;
+      this.apartmentSvc.changeAvailability(this.message.apartment).subscribe();
+    }
   }
 }

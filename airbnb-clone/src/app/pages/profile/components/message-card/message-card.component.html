@@ -13,7 +13,29 @@
     <h3>{{ message.message }}</h3>
     <div *ngIf="message.apartment">
       <h5>Richiesta per:</h5>
-      <p class="mb-0">{{ message.apartment.name }}</p>
+      <div class="d-flex align-items-center gap-1">
+        <p class="mb-0">
+          <a
+            class="text-decoration-none text-black"
+            [routerLink]="['/apartment', message.apartment.id]"
+            >{{ message.apartment.name }}</a
+          >
+        </p>
+        <button
+          (click)="changeAvailability()"
+          class="btn btn-sm text-light fw-medium"
+          [ngClass]="{
+            'bg-pink-airbnb': !message.apartment.availability,
+            'bg-outline-pink-airbnb': message.apartment.availability
+          }"
+        >
+          {{
+            message.apartment.availability
+              ? "Conferma prenotazione"
+              : "Prenotazione confermata"
+          }}
+        </button>
+      </div>
     </div>
     <div *ngIf="!message.apartment">
       <h5 class="mb-0">Richiesta informazioni generica</h5>
