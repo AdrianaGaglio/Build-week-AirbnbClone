@@ -11,6 +11,7 @@
   cursor: pointer;
   color: #ccc;
   transition: color 0.3s;
+  padding: 0.3rem;
 }
 
 .rating label:before {
@@ -23,4 +24,18 @@
 .rating label:hover ~ label {
   color: #fb395f;
   transition: color 0.3s;
+}
+
+.good {
+  font-size: 0.9rem;
+  position: absolute;
+  right: 1.3rem;
+  bottom: 0;
+}
+
+.bad {
+  font-size: 0.9rem;
+  position: absolute;
+  left: 1.5rem;
+  bottom: 0;
 }
