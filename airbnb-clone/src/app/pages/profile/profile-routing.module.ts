@@ -10,8 +10,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { HostGuard } from '../../guards/host.guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'personal-info', pathMatch: 'full' },
   {
-    path: '',
+    path: 'personal-info',
     component: PersonalInfoComponent,
   },
   {

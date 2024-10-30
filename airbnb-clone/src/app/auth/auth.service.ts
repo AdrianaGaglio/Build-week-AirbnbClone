@@ -101,6 +101,8 @@ export class AuthService {
   logout() {
     return from(signOut(this.auth)).pipe(
       map(() => {
+        console.log('Logout effettuato');
+
         this.authState$.next(null); // Resetta lo stato dell'utente
         this.router.navigate(['/auth/login']); // Naviga alla pagina di login
       })
