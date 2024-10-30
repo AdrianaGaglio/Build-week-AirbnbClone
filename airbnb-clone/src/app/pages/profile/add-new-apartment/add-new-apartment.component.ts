@@ -30,6 +30,35 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
+  services: string[] = [
+    'WiFi',
+    'Aria condizionata',
+    'Riscaldamento',
+    'TV',
+    'Lavatrice',
+    'Asciugatrice',
+    'Cucina attrezzata',
+    'Frigorifero',
+    'Microonde',
+    'Macchina del caffè',
+    'Asciugamani inclusi',
+    'Parcheggio gratuito',
+    'Piscina',
+    'Palestra',
+    'Area barbecue',
+    'Balcone o terrazza',
+    'Giardino',
+    'Accesso per disabili',
+    'Animali ammessi',
+    'Vasca idromassaggio',
+    'Servizio di pulizia',
+    'Reception 24 ore',
+    'Vista panoramica',
+    'Servizio in camera',
+    'Minibar',
+    'Colazione inclusa',
+  ];
+
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
       this.categories = res;
@@ -102,6 +131,7 @@ export class AddNewApartmentComponent implements OnInit {
   }
 
   infoMultiple: boolean = false;
+  infoMultiple2: boolean = false;
 
   showInfo() {
     this.infoMultiple = !this.infoMultiple;
@@ -111,9 +141,14 @@ export class AddNewApartmentComponent implements OnInit {
     }, 2200);
   }
 
-  dropDown: boolean = false;
+  showInfo2() {
+    this.infoMultiple2 = !this.infoMultiple2;
 
-  show() {
-    this.dropDown = !this.dropDown;
+    setTimeout(() => {
+      this.infoMultiple2 = !this.infoMultiple2;
+    }, 2200);
   }
+
+  dropDownservices: boolean = false;
+  dropDownCategory: boolean = false;
 }
