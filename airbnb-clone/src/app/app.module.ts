@@ -17,6 +17,7 @@ import {
   ionLogoFacebook,
   ionLogoTwitter,
   ionSearchCircleSharp,
+  ionChatboxOutline,
 } from '@ng-icons/ionicons';
 import {
   HTTP_INTERCEPTORS,
@@ -41,6 +42,7 @@ import { environment } from '../environments/environment.development';
       ionLogoFacebook,
       ionLogoTwitter,
       ionSearchCircleSharp,
+      ionChatboxOutline,
     }),
     FormsModule,
     SharedModule,

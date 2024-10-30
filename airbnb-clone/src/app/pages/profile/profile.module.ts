@@ -18,6 +18,8 @@ import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.
 import { SharedmodalModule } from '../../shared/sharedmodal/sharedmodal.module';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { EditAparmentComponent } from './edit-aparment/edit-aparment.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageCardComponent } from './components/message-card/message-card.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { EditAparmentComponent } from './edit-aparment/edit-aparment.component';
     AddNewApartmentComponent,
     FavouritesComponent,
     EditAparmentComponent,
+    MessagesComponent,
+    MessageCardComponent,
   ],
   imports: [
     CommonModule,
