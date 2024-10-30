@@ -55,6 +55,7 @@ export class HostComponent implements OnInit {
             ratingsReview: this.fb.group({
               comment: this.fb.control(''),
               userId: this.fb.control(this.loggedUserId),
+              date: this.fb.control(Date.now()),
             }),
           });
         },
