@@ -15,6 +15,7 @@ import {
   ionCafeOutline,
 } from '@ng-icons/ionicons';
 import { SharedResModule } from '../../shared/reservation/sharedRes.module';
+import { SharedMapModule } from '../../shared/map/map.module';
 
 @NgModule({
   declarations: [ApartmentComponent],
@@ -31,6 +32,7 @@ import { SharedResModule } from '../../shared/reservation/sharedRes.module';
       ionCafeOutline,
     }),
     SharedResModule,
+    SharedMapModule,
   ],
 })
 export class ApartmentModule {}

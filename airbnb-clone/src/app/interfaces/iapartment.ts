@@ -8,7 +8,7 @@ export interface iApartment {
   description: string;
   price: number;
   availability: boolean;
-  location: iLocation;
+  location: string;
   rooms: number;
   services: string[];
   squaremeters: number;
