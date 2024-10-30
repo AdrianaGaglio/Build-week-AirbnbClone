@@ -156,4 +156,17 @@ export class AddNewApartmentComponent implements OnInit {
 
   dropDownservices: boolean = false;
   dropDownCategory: boolean = false;
+  onSearch(placeName: string): void {
+    if (placeName.length > 2) {
+      this.search$.next(placeName);
+    } else {
+      this.suggestions = [];
+    }
+  }
+  selectSuggestion(suggestion: any): void {
+    this.form.get('location')?.setValue(suggestion);
+    console.log('Località selezionata:', suggestion);
+    this.suggestions = [];
+  }
+  //prova merge
 }
