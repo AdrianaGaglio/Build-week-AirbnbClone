@@ -82,52 +82,70 @@
 
         <!-- Sezione "Amato dagli ospiti" -->
 
-        <ng-container *ngIf="rating">
-          <div class="card p-3 mb-3">
+        <ng-container *ngIf="rating > 3">
+          <div class="card p-2 mb-3 rounded-3-4">
             <div
-              class="d-flex justify-content-between align-items-center p-2 gap-2"
+              class="d-flex justify-content-between align-items-center p-1 gap-2"
             >
               <div>
-                <span *ngIf="rating > 3" class="badge bg-success me-2"
-                  >Amato dagli ospiti</span
+                <img src="amato.png" height="55" class="px-2" />
+              </div>
+              <p class="mb-0 fs-6 fw-bolder d-none d-lg-block">
+                Uno degli alloggi più amati <br />
+                dagli ospiti di Airbnb
+              </p>
+              <div class="px-4 p-2">
+                <h5 class="mb-0 text-center fw-bolder">{{ rating }}.0</h5>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+              </div>
+              <div
+                class="border-start border-2 px-4 p-2 d-flex flex-column align-items-center"
+              >
+                <h5 class="m-0 fw-bolder">33</h5>
+                <a
+                  [routerLink]="['/host', host.id]"
+                  class="text-dark fs-6 fw-bolder"
+                  >recensioni</a
                 >
               </div>
-              <p class="mb-0 fs-6">
-                Uno degli alloggi più amati dagli ospiti di Airbnb
-              </p>
-              <div class="">
-                <h4 class="mb-0 fs-6 text-center">{{ rating }}</h4>
-              </div>
-              <div><span>|</span></div>
-              <div><small class="text-muted fs-6">33 recensioni</small></div>
             </div>
           </div>
         </ng-container>
 
-        <div class="d-flex align-items-center mb-2">
-          <img
-            src="https://cdn3.iconfinder.com/data/icons/avatar-and-people-4/510/Avatar_Woman_C-21-512.png"
-            alt="Immagine dell'host"
-            style="width: 30px; height: 30px"
-            class="me-2 align-self-center"
-          />
+        <div class="d-flex align-items-center mb-2 border-bottom py-4">
+          <div class="rounded-pill overflow-hidden me-3">
+            <a [routerLink]="['/host', host.id]">
+              <img
+                src="https://a0.muscache.com/im/pictures/user/f654eeec-5aa5-48b6-ae59-7cba6a7d4c7d.jpg?im_w=240"
+                alt="Immagine dell'host"
+                height="50"
+                width="50"
+                class="object-fit-cover"
+              />
+            </a>
+          </div>
           <div *ngIf="host">
-            <p class="mb-0">
-              <strong
-                >Nome dell'host:
-                <a
-                  class="text-decoration-none text-black"
-                  [routerLink]="['/host', host.id]"
-                  >{{ host.firstName }} {{ host.lastName }}</a
-                ></strong
-              >
-            </p>
+            <a
+              class="link-underline link-underline-opacity-0"
+              [routerLink]="['/host', host.id]"
+            >
+              <p class="mb-0 d-flex flex-column text-dark">
+                <strong>
+                  Nome dell'host: {{ host.firstName }} {{ host.lastName }}
+                </strong>
+                <span>Super host • 5 anni di esperienza come host</span>
+              </p>
+            </a>
           </div>
         </div>
       </div>
     </div>
     <!-- App Reservation -->
-    <div class="col-4 d-flex flex-column justify-content-center">
+    <div class="col-4 ms-3">
       <ng-container *ngIf="loggedUserId && apartment.availability"
         ><app-reservation [apartment]="apartment"></app-reservation
       ></ng-container>
@@ -174,12 +192,10 @@
     </div>
   </div>
 
-  <hr class="custom-hr" />
-
   <!-- Sezione Dove dormirai -->
-  <div class="row mt-3">
+  <div class="row border-bottom py-5">
     <div class="col-8">
-      <h4>Dove dormirai</h4>
+      <h3 class="fw-semibold pb-2">Dove dormirai</h3>
       <div class="card p-3" style="max-width: 200px; display: inline-block">
         <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
         <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
@@ -190,50 +206,40 @@
     </div>
   </div>
 
-  <hr class="custom-hr" />
-
   <!-- Servizi Offerti -->
-  <div class="row mt-3">
-    <div class="col-8">
-      <h4>Cosa troverai</h4>
-      <div class="row">
-        <div class="col-6">
-          <ul class="list-unstyled" *ngIf="apartment.services">
-            <li class="d-flex align-items-center mb-2">
-              <ng-icon
-                name="ionWifiOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              Wi-Fi gratuito
-            </li>
-            <li class="d-flex align-items-center mb-2">
-              <ng-icon
-                name="ionTvOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              TV con Netflix
-            </li>
-          </ul>
-        </div>
-        <div class="col-6">
-          <ul class="list-unstyled">
-            <li class="d-flex align-items-center mb-2">
-              <ng-icon
-                name="ionSnowOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              Aria condizionata
-            </li>
-            <li class="d-flex align-items-center mb-2">
-              <ng-icon
-                name="ionCafeOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              Macchina da caffè
-            </li>
-            <!-- Aggiungere altri servizi qui -->
-          </ul>
-        </div>
+  <div class="py-5 border-bottom mb-3">
+    <h3 class="fw-semibold pb-2">Cosa troverai</h3>
+    <div
+      class="row row-cols-2 list-unstyled d-flex flex-wrap"
+      *ngIf="apartment.services"
+    >
+      <div class="col d-flex align-items-center mb-2 fs-5">
+        <ng-icon
+          name="ionWifiOutline"
+          style="font-size: 20px; margin-right: 5px"
+        ></ng-icon>
+        Wi-Fi gratuito
+      </div>
+      <div class="col d-flex align-items-center mb-2 fs-5">
+        <ng-icon
+          name="ionTvOutline"
+          style="font-size: 20px; margin-right: 5px"
+        ></ng-icon>
+        TV con Netflix
+      </div>
+      <div class="col d-flex align-items-center mb-2 fs-5">
+        <ng-icon
+          name="ionSnowOutline"
+          style="font-size: 20px; margin-right: 5px"
+        ></ng-icon>
+        Aria condizionata
+      </div>
+      <div class="col d-flex align-items-center mb-2 fs-5">
+        <ng-icon
+          name="ionCafeOutline"
+          style="font-size: 20px; margin-right: 5px"
+        ></ng-icon>
+        Macchina da caffè
       </div>
     </div>
   </div>
