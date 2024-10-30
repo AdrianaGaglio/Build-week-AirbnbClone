@@ -25,8 +25,8 @@
           (click)="changeAvailability()"
           class="btn btn-sm text-light fw-medium"
           [ngClass]="{
-            'bg-pink-airbnb': !message.apartment.availability,
-            'bg-outline-pink-airbnb': message.apartment.availability
+            'bg-pink-airbnb': message.apartment.availability,
+            'bg-outline-danger': !message.apartment.availability
           }"
         >
           {{

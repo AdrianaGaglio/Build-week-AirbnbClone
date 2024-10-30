@@ -42,6 +42,7 @@ export class MessageCardComponent {
   }
 
   changeAvailability() {
+    this.message.isRead = true;
     if (this.message.apartment) {
       this.message.apartment.availability = false;
       this.apartmentSvc.changeAvailability(this.message.apartment).subscribe();
