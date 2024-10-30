@@ -1,7 +1,7 @@
 <div class="container" *ngIf="user">
   <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
     <!-- side 1 -->
-    <div class="border d-flex align-items-center flex-column py-4">
+    <div class="d-flex align-items-center flex-column py-4">
       <div class="card-host-pos">
         <!-- card profile -->
         <div
@@ -69,7 +69,7 @@
       </div>
     </div>
     <!-- side 2 -->
-    <div class="border rounded-3 p-4">
+    <div class="rounded-3 p-4">
       <!-- titolo review -->
       <div *ngIf="user.reviews && user.reviews.length > 0" class="mb-5">
         <div class="d-flex justify-content-between">
@@ -98,61 +98,24 @@
       </div>
 
       <div *ngIf="apartments">
-        <h2 class="fw-bolder">Annunci di Kevin Hart</h2>
-        <div class="row row-cols-3">
+        <h2 class="fw-bolder white-space">Annunci di Kevin Hart</h2>
+        <div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-5">
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
+          <div class="col" *ngFor="let apartment of apartments">
+            <app-card [apartment]="apartment"></app-card>
+          </div>
           <div class="col" *ngFor="let apartment of apartments">
             <app-card [apartment]="apartment"></app-card>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
     </div>
   </div>

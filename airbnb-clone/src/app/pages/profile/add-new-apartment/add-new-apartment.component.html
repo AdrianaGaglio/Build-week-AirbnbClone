@@ -176,19 +176,21 @@
             <div class="d-flex flex-column position-relative">
               <h5>
                 Servizi
-                <a (click)="showInfo()" class="fs-7 ps-1 pointer"
+                <a
+                  (click)="showInfo()"
+                  class="fs-7 ps-1 pointer text-pink-airbnb"
                   >Selezione Multipla?</a
                 >
                 <div
                   [ngClass]="{ show: infoMultiple }"
-                  class="bg-primary-subtle rounded-3 p-3 fs-6 dropdown-menu infoLink"
+                  class="bg-pink-airbnb text-white fw-bold rounded-3 p-3 fs-6 dropdown-menu infoLink"
                 >
                   Al click tieni premuto Ctrl per una selezione multipla
                 </div>
               </h5>
               <div class="d-flex flex-wrap selectShow">
                 <div
-                  class="bg-primary-subtle rounded m-1 px-2 fw-semibold"
+                  class="bg-pink-airbnb-subtle text-white rounded m-1 px-2 fw-semibold"
                   *ngFor="let item of form.value.services"
                 >
                   {{ item | titlecase }}
@@ -198,7 +200,7 @@
             <div class="dropdown">
               <button
                 (click)="dropDownservices = !dropDownservices"
-                class="btn bg-primary-subtle dropdown-toggle show"
+                class="btn bg-pink-airbnb-subtle dropdown-toggle text-white fw-bold show"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -252,19 +254,21 @@
             <div class="d-flex flex-column position-relative">
               <h5>
                 Categorie
-                <a (click)="showInfo2()" class="fs-7 ps-1 pointer"
+                <a
+                  (click)="showInfo2()"
+                  class="fs-7 ps-1 pointer text-pink-airbnb"
                   >Selezione Multipla?</a
                 >
                 <div
                   [ngClass]="{ show: infoMultiple2 }"
-                  class="bg-primary-subtle rounded-3 p-3 fs-6 dropdown-menu infoLink"
+                  class="bg-pink-airbnb text-white fw-bold rounded-3 p-3 fs-6 dropdown-menu infoLink"
                 >
                   Al click tieni premuto Ctrl per una selezione multipla
                 </div>
               </h5>
               <div class="d-flex flex-wrap selectShow">
                 <div
-                  class="bg-primary-subtle rounded m-1 px-2 fw-semibold"
+                  class="bg-pink-airbnb-subtle text-white fw-bold rounded m-1 px-2 fw-semibold"
                   *ngFor="let item of form.value.category"
                 >
                   {{ item | titlecase }}
@@ -274,7 +278,7 @@
             <div class="dropdown">
               <button
                 (click)="dropDownCategory = !dropDownCategory"
-                class="btn bg-primary-subtle dropdown-toggle show"
+                class="btn bg-pink-airbnb-subtle text-white fw-bold dropdown-toggle show"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
