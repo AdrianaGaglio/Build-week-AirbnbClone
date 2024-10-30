@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Host, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -7,6 +7,7 @@ import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.
 import { FavouritesComponent } from './favourites/favourites.component';
 import { EditAparmentComponent } from './edit-aparment/edit-aparment.component';
 import { MessagesComponent } from './messages/messages.component';
+import { HostGuard } from '../../guards/host.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [HostGuard],
   },
   {
     path: 'personal-info',
