@@ -71,7 +71,7 @@
       <!-- Sezione Recensioni e Host -->
       <div class="col">
         <p class="text-muted mb-0 fs-4">
-          <strong>Torano nuovo, Italia. Cupola</strong>
+          <strong>{{ apartment.location }}</strong>
         </p>
         <p>{{ apartment.description }}</p>
         <p>
@@ -145,12 +145,29 @@
   <div class="row mt-3">
     <div class="col-8">
       <h4>Dove dormirai</h4>
-      <div class="card p-3" style="max-width: 200px; display: inline-block">
-        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-        <h5>Camera da letto</h5>
-        <p>1 letto matrimoniale, 2 letti singoli</p>
+      <div class="card p-3 w-fixed-250">
+        <h5>Stanze</h5>
+        <div>
+          <div>
+            <ng-container *ngFor="let i of array">
+              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon
+            ></ng-container>
+          </div>
+
+          <span>{{
+            apartment.rooms >= 5 ? "2 camere da letto" : "1 camera da letto"
+          }}</span>
+
+          <div>
+            <ng-container *ngIf="apartment.rooms > 2">
+              <span>{{
+                apartment.rooms >= 5
+                  ? apartment.rooms - 2 + " altre stanze"
+                  : apartment.rooms - 1 + " altre stanze"
+              }}</span>
+            </ng-container>
+          </div>
+        </div>
       </div>
     </div>
   </div>

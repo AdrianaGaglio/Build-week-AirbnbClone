@@ -20,6 +20,8 @@ export class ApartmentComponent implements OnInit {
   host!: iUser;
   rating!: number;
   displayedServices: { service: string; icon: string }[] = [];
+  numOfRoom: number = 0;
+  array!: any[];
 
   constructor(
     private apartmentSvc: ApartmentService,
@@ -34,6 +36,11 @@ export class ApartmentComponent implements OnInit {
       this.apartmentSvc.getApartmentById(params['id']).subscribe({
         next: (res) => {
           this.apartment = res;
+          this.numOfRoom = this.apartment.rooms > 5 ? 2 : 1;
+          this.array = Array.from(
+            { length: this.numOfRoom },
+            (_, index) => index + 1
+          );
           this.rating = Math.floor(
             this.apartment.ratings.vote / this.apartment.ratings.count
           );

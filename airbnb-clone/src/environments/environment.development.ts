@@ -21,7 +21,7 @@ export const environment = {
     { service: 'TV', icon: 'ionTvOutline' },
     { service: 'Lavatrice', icon: 'ionShirtOutline' },
     { service: 'Asciugatrice', icon: 'matLocalLaundryService' },
-    { service: 'Cucina attrezzata', icon: 'matMulticooker' },
+    { service: 'Cucina attrezzata', icon: 'matBlender' },
     { service: 'Frigorifero', icon: 'matKitchen' },
     { service: 'Microonde', icon: 'matMicrowave' },
     { service: 'Macchina del caffè', icon: 'ionCafeOutline' },
