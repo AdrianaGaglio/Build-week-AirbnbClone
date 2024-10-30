@@ -5,6 +5,7 @@ import { iUser } from '../../interfaces/iuser';
 import { ApartmentService } from '../../services/apartment.service';
 import { iApartment } from '../../interfaces/iapartment';
 import { AuthService } from '../../auth/auth.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-host',
@@ -16,7 +17,8 @@ export class HostComponent implements OnInit {
     private userSvc: UserService,
     private route: ActivatedRoute,
     private apartmentSvc: ApartmentService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private fb: FormBuilder
   ) {}
 
   user!: iUser;
@@ -24,6 +26,9 @@ export class HostComponent implements OnInit {
   apartments!: iApartment[];
   ratings!: number;
   loggedIn!: boolean;
+
+  showRatings: boolean = false;
+  ratingsForm!: FormGroup;
 
   ngOnInit(): void {
     this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
@@ -63,11 +68,18 @@ export class HostComponent implements OnInit {
         },
       });
     });
-  }
 
-  showRatings: boolean = false;
+    this.ratingsForm = this.fb.group({
+      ratingsStars: this.fb.group({
+        star: this.fb.control(''),
+        id: this.fb.control(''),
+      }),
+      ratingsReview: this.fb.group({
+        review: this.fb.control(''),
+        id: this.fb.control(''),
+      }),
+    });
 
-  show() {
-    this.showRatings = !this.showRatings;
+    console.log(this.ratingsForm.value);
   }
 }

@@ -48,7 +48,7 @@
 
         <div class="dropdown mt-2">
           <button
-            (click)="show()"
+            (click)="showRatings = !showRatings"
             class="btn bg-pink-airbnb-subtle text-white rounded-4 dropdown-toggle button-host"
             type="button"
             data-bs-toggle="dropdown"
@@ -58,10 +58,22 @@
           </button>
           <div
             [ngClass]="{ show: showRatings }"
-            class="border rounded-4 p-2 text-center dropdown-menu"
+            class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
           >
-            <app-ratings-stars></app-ratings-stars>
-            <app-text-review></app-text-review>
+            <form>
+              <div class="mt-2">
+                <h5>
+                  Come valuti l'esperinza <br />
+                  con l'host?
+                </h5>
+                <app-ratings-stars></app-ratings-stars>
+              </div>
+
+              <app-text-review></app-text-review>
+              <button class="btn btn-pink-airbnb text-white fw-bold my-2 w-75">
+                Invia
+              </button>
+            </form>
           </div>
         </div>
 
