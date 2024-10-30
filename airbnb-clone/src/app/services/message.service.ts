@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { iMessage } from '../interfaces/imessage';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,9 @@ export class MessageService {
   constructor(private http: HttpClient) {}
 
   messageUrl = environment.messageUrl;
+
+  unreadMessages$ = new BehaviorSubject<iMessage[] | []>([]);
+  allMessages$ = new BehaviorSubject<iMessage[] | []>([]);
 
   getMessages(userId: string): Observable<iMessage[]> {
     return this.http

@@ -27,90 +27,104 @@
         ></ng-icon>
       </button>
     </form>
-    <!-- menu profilo -->
-    <div class="flex-shrink-0 dropdown">
-      <a
-        (click)="show()"
-        [ngClass]="{ show: showBol }"
-        class="d-block text-decoration-none text-secondary"
+    <div class="d-flex align-items-center">
+      <div
+        *ngIf="isLoggedIn"
+        class="position-relative ms-auto me-3 d-flex align-items-center p-2 rounded-circle border border-1 border-secondary-subtle shadow-sm"
       >
-        <div
-          class="d-flex align-items-center rounded-pill border border-secondary-subtle shadow-sm px-2 py-2"
+        <ng-icon name="ionChatboxOutline" class="fs-4"></ng-icon>
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
         >
-          <ng-icon name="ionMenuOutline" class="fs-4 text-black"></ng-icon>
+          {{ unreadMsg }}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </div>
+      <!-- menu profilo -->
+      <div class="flex-shrink-0 dropdown">
+        <a
+          (click)="show()"
+          [ngClass]="{ show: showBol }"
+          class="d-block text-decoration-none text-secondary"
+        >
+          <div
+            class="d-flex align-items-center rounded-pill border border-secondary-subtle shadow-sm px-2 py-2"
+          >
+            <ng-icon name="ionMenuOutline" class="fs-4 text-black"></ng-icon>
 
-          <img
-            src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=G&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
-            height="30"
-            class="ms-1 ps-1"
-          />
-        </div>
-      </a>
-      <ul
-        [ngClass]="{ show: showBol }"
-        class="dropdown-menu text-small shadow hoverMenu border-0 rounded-3"
-        style="
-          position: absolute;
-          inset: 0px 0px auto auto;
-          margin: 0px;
-          transform: translate(0px, 58px);
-        "
-      >
-        <li>
-          <a
-            (click)="show()"
-            routerLink="/profile/personal-info"
-            class="dropdown-item text-dark hoverMenu"
-            >Profile</a
-          >
-        </li>
-        <li>
-          <a
-            (click)="show()"
-            routerLink="/profile/dashboard"
-            class="dropdown-item text-dark hoverMenu"
-            >Dashboard</a
-          >
-        </li>
-        <li>
-          <a
-            (click)="show()"
-            routerLink="/profile/favourites"
-            class="dropdown-item text-dark hoverMenu"
-            >Preferiti</a
-          >
-        </li>
-        <li><hr class="my-2" /></li>
-        <li *ngIf="isLoggedIn">
-          <button
-            (click)="logout()"
-            (click)="show()"
-            class="dropdown-item text-dark hoverMenu"
-          >
-            Logout
-          </button>
-        </li>
-        <ng-container *ngIf="!isLoggedIn">
+            <img
+              src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=G&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
+              height="30"
+              class="ms-1 ps-1"
+            />
+          </div>
+        </a>
+        <ul
+          [ngClass]="{ show: showBol }"
+          class="dropdown-menu text-small shadow hoverMenu border-0 rounded-3"
+          style="
+            position: absolute;
+            inset: 0px 0px auto auto;
+            margin: 0px;
+            transform: translate(0px, 58px);
+          "
+        >
           <li>
             <a
               (click)="show()"
-              routerLink="/auth/login"
+              routerLink="/profile/personal-info"
               class="dropdown-item text-dark hoverMenu"
+              >Profile</a
             >
-              Accedi
-            </a>
           </li>
           <li>
             <a
-              routerLink="/auth/register"
+              (click)="show()"
+              routerLink="/profile/dashboard"
+              class="dropdown-item text-dark hoverMenu"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="show()"
+              routerLink="/profile/favourites"
+              class="dropdown-item text-dark hoverMenu"
+              >Preferiti</a
+            >
+          </li>
+          <li><hr class="my-2" /></li>
+          <li *ngIf="isLoggedIn">
+            <button
+              (click)="logout()"
               (click)="show()"
               class="dropdown-item text-dark hoverMenu"
             >
-              Registrati!
-            </a>
+              Logout
+            </button>
           </li>
-        </ng-container>
-      </ul>
+          <ng-container *ngIf="!isLoggedIn">
+            <li>
+              <a
+                (click)="show()"
+                routerLink="/auth/login"
+                class="dropdown-item text-dark hoverMenu"
+              >
+                Accedi
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/auth/register"
+                (click)="show()"
+                class="dropdown-item text-dark hoverMenu"
+              >
+                Registrati!
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
     </div>
   </div>
 </header>
