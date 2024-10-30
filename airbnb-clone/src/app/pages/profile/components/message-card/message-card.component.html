@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-body position-relative">
+    <span
+      role="button"
+      (click)="readMessage()"
+      *ngIf="!message.isRead"
+      class="badge text-light text-bg-pink-airbnb position-absolute top-0 end-0 me-1 mt-1"
+      >Unread</span
+    >
+    <p class="text-body-tertiary">
+      Messaggio da {{ user.firstName }} {{ user.lastName }}
+    </p>
+    <h3>{{ message.message }}</h3>
+    <div *ngIf="message.apartment">
+      <h5>Richiesta per:</h5>
+      <p class="mb-0">{{ message.apartment.name }}</p>
+    </div>
+    <div *ngIf="!message.apartment">
+      <h5 class="mb-0">Richiesta informazioni generica</h5>
+    </div>
+  </div>
+</div>

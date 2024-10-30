@@ -54,4 +54,22 @@ export class MessageService {
       })
     );
   }
+
+  readMessage(message: iMessage) {
+    return this.http
+      .put<iMessage>(`${this.messageUrl}/${message.id}`, message)
+      .pipe(
+        catchError((error) => {
+          return throwError(() => {
+            let message = '';
+            if (error.status >= 400 && error.status < 500) {
+              message = 'Nessun messaggio';
+            } else if (error.status === 500) {
+              message = 'Errore nella richiesta';
+            }
+            return message;
+          });
+        })
+      );
+  }
 }

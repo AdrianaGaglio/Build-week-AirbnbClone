@@ -29,13 +29,15 @@
     </form>
     <div class="d-flex align-items-center">
       <div
+        routerLink="/profile/messages"
         *ngIf="isLoggedIn"
+        role="button"
         class="position-relative ms-auto me-3 d-flex align-items-center p-2 rounded-circle border border-1 border-secondary-subtle shadow-sm"
       >
         <ng-icon name="ionChatboxOutline" class="fs-4"></ng-icon>
         <span
           *ngIf="unreadMsg > 0"
-          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-pink-airbnb"
         >
           {{ unreadMsg }}
           <span class="visually-hidden">unread messages</span>
