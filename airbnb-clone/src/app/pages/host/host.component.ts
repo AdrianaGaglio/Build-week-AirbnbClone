@@ -5,7 +5,7 @@ import { iUser } from '../../interfaces/iuser';
 import { ApartmentService } from '../../services/apartment.service';
 import { iApartment } from '../../interfaces/iapartment';
 import { AuthService } from '../../auth/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-host',
@@ -27,12 +27,18 @@ export class HostComponent implements OnInit {
   ratings!: number;
   loggedIn!: boolean;
 
+  loggedUserId!: string;
+
   showRatings: boolean = false;
   ratingsForm!: FormGroup;
 
   ngOnInit(): void {
-    this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
-      this.loggedIn = isLoggedIn;
+    this.authSvc.authState$.subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.loggedIn = true;
+
+        this.loggedUserId = isLoggedIn.uid;
+      }
     });
     this.route.params.subscribe((params) => {
       this.userSvc.getUserById(params['id']).subscribe({
@@ -41,6 +47,16 @@ export class HostComponent implements OnInit {
           if (user.ratings) {
             this.ratings = Math.floor(user.ratings.vote / user.ratings.count);
           }
+          this.ratingsForm = this.fb.group({
+            ratings: this.fb.group({
+              vote: this.fb.control(0, [Validators.required]),
+              count: this.fb.control(1),
+            }),
+            ratingsReview: this.fb.group({
+              comment: this.fb.control(''),
+              userId: this.fb.control(this.loggedUserId),
+            }),
+          });
         },
         error: (err) => {
           this.message = err;
@@ -68,18 +84,20 @@ export class HostComponent implements OnInit {
         },
       });
     });
+  }
 
-    this.ratingsForm = this.fb.group({
-      ratingsStars: this.fb.group({
-        star: this.fb.control(''),
-        id: this.fb.control(''),
-      }),
-      ratingsReview: this.fb.group({
-        review: this.fb.control(''),
-        id: this.fb.control(''),
-      }),
-    });
+  sendReview() {
+    const userUpdate = this.ratingsForm.value;
 
-    console.log(this.ratingsForm.value);
+    this.user.ratings.count += userUpdate.ratings.count;
+    this.user.ratings.vote += userUpdate.ratings.vote;
+
+    this.user.reviews.push(userUpdate.ratingsReview);
+
+    this.userSvc.changeUserInfo(this.user).subscribe();
+
+    console.log(userUpdate);
+
+    console.log(this.user);
   }
 }

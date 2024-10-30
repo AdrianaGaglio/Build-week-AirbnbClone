@@ -60,17 +60,24 @@
             [ngClass]="{ show: showRatings }"
             class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
           >
-            <form>
+            <form [formGroup]="ratingsForm">
               <div class="mt-2">
                 <h5>
                   Come valuti l'esperinza <br />
                   con l'host?
                 </h5>
-                <app-ratings-stars></app-ratings-stars>
+                <div formGroupName="ratings">
+                  <app-ratings-stars formControlName="vote"></app-ratings-stars>
+                </div>
               </div>
 
-              <app-text-review></app-text-review>
-              <button class="btn btn-pink-airbnb text-white fw-bold my-2 w-75">
+              <div formGroupName="ratingsReview">
+                <app-text-review formControlName="comment"></app-text-review>
+              </div>
+              <button
+                (click)="sendReview()"
+                class="btn btn-pink-airbnb text-white fw-bold my-2 w-75"
+              >
                 Invia
               </button>
             </form>
