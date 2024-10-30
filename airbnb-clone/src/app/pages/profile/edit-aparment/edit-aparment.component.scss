@@ -1,0 +1,62 @@
+.pointerNone {
+  pointer-events: none;
+}
+
+.pointerBefore::before {
+  content: "";
+  border-radius: 5px;
+  height: 14px;
+  width: 3px;
+  background-color: #e5e5e5;
+  z-index: 990;
+  position: absolute;
+  bottom: -14px;
+  transform: translateX(-1.5px);
+}
+
+.posStickyNav {
+  position: sticky;
+  top: 5rem;
+}
+
+form {
+  input,
+  textarea,
+  select,
+  .dropdown-toggle {
+    width: 378px;
+  }
+}
+
+.posSpan {
+  position: absolute;
+  transform: translatey(48px);
+  bottom: 0;
+  right: 0;
+}
+
+select {
+  background-color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  option {
+    padding: 0.5rem;
+  }
+  right: 0;
+}
+
+select:active {
+  border: 1px solid #b3b3b3;
+}
+
+.selectShow {
+  max-width: 280px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.infoLink {
+  top: -100px;
+}

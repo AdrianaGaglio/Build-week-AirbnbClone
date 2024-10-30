@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { AddNewApartmentComponent } from './add-new-apartment/add-new-apartment.component';
+import { EditAparmentComponent } from './edit-aparment/edit-aparment.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'edit-apartment/:id',
-    component: AddNewApartmentComponent,
+    component: EditAparmentComponent,
   },
 ];
 

@@ -1,0 +1,306 @@
+<div class="container">
+  <div class="row mt-3">
+    <!-- colonna step -->
+    <div class="col-2">
+      <div class="posStickyNav">
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
+              type="checkbox"
+              id="nameCheck"
+              [checked]="form.value.name"
+              [ngClass]="{ 'bg-warning': minlength('name') }"
+            />
+            <label for="nameCheck">Nome</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
+              type="checkbox"
+              id="descriptionCheck"
+              [checked]="form.value.description"
+              [ngClass]="{ 'bg-warning': minlength('description') }"
+            />
+            <label for="descriptionCheck">Descrizione</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
+              type="checkbox"
+              id="nameCheck"
+              [checked]="form.value.rooms"
+            />
+            <label for="nameCheck">stanze</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
+              type="checkbox"
+              id="servicesCheck"
+              [checked]="form.value.services"
+            />
+            <label for="servicesCheck">Servizi</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
+              type="checkbox"
+              id="descriptionCheck"
+              [checked]="form.value.coverImage"
+            />
+            <label for="descriptionCheck">Cover</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
+              type="checkbox"
+              id="otherImagesCheck"
+              [checked]="form.value.otherImages"
+            />
+            <label for="otherImagesCheck">Immagini</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
+              type="checkbox"
+              id="categoryCheck"
+              [checked]="form.value.category"
+            />
+            <label for="categoryCheck">Categoria</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
+              type="checkbox"
+              id="squaremetersCheck"
+              [checked]="form.value.squaremeters"
+            />
+            <label for="squaremetersCheck">Dimensioni</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
+              type="checkbox"
+              id="locationCheck"
+              [checked]="form.value.location"
+            />
+            <label for="locationCheck">Posizione</label>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="d-flex align-items-center">
+            <input
+              class="form-check-input mt-0 me-3 pointerNone rounded-pill p-2 t"
+              type="checkbox"
+              id="priceCheck"
+              [checked]="form.value.price"
+            />
+            <label for="priceCheck">Prezzo</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- colonna form -->
+    <div class="col ms-4 me-3 pe-0">
+      <h2>Dettagli di {{ form.get("name")?.value }}</h2>
+      <form [formGroup]="form">
+        <div class="form-group ps-4">
+          <!-- name -->
+          <div
+            class="d-flex my-5 gap-5 justify-content-between position-relative"
+          >
+            <h5>Il nome del tuo appartamento</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. Villa Licata"
+              formControlName="name"
+            />
+            <span
+              class="alert alert-warning my-1 p-2 posSpan fs-6"
+              role="alert"
+              *ngIf="minlength('name')"
+            >
+              Almeno 4 caratteri
+            </span>
+          </div>
+          <!-- description -->
+          <div
+            class="d-flex my-5 gap-5 justify-content-between position-relative"
+          >
+            <h5>Descrizione dell'appartamento</h5>
+            <textarea
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. Bellissima villa con..."
+              formControlName="description"
+            >
+            </textarea>
+            <span
+              class="alert alert-warning my-1 p-2 posSpan fs-6"
+              role="alert"
+              *ngIf="minlength('description')"
+            >
+              Almeno 30 caratteri
+            </span>
+          </div>
+          <!-- rooms -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Numero di stanze</h5>
+            <input
+              type="number"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. 2-3"
+              formControlName="rooms"
+            />
+          </div>
+          <!-- services -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Servizi offerti</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. Wi-fi..."
+              formControlName="services"
+            />
+          </div>
+          <!-- coverImage -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Cover annunci</h5>
+            <input
+              formControlName="coverImage"
+              class="form-control"
+              type="text"
+              id="avatar"
+            />
+          </div>
+          <!-- otherImages -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Immagini dell'appartamento</h5>
+            <input
+              formControlName="otherImages"
+              class="form-control"
+              type="text"
+              id="avatar"
+            />
+          </div>
+          <!-- category -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <div class="d-flex flex-column position-relative">
+              <h5>
+                Categorie
+                <a (click)="showInfo()" class="fs-7 ps-1 pointer"
+                  >Selezione Multipla?</a
+                >
+                <div
+                  [ngClass]="{ show: infoMultiple }"
+                  class="bg-primary-subtle rounded-3 p-3 fs-6 dropdown-menu infoLink"
+                >
+                  Al click tieni premuto Ctrl per una selezione multipla
+                </div>
+              </h5>
+              <div class="d-flex flex-wrap selectShow">
+                <div
+                  class="bg-primary-subtle rounded m-1 px-2 fw-semibold"
+                  *ngFor="let item of form.value.category"
+                >
+                  {{ item | titlecase }}
+                </div>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button
+                (click)="show()"
+                class="btn bg-primary-subtle dropdown-toggle show"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                [ngClass]="{ show: dropDown }"
+              >
+                Scegli delle categorie:
+              </button>
+              <select
+                [ngClass]="{ show: dropDown }"
+                class="dropdown-menu"
+                id="category"
+                formControlName="category"
+                name="category"
+                multiple
+              >
+                <option value="">Scegli delle categorie</option>
+                <option
+                  class="dropdown-item"
+                  *ngFor="let category of categories"
+                  value="{{ category }}"
+                >
+                  {{ category | titlecase }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- squaremeters -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Metri Quadrati</h5>
+            <input
+              type="number"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. 120"
+              formControlName="squaremeters"
+            />
+          </div>
+          <!-- location -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Posizione dell'appartamento</h5>
+            <input
+              type="text"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. Licata"
+              formControlName="location"
+            />
+          </div>
+          <!-- price -->
+          <div class="d-flex my-5 gap-5 justify-content-between">
+            <h5>Prezzo di vendita per notte</h5>
+            <input
+              type="number"
+              class="form-contrl px-3 py-2 rounded border"
+              placeholder="es. 300"
+              formControlName="price"
+            />
+          </div>
+          <button
+            [disabled]="form.invalid"
+            (click)="onSubmit()"
+            class="btn btn-pink-airbnb text-white fw-semibold px-3"
+          >
+            Salva
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-3 d-none d-xxl-block">
+      <div class="posStickyNav">
+        <ng-container>
+          <app-card [apartment]="form.value"></app-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
