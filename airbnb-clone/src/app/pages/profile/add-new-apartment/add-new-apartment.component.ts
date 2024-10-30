@@ -153,4 +153,5 @@ export class AddNewApartmentComponent implements OnInit {
     console.log('Località selezionata:', suggestion);
     this.suggestions = [];
   }
+  //prova merge
 }
