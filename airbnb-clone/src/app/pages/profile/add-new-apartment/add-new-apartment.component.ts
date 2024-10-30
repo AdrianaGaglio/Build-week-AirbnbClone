@@ -30,7 +30,7 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
-  services: string[] = [
+  /*services: string[] = [
     'WiFi', //ionWifiOutline
     'Aria condizionata', //ionSnowOutline
     'Riscaldamento', //ionFlameOutline
@@ -57,7 +57,7 @@ export class AddNewApartmentComponent implements OnInit {
     'Servizio in camera', //<mat-icon>room_service</mat-icon>
     'Minibar', //<mat-icon>local_bar</mat-icon>
     'Colazione inclusa', //<mat_icon>bakery_dining</mat_icon>
-  ];
+  ];*/
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
