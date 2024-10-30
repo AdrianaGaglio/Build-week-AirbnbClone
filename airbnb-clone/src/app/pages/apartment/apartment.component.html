@@ -82,7 +82,7 @@
 
         <!-- Sezione "Amato dagli ospiti" -->
 
-        <ng-container *ngIf="rating">
+        <ng-container *ngIf="rating > 3">
           <div class="card p-3 mb-3">
             <div
               class="d-flex justify-content-between align-items-center p-2 gap-2"
@@ -99,7 +99,13 @@
                 <h4 class="mb-0 fs-6 text-center">{{ rating }}</h4>
               </div>
               <div><span>|</span></div>
-              <div><small class="text-muted fs-6">33 recensioni</small></div>
+              <div>
+                <small class="text-muted fs-6">{{
+                  apartment.reviews.length > 1
+                    ? apartment.reviews.length + " recensioni"
+                    : "1 recensione"
+                }}</small>
+              </div>
             </div>
           </div>
         </ng-container>
@@ -159,11 +165,11 @@
           }}</span>
 
           <div>
-            <ng-container *ngIf="apartment.rooms > 2">
+            <ng-container *ngIf="apartment.rooms - numOfRoom >= 1">
               <span>{{
                 apartment.rooms >= 5
                   ? apartment.rooms - 2 + " altre stanze"
-                  : apartment.rooms - 1 + " altre stanze"
+                  : apartment.rooms - 1 + " altra stanza"
               }}</span>
             </ng-container>
           </div>
