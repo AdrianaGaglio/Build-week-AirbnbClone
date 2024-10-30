@@ -30,9 +30,8 @@ export class AppComponent {
       if (user) {
         this.messageSvc.getMessages(user.uid).subscribe((msgs) => {
           if (msgs) {
-            console.log(msgs);
             this.messageSvc.allMessages$.next(msgs);
-            let unread = msgs.filter((msg) => msg.isRead);
+            let unread = msgs.filter((msg) => !msg.isRead);
             this.messageSvc.unreadMessages$.next(unread);
           }
         });
