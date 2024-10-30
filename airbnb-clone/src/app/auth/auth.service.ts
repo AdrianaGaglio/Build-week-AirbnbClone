@@ -52,7 +52,7 @@ export class AuthService {
     ).pipe(
       switchMap((userCredential) => {
         const uid = userCredential.user.uid;
-        console.log('Utente creato con UID:', uid);
+        // console.log('Utente creato con UID:', uid);
 
         const userDocRef = doc(this.firestore, `users/${uid}`);
         return from(
@@ -67,7 +67,7 @@ export class AuthService {
             reviews: user.reviews || [],
           })
         ).pipe(
-          map(() => console.log('Dati utente salvati in Firestore.')),
+          // map(() => console.log('Dati utente salvati in Firestore.')),
           catchError((error) => {
             console.error('Errore durante il salvataggio in Firestore:', error);
             return throwError(() => new Error('Errore nella registrazione'));

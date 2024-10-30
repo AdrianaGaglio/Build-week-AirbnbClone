@@ -28,6 +28,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment.development';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -45,6 +47,8 @@ import { environment } from '../environments/environment.development';
     FormsModule,
     SharedModule,
     BrowserModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
