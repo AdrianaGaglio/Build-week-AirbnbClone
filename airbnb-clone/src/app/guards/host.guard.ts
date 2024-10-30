@@ -41,7 +41,7 @@ export class HostGuard implements CanActivate, CanActivateChild {
               user = userFromId;
 
               if (user?.role !== 'host') {
-                this.router.navigate(['/profile']);
+                this.router.navigate(['/profile/personal-info']);
                 return false;
               }
               return true;

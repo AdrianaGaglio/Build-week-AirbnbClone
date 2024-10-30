@@ -12,7 +12,7 @@ import { HostGuard } from '../../guards/host.guard';
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,
+    component: PersonalInfoComponent,
   },
   {
     path: 'dashboard',
@@ -20,16 +20,14 @@ const routes: Routes = [
     canActivate: [HostGuard],
   },
   {
-    path: 'personal-info',
-    component: PersonalInfoComponent,
-  },
-  {
     path: 'new-apartment',
     component: AddNewApartmentComponent,
+    canActivate: [HostGuard],
   },
   {
     path: 'edit-apartment/:id',
     component: EditAparmentComponent,
+    canActivate: [HostGuard],
   },
   {
     path: 'favourites',
