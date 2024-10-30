@@ -7,6 +7,7 @@ import { AuthService } from '../../auth/auth.service';
 import { UserService } from '../../services/user.service';
 import { iUser } from '../../interfaces/iuser';
 import { environment } from '../../../environments/environment.development';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-apartment',
@@ -19,7 +20,8 @@ export class ApartmentComponent {
     private route: ActivatedRoute,
     private favSvc: FavouritesService,
     private authSvc: AuthService,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private fb: FormBuilder
   ) {}
 
   apartment!: iApartment;
@@ -27,6 +29,9 @@ export class ApartmentComponent {
   isFavorite: boolean = false;
   host!: iUser;
   rating!: number;
+
+  showRatings: boolean = false;
+  ratingsForm!: FormGroup;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -48,6 +53,18 @@ export class ApartmentComponent {
 
     this.authSvc.authState$.subscribe((user) => {
       if (user) this.loggedUserId = user.uid;
+
+      this.ratingsForm = this.fb.group({
+        ratings: this.fb.group({
+          vote: this.fb.control(0, [Validators.required]),
+          count: this.fb.control(1),
+        }),
+        ratingsReview: this.fb.group({
+          comment: this.fb.control(''),
+          userId: this.fb.control(this.loggedUserId),
+          date: this.fb.control(Date.now()),
+        }),
+      });
     });
   }
 
@@ -57,5 +74,19 @@ export class ApartmentComponent {
 
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;
+  }
+
+  sendReview() {
+    const apartmentUpdate = this.ratingsForm.value;
+
+    this.apartment.ratings.count += apartmentUpdate.ratings.count;
+    this.apartment.ratings.vote += apartmentUpdate.ratings.vote;
+
+    this.apartment.reviews.push(apartmentUpdate.ratingsReview);
+
+    this.apartmentSvc.changeAvailability(this.apartment).subscribe();
+
+    console.log(apartmentUpdate);
+    console.log(this.apartment);
   }
 }
