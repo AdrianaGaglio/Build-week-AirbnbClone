@@ -46,3 +46,11 @@
 .rounded-3-4 {
   border-radius: 12px;
 }
+
+.rounded-end-top {
+  border-radius: 0 0.5rem 0 0;
+}
+
+.rounded-end-bottom {
+  border-radius: 0 0 0.5rem 0;
+}
