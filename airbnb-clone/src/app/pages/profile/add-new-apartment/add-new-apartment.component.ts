@@ -5,6 +5,7 @@ import { ApartmentService } from '../../../services/apartment.service';
 import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../../../../environments/environment.development';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -30,34 +31,36 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
-  services: string[] = [
-    'WiFi',
-    'Aria condizionata',
-    'Riscaldamento',
-    'TV',
-    'Lavatrice',
-    'Asciugatrice',
-    'Cucina attrezzata',
-    'Frigorifero',
-    'Microonde',
-    'Macchina del caffè',
-    'Asciugamani inclusi',
-    'Parcheggio gratuito',
-    'Piscina',
-    'Palestra',
-    'Area barbecue',
-    'Balcone o terrazza',
-    'Giardino',
-    'Accesso per disabili',
-    'Animali ammessi',
-    'Vasca idromassaggio',
-    'Servizio di pulizia',
-    'Reception 24 ore',
-    'Vista panoramica',
-    'Servizio in camera',
-    'Minibar',
-    'Colazione inclusa',
-  ];
+  // services: string[] = [
+  //   'WiFi',
+  //   'Aria condizionata',
+  //   'Riscaldamento',
+  //   'TV',
+  //   'Lavatrice',
+  //   'Asciugatrice',
+  //   'Cucina attrezzata',
+  //   'Frigorifero',
+  //   'Microonde',
+  //   'Macchina del caffè',
+  //   'Asciugamani inclusi',
+  //   'Parcheggio gratuito',
+  //   'Piscina',
+  //   'Palestra',
+  //   'Area barbecue',
+  //   'Balcone o terrazza',
+  //   'Giardino',
+  //   'Accesso per disabili',
+  //   'Animali ammessi',
+  //   'Vasca idromassaggio',
+  //   'Servizio di pulizia',
+  //   'Reception 24 ore',
+  //   'Vista panoramica',
+  //   'Servizio in camera',
+  //   'Minibar',
+  //   'Colazione inclusa',
+  // ];
+
+  services: string[] = environment.services;
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {

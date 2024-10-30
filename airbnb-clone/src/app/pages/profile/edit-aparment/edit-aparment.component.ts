@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
 import { iApartment } from '../../../interfaces/iapartment';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-edit-aparment',
@@ -34,34 +35,7 @@ export class EditAparmentComponent {
 
   message!: string;
 
-  services: string[] = [
-    'WiFi',
-    'Aria condizionata',
-    'Riscaldamento',
-    'TV',
-    'Lavatrice',
-    'Asciugatrice',
-    'Cucina attrezzata',
-    'Frigorifero',
-    'Microonde',
-    'Macchina del caffè',
-    'Asciugamani inclusi',
-    'Parcheggio gratuito',
-    'Piscina',
-    'Palestra',
-    'Area barbecue',
-    'Balcone o terrazza',
-    'Giardino',
-    'Accesso per disabili',
-    'Animali ammessi',
-    'Vasca idromassaggio',
-    'Servizio di pulizia',
-    'Reception 24 ore',
-    'Vista panoramica',
-    'Servizio in camera',
-    'Minibar',
-    'Colazione inclusa',
-  ];
+  services: string[] = environment.services;
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
