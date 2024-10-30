@@ -140,107 +140,113 @@
             </a>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- App Reservation -->
-    <div class="col-4 ms-3">
-      <ng-container *ngIf="loggedUserId && apartment.availability"
-        ><app-reservation [apartment]="apartment"></app-reservation
-      ></ng-container>
-      <ng-container *ngIf="loggedUserId && !apartment.availability">
-        <h5 class="text-pink-airbnb">
-          Appartamento al momento non disponibile
-        </h5>
-      </ng-container>
-      <!-- review -->
-      <div class="dropdown mt-2">
-        <button
-          (click)="showRatings = !showRatings"
-          class="btn bg-pink-airbnb-subtle text-white w-100 rounded-4 dropdown-toggle button-host"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Valuta l'esperienza!
-        </button>
-        <div
-          [ngClass]="{ show: showRatings }"
-          class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
-        >
-          <form [formGroup]="ratingsForm">
-            <div class="mt-2">
-              <h5>Come valuti l'esperinza?</h5>
-              <div formGroupName="ratings">
-                <app-ratings-stars formControlName="vote"></app-ratings-stars>
-              </div>
-            </div>
 
-            <div formGroupName="ratingsReview">
-              <app-text-review formControlName="comment"></app-text-review>
-            </div>
-            <button
-              (click)="sendReview()"
-              class="btn btn-pink-airbnb text-white fw-bold my-2 w-75"
+        <!-- Sezione Dove dormirai -->
+        <div class="row border-bottom py-5">
+          <div class="col-8">
+            <h3 class="fw-semibold pb-2">Dove dormirai</h3>
+            <div
+              class="card p-3"
+              style="max-width: 200px; display: inline-block"
             >
-              Invia
+              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
+              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
+              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
+              <h5>Camera da letto</h5>
+              <p>1 letto matrimoniale, 2 letti singoli</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servizi Offerti -->
+        <div class="py-5 border-bottom mb-3">
+          <h3 class="fw-semibold pb-2">Cosa troverai</h3>
+          <div
+            class="row row-cols-2 list-unstyled d-flex flex-wrap"
+            *ngIf="apartment.services"
+          >
+            <div class="col d-flex align-items-center mb-2 fs-5">
+              <ng-icon
+                name="ionWifiOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              Wi-Fi gratuito
+            </div>
+            <div class="col d-flex align-items-center mb-2 fs-5">
+              <ng-icon
+                name="ionTvOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              TV con Netflix
+            </div>
+            <div class="col d-flex align-items-center mb-2 fs-5">
+              <ng-icon
+                name="ionSnowOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              Aria condizionata
+            </div>
+            <div class="col d-flex align-items-center mb-2 fs-5">
+              <ng-icon
+                name="ionCafeOutline"
+                style="font-size: 20px; margin-right: 5px"
+              ></ng-icon>
+              Macchina da caffè
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- App Reservation -->
+      <div class="col-4 ms-3">
+        <div class="position-sticky-apartment-cta">
+          <ng-container *ngIf="loggedUserId && apartment.availability"
+            ><app-reservation [apartment]="apartment"></app-reservation
+          ></ng-container>
+          <ng-container *ngIf="loggedUserId && !apartment.availability">
+            <h5 class="text-pink-airbnb">
+              Appartamento al momento non disponibile
+            </h5>
+          </ng-container>
+          <!-- review -->
+          <div class="dropdown mt-2">
+            <button
+              (click)="showRatings = !showRatings"
+              class="btn bg-pink-airbnb-subtle text-white w-100 rounded-4 dropdown-toggle button-host"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Valuta l'esperienza!
             </button>
-          </form>
+            <div
+              [ngClass]="{ show: showRatings }"
+              class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
+            >
+              <form [formGroup]="ratingsForm">
+                <div class="mt-2">
+                  <h5>Come valuti l'esperinza?</h5>
+                  <div formGroupName="ratings">
+                    <app-ratings-stars
+                      formControlName="vote"
+                    ></app-ratings-stars>
+                  </div>
+                </div>
+
+                <div formGroupName="ratingsReview">
+                  <app-text-review formControlName="comment"></app-text-review>
+                </div>
+                <button
+                  (click)="sendReview()"
+                  class="btn btn-pink-airbnb text-white fw-bold my-2 w-75"
+                >
+                  Invia
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Sezione Dove dormirai -->
-  <div class="row border-bottom py-5">
-    <div class="col-8">
-      <h3 class="fw-semibold pb-2">Dove dormirai</h3>
-      <div class="card p-3" style="max-width: 200px; display: inline-block">
-        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-        <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-        <h5>Camera da letto</h5>
-        <p>1 letto matrimoniale, 2 letti singoli</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Servizi Offerti -->
-  <div class="py-5 border-bottom mb-3">
-    <h3 class="fw-semibold pb-2">Cosa troverai</h3>
-    <div
-      class="row row-cols-2 list-unstyled d-flex flex-wrap"
-      *ngIf="apartment.services"
-    >
-      <div class="col d-flex align-items-center mb-2 fs-5">
-        <ng-icon
-          name="ionWifiOutline"
-          style="font-size: 20px; margin-right: 5px"
-        ></ng-icon>
-        Wi-Fi gratuito
-      </div>
-      <div class="col d-flex align-items-center mb-2 fs-5">
-        <ng-icon
-          name="ionTvOutline"
-          style="font-size: 20px; margin-right: 5px"
-        ></ng-icon>
-        TV con Netflix
-      </div>
-      <div class="col d-flex align-items-center mb-2 fs-5">
-        <ng-icon
-          name="ionSnowOutline"
-          style="font-size: 20px; margin-right: 5px"
-        ></ng-icon>
-        Aria condizionata
-      </div>
-      <div class="col d-flex align-items-center mb-2 fs-5">
-        <ng-icon
-          name="ionCafeOutline"
-          style="font-size: 20px; margin-right: 5px"
-        ></ng-icon>
-        Macchina da caffè
-      </div>
-    </div>
-  </div>
-
   <app-map [placeMap]="apartment.location"></app-map>
 </div>
