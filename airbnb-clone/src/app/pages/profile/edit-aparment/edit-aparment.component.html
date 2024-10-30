@@ -250,11 +250,11 @@
             <div class="d-flex flex-column position-relative">
               <h5>
                 Categorie
-                <a (click)="showInfo()" class="fs-7 ps-1 pointer"
+                <a (click)="showInfo2()" class="fs-7 ps-1 pointer"
                   >Selezione Multipla?</a
                 >
                 <div
-                  [ngClass]="{ show: infoMultiple }"
+                  [ngClass]="{ show: infoMultiple2 }"
                   class="bg-primary-subtle rounded-3 p-3 fs-6 dropdown-menu infoLink"
                 >
                   Al click tieni premuto Ctrl per una selezione multipla
@@ -312,12 +312,26 @@
           <!-- location -->
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Posizione dell'appartamento</h5>
-            <input
-              type="text"
-              class="form-contrl px-3 py-2 rounded border"
-              placeholder="es. Licata"
-              formControlName="location"
-            />
+            <div class="locationInput">
+              <input
+                type="text"
+                id="location"
+                class="form-contrl px-3 py-2 rounded border"
+                placeholder="es. Licata"
+                formControlName="location"
+                (input)="onSearch(form.get('location')?.value)"
+              />
+              <ul *ngIf="suggestions.length" class="list-group">
+                <li
+                  class="list-group-item list-group-item-action"
+                  role="button"
+                  *ngFor="let suggestion of suggestions"
+                  (click)="selectSuggestion(suggestion)"
+                >
+                  {{ suggestion }}
+                </li>
+              </ul>
+            </div>
           </div>
           <!-- price -->
           <div class="d-flex my-5 gap-5 justify-content-between">

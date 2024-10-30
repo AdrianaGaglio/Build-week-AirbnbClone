@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
 import { iApartment } from '../../../interfaces/iapartment';
 import { environment } from '../../../../environments/environment.development';
+import { GeocodingService } from '../../../services/geocoding.service';
+import { debounceTime, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-aparment',
@@ -21,7 +23,8 @@ export class EditAparmentComponent {
     private apartSvc: ApartmentService,
     private router: Router,
     private modalSvc: NgbModal,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private geocodingSvc: GeocodingService
   ) {}
 
   idEditPost!: number;
@@ -36,6 +39,8 @@ export class EditAparmentComponent {
   message!: string;
 
   services: string[] = environment.services;
+  suggestions: any[] = [];
+  private search$ = new Subject<string>();
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
@@ -81,6 +86,16 @@ export class EditAparmentComponent {
         this.form.patchValue(this.currentForm);
       });
     });
+    this.search$
+      .pipe(
+        debounceTime(300), // Aggiungi un ritardo di 300ms per il debounce
+        switchMap((placeName: string) =>
+          this.geocodingSvc.searchGeocode(placeName)
+        )
+      )
+      .subscribe((data) => {
+        this.suggestions = data.map((item: any) => item.display_name);
+      });
   }
 
   minlength(input: string) {
@@ -122,7 +137,7 @@ export class EditAparmentComponent {
 
     setTimeout(() => {
       this.infoMultiple = !this.infoMultiple;
-    }, 2200);
+    }, 1000);
   }
 
   showInfo2() {
@@ -130,9 +145,22 @@ export class EditAparmentComponent {
 
     setTimeout(() => {
       this.infoMultiple2 = !this.infoMultiple2;
-    }, 2200);
+    }, 1000);
   }
 
   dropDownservices: boolean = false;
   dropDownCategory: boolean = false;
+
+  onSearch(placeName: string): void {
+    if (placeName.length > 2) {
+      this.search$.next(placeName);
+    } else {
+      this.suggestions = [];
+    }
+  }
+  selectSuggestion(suggestion: any): void {
+    this.form.get('location')?.setValue(suggestion);
+    console.log('Località selezionata:', suggestion);
+    this.suggestions = [];
+  }
 }

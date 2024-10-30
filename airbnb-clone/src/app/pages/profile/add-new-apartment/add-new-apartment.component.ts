@@ -34,35 +34,6 @@ export class AddNewApartmentComponent implements OnInit {
 
   message!: string;
 
-  // services: string[] = [
-  //   'WiFi',
-  //   'Aria condizionata',
-  //   'Riscaldamento',
-  //   'TV',
-  //   'Lavatrice',
-  //   'Asciugatrice',
-  //   'Cucina attrezzata',
-  //   'Frigorifero',
-  //   'Microonde',
-  //   'Macchina del caffè',
-  //   'Asciugamani inclusi',
-  //   'Parcheggio gratuito',
-  //   'Piscina',
-  //   'Palestra',
-  //   'Area barbecue',
-  //   'Balcone o terrazza',
-  //   'Giardino',
-  //   'Accesso per disabili',
-  //   'Animali ammessi',
-  //   'Vasca idromassaggio',
-  //   'Servizio di pulizia',
-  //   'Reception 24 ore',
-  //   'Vista panoramica',
-  //   'Servizio in camera',
-  //   'Minibar',
-  //   'Colazione inclusa',
-  // ];
-
   services: string[] = environment.services;
   suggestions: any[] = [];
   private search$ = new Subject<string>();
@@ -157,7 +128,7 @@ export class AddNewApartmentComponent implements OnInit {
 
     setTimeout(() => {
       this.infoMultiple = !this.infoMultiple;
-    }, 2200);
+    }, 1000);
   }
 
   showInfo2() {
@@ -165,7 +136,7 @@ export class AddNewApartmentComponent implements OnInit {
 
     setTimeout(() => {
       this.infoMultiple2 = !this.infoMultiple2;
-    }, 2200);
+    }, 1000);
   }
 
   dropDownservices: boolean = false;
