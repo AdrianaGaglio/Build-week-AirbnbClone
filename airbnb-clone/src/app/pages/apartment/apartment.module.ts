@@ -33,6 +33,7 @@ import { SharedResModule } from '../../shared/reservation/sharedRes.module';
 import { SharedMapModule } from '../../shared/map/map.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GalleryModalModule } from '../../shared/gallery-modal/gallery-modal.module';
 
 @NgModule({
   declarations: [ApartmentComponent],
@@ -64,6 +65,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedResModule,
     SharedMapModule,
     SharedModule,
+    GalleryModalModule,
   ],
 })
 export class ApartmentModule {}

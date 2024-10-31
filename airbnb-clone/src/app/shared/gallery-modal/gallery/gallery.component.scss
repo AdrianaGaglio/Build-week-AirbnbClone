@@ -1,0 +1,12 @@
+.fullscreen {
+  max-width: 900px !important;
+}
+
+.modal {
+  max-width: 100%;
+  width: 900px;
+}
+
+.modal-dialog {
+  --bs-modal-width: 100% !important;
+}

@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment.development';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
+import { GalleryComponent } from '../../shared/gallery-modal/gallery/gallery.component';
 
 @Component({
   selector: 'app-apartment',
@@ -127,5 +128,10 @@ export class ApartmentComponent implements OnInit {
     const modalRef = this.modalSvc.open(PopupComponent);
     modalRef.componentInstance.message = message;
     modalRef.componentInstance.isOk = value;
+  }
+
+  openModalGallery(allImg: string[]) {
+    const modalRef = this.modalSvc.open(GalleryComponent);
+    modalRef.componentInstance.allImg = allImg;
   }
 }

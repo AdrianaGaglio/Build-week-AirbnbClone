@@ -34,6 +34,7 @@
           </div>
           <!-- Pulsante "Mostra tutte le foto" in basso a destra -->
           <button
+            (click)="openModalGallery(allImg)"
             class="btn custom-button position-absolute"
             style="bottom: 10px; right: 10px"
           >
@@ -274,4 +275,5 @@
       </div>
     </ng-container>
   </div>
+  <!-- <app-gallery [allImg]="allImg"></app-gallery> -->
 </div>

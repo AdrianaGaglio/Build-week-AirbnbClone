@@ -1,0 +1,20 @@
+<div class="bg-white text-dark p-4 modal modal-content modal-dialog">
+  <h1>Galleria!</h1>
+  <!-- sezione img -->
+  <div class="d-flex flex-column">
+    <div
+      *ngFor="let img of allImg"
+      class="coverImg overflow-hidden d-flex my-2"
+    >
+      <img
+        src="{{ img }}"
+        alt="Image 1"
+        width="1000"
+        class="object-fit-cover w-100"
+      />
+    </div>
+  </div>
+  <button (click)="close()" class="btn btn-pink-airbnb text-white fw-bold mt-3">
+    Chiudi
+  </button>
+</div>
