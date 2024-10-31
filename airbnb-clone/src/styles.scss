@@ -11,6 +11,7 @@ $new-theme-colors: (
 $theme-colors: map-merge($theme-colors, $new-theme-colors);
 
 $widths: (
+  30: 30px,
   50: 50px,
   100: 100px,
   150: 150px,
@@ -25,6 +26,7 @@ $widths: (
 }
 
 $heights: (
+  30: 30px,
   50: 50px,
   100: 100px,
   150: 150px,

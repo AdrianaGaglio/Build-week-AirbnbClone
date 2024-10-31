@@ -31,6 +31,7 @@ import {
   ionBonfireOutline,
   ionRoseOutline,
   ionBodyOutline,
+  ionPersonOutline,
 } from '@ng-icons/ionicons';
 import {
   HTTP_INTERCEPTORS,
@@ -95,6 +96,7 @@ import { AngularFireModule } from '@angular/fire/compat';
       matRoomService,
       matLocalBar,
       matBakeryDining,
+      ionPersonOutline,
     }),
     FormsModule,
     SharedModule,
