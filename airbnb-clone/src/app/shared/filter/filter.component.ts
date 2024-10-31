@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ApartmentService } from '../../services/apartment.service';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-filter',
@@ -12,7 +13,7 @@ export class FilterComponent {
   @Output() category = new EventEmitter<string>();
   @Output() all = new EventEmitter<boolean>();
 
-  categories!: string[];
+  categories = environment.categories;
 
   ngOnInit() {
     this.apartmentSvc.getCategories().subscribe((res) => {
