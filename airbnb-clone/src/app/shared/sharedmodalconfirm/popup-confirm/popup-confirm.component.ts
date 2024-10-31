@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -10,6 +10,13 @@ export class PopupConfirmComponent {
   activeModal = inject(NgbActiveModal);
   @Input() message!: string;
   @Input() isOk!: boolean;
+
+  @Output() confirm = new EventEmitter<boolean>();
+
+  confirmBtn(confirm: boolean) {
+    this.confirm.emit(confirm);
+    this.close();
+  }
 
   close() {
     this.activeModal.close();

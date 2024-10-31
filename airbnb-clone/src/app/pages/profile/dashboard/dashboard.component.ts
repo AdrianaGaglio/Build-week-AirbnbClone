@@ -27,6 +27,7 @@ export class DashboardComponent {
 
   apartments!: iApartment[];
   user!: iUser;
+  isConfirm!: boolean;
 
   ngOnInit() {
     this.authSvc.authState$.subscribe((user) => {
@@ -50,15 +51,7 @@ export class DashboardComponent {
   }
 
   deleteApartment(id: number) {
-    this.openModal("Sei sicuro di voler eliminare l'appartamento?", false);
-    // this.apartmentSvc.deleteApartmentById(id).subscribe();
-    // const found = this.apartments.find((data) => data.id === id);
-    // if (found) {
-    //   found.coverImage.forEach((imageUrl) => {
-    //     this.deliteImgFromStorage(imageUrl);
-    //   });
-    // }
-    // this.apartments = this.apartments.filter((data) => data.id !== id);
+    this.openModal("Sei sicuro di voler eliminare l'appartamento?", id);
   }
 
   checkOut(apartment: iApartment) {
@@ -86,9 +79,20 @@ export class DashboardComponent {
       });
   }
 
-  openModal(message: string, value: boolean) {
+  openModal(message: string, id: number) {
     const modalRef = this.modalSvc.open(PopupConfirmComponent);
     modalRef.componentInstance.message = message;
-    modalRef.componentInstance.isOk = value;
+    modalRef.componentInstance.confirm.subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.apartmentSvc.deleteApartmentById(id).subscribe();
+        const found = this.apartments.find((data) => data.id === id);
+        if (found) {
+          found.coverImage.forEach((imageUrl) => {
+            this.deliteImgFromStorage(imageUrl);
+          });
+        }
+        this.apartments = this.apartments.filter((data) => data.id !== id);
+      }
+    });
   }
 }
