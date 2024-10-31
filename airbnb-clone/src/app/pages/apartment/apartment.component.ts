@@ -36,6 +36,10 @@ export class ApartmentComponent implements OnInit {
   numOfRoom: number = 0;
   array!: any[];
 
+  coverimg!: string;
+  img4!: string[];
+  allImg!: string[];
+
   showRatings: boolean = false;
   ratingsForm!: FormGroup;
   ngOnInit() {
@@ -45,6 +49,10 @@ export class ApartmentComponent implements OnInit {
           console.log(res);
 
           this.apartment = res;
+          this.coverimg = this.apartment.coverImage[0];
+          this.img4 = this.apartment.coverImage.slice(1, 4);
+          this.allImg = this.apartment.coverImage;
+
           this.numOfRoom = this.apartment.rooms > 5 ? 2 : 1;
           this.array = Array.from(
             { length: this.numOfRoom },

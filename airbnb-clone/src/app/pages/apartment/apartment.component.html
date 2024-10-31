@@ -18,7 +18,7 @@
     <div class="col-7 p-0 pe-2">
       <div class="coverImg overflow-hidden d-flex">
         <img
-          src="{{ apartment.coverImage }}"
+          src="{{ coverimg }}"
           alt="Image 1"
           class="object-fit-cover w-100"
         />
@@ -29,32 +29,9 @@
     <div class="col-5 p-0 position-relative">
       <div class="d-flex flex-column h-100">
         <div class="d-flex flex-wrap gap-2 coverImg">
-          <div
-            class="img4 d-flex"
-            *ngFor="let img of apartment.coverImage.slice(1, 4)"
-          >
+          <div class="img4 flex-grow-1 d-flex" *ngFor="let img of img4">
             <img src="{{ img }}" alt="Image 1" class="object-fit-cover w-100" />
           </div>
-          <!-- <img
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
-            alt="Image 2"
-            class="img-fluid"
-            style="width: 49%; object-fit: cover"
-          />
-        </div>
-        <div class="d-flex position-relative" style="height: 49%">
-          <img
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
-            alt="Image 3"
-            class="img-fluid me-1"
-            style="width: 49%; object-fit: cover"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGFwYXJ0bWVudHxlbnwwfHx8fDE2ODgyOTgyMzk&ixlib=rb-4.0.3&q=80&w=600"
-            alt="Image 4"
-            class="img-fluid"
-            style="width: 49%; object-fit: cover"
-          /> -->
           <!-- Pulsante "Mostra tutte le foto" in basso a destra -->
           <button
             class="btn custom-button position-absolute"
