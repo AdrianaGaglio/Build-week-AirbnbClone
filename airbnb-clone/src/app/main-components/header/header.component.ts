@@ -36,7 +36,6 @@ export class HeaderComponent {
       if (authState) {
         this.userSvc.getUserById(authState.uid).subscribe((user) => {
           this.user = user;
-          console.log(this.user);
         });
       }
     });

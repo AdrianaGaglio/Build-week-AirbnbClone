@@ -49,4 +49,8 @@ export class MessageCardComponent {
       this.apartmentSvc.changeAvailability(this.message.apartment).subscribe();
     }
   }
+
+  deleteMsg() {
+    this.messageSvc.delete(this.message).subscribe();
+  }
 }
