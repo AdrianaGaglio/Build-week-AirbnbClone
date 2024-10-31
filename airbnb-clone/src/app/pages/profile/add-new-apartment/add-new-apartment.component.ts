@@ -180,7 +180,6 @@ export class AddNewApartmentComponent implements OnInit {
                 try {
                   const url = await lastValueFrom(fileRef.getDownloadURL());
                   this.imgURLs.push(url);
-                  console.log(url);
 
                   resolve();
                 } catch (error) {
