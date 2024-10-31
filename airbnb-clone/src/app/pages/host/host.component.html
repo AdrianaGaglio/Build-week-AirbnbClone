@@ -12,14 +12,23 @@
             class="d-flex flex-column flex-grow-1 align-items-center justify-content-center"
           >
             <img
-              src="https://a0.muscache.com/im/pictures/user/User-571409085/original/5bc91e5a-8b14-4709-96db-74a60dc97da1.jpeg?im_w=240"
+              *ngIf="user && user.profileImg"
+              src="{{ user.profileImg }}"
               alt="avatar profile"
-              width="110"
-              class="rounded-pill"
+              class="rounded-circle w-fixed-100 h-fixed-100 object-fit-cover"
             />
-            <h2 class="fw-bolder mb-0 mt-2">
+            <div
+              *ngIf="user && !user.profileImg"
+              class="rounded-pill bg-black w-fixed-100 h-fixed-100 p-1 flex-shrink-0 d-flex align-items-center justify-content-center fs-1"
+            >
+              <span class="text-light"
+                >{{ user.firstName.slice(0, 1)
+                }}{{ user.lastName.slice(0, 1) }}</span
+              >
+            </div>
+            <h4 class="fw-bolder mb-0 mt-2">
               {{ user.firstName }} {{ user.lastName }}
-            </h2>
+            </h4>
             <p class="fw-bolder mb-0">{{ user.role }}</p>
           </div>
           <!-- container -->
