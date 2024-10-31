@@ -42,4 +42,17 @@ export const environment = {
     { service: 'Minibar', icon: 'matLocalBar' },
     { service: 'Colazione inclusa', icon: 'matBakeryDining' },
   ],
+  categories: [
+    'spiaggia',
+    'famiglia',
+    'città',
+    'lusso',
+    'natura',
+    'romantico',
+    'campagna',
+    'modernità',
+    'lago',
+    'gruppi',
+    'romantico',
+  ],
 };

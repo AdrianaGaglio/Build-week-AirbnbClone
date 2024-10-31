@@ -42,7 +42,7 @@ export class EditAparmentComponent {
   form!: FormGroup;
   uid!: string;
 
-  categories!: string[];
+  categories = environment.categories;
 
   message!: string;
 
