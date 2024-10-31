@@ -55,22 +55,12 @@
               class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2"
               type="checkbox"
               id="descriptionCheck"
-              [checked]="form.value.coverImage"
+              [checked]="form.value.coverImage > 0 ? true : false"
             />
-            <label for="descriptionCheck">Cover</label>
+            <label for="descriptionCheck">Immagini</label>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <div class="d-flex align-items-center">
-            <input
-              class="form-check-input mt-0 me-3 pointerNone pointerBefore rounded-pill p-2 t"
-              type="checkbox"
-              id="otherImagesCheck"
-              [checked]="form.value.otherImages"
-            />
-            <label for="otherImagesCheck">Immagini</label>
-          </div>
-        </div>
+
         <div class="input-group mb-3">
           <div class="d-flex align-items-center">
             <input
@@ -229,7 +219,7 @@
           </div>
           <!-- coverImage -->
           <div class="d-flex my-5 gap-5 justify-content-between">
-            <h5>Cover annunci</h5>
+            <h5>Immagini dell'appartamento</h5>
             <input type="text" hidden formControlName="coverImage" />
             <input
               class="form-control"
@@ -237,17 +227,7 @@
               id="avatar"
               accept="image/png, image/jpeg, image/webp"
               (change)="onCoverSelected($event)"
-            />
-          </div>
-          <!-- otherImages -->
-          <div class="d-flex my-5 gap-5 justify-content-between">
-            <h5>Immagini dell'appartamento</h5>
-            <input
-              formControlName="otherImages"
-              class="form-control"
-              type="file"
-              id="avatar"
-              accept="image/png, image/jpeg"
+              multiple
             />
           </div>
           <!-- category -->

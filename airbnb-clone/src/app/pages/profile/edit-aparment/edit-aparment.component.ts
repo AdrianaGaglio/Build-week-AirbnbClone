@@ -8,7 +8,14 @@ import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.componen
 import { iApartment } from '../../../interfaces/iapartment';
 import { environment } from '../../../../environments/environment.development';
 import { GeocodingService } from '../../../services/geocoding.service';
-import { debounceTime, Subject, switchMap } from 'rxjs';
+import {
+  debounceTime,
+  finalize,
+  lastValueFrom,
+  Subject,
+  switchMap,
+} from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-edit-aparment',
@@ -24,7 +31,8 @@ export class EditAparmentComponent {
     private router: Router,
     private modalSvc: NgbModal,
     private route: ActivatedRoute,
-    private geocodingSvc: GeocodingService
+    private geocodingSvc: GeocodingService,
+    private storage: AngularFireStorage
   ) {}
 
   idEditPost!: number;
@@ -41,6 +49,9 @@ export class EditAparmentComponent {
   services: { service: string; icon: string }[] = environment.services;
   suggestions: any[] = [];
   private search$ = new Subject<string>();
+
+  selectedMoreImages: File[] = [];
+  imgURLs: string[] = [];
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
@@ -69,8 +80,7 @@ export class EditAparmentComponent {
         ]),
         rooms: this.fb.control('', [Validators.required]),
         services: this.fb.control('', [Validators.required]),
-        coverImage: this.fb.control(''),
-        otherImages: this.fb.control(''),
+        coverImage: this.fb.control([]),
         category: this.fb.control(''),
         squaremeters: this.fb.control('', [Validators.required]),
         location: this.fb.control(''),
@@ -162,5 +172,62 @@ export class EditAparmentComponent {
     this.form.get('location')?.setValue(suggestion);
     console.log('Località selezionata:', suggestion);
     this.suggestions = [];
+  }
+  onMoreImagesSelected(event: any) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedMoreImages = Array.from(fileInput.files);
+    }
+  }
+
+  onMoreImagesUpload(): void {
+    if (this.selectedMoreImages.length > 0) {
+      const uploadPromises = this.selectedMoreImages.map((file) => {
+        const filePath = `apartmentImages/${Date.now()}_${file.name}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file);
+
+        return new Promise<void>((resolve, reject) => {
+          task
+            .snapshotChanges()
+            .pipe(
+              finalize(async () => {
+                try {
+                  const url = await lastValueFrom(fileRef.getDownloadURL());
+                  this.imgURLs.push(url);
+
+                  // Quando tutte le immagini sono state caricate, aggiorna il form e invia i dati
+                  if (this.imgURLs.length === this.selectedMoreImages.length) {
+                    const currentCoverImages =
+                      this.form.get('coverImage')?.value || [];
+                    console.log(this.imgURLs);
+                    this.form.patchValue({
+                      coverImage: [...currentCoverImages, ...this.imgURLs],
+                    });
+                  }
+                  resolve();
+                } catch (error) {
+                  reject(error);
+                }
+              })
+            )
+            .subscribe();
+        });
+      });
+
+      // Attendi che tutte le immagini siano caricate
+      Promise.all(uploadPromises)
+        .then(() => {
+          console.log('Tutte le immagini sono state caricate con successo.');
+        })
+        .catch((error) => {
+          console.error(
+            'Errore durante il caricamento delle immagini: ',
+            error
+          );
+          this.message = 'Errore durante il caricamento delle immagini.';
+          this.openModal(this.message, false);
+        });
+    }
   }
 }

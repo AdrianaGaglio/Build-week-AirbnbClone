@@ -42,6 +42,8 @@ export class ApartmentComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.apartmentSvc.getApartmentById(params['id']).subscribe({
         next: (res) => {
+          console.log(res);
+
           this.apartment = res;
           this.numOfRoom = this.apartment.rooms > 5 ? 2 : 1;
           this.array = Array.from(
