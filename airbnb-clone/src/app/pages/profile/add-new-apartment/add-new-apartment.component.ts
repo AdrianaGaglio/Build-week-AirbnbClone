@@ -6,8 +6,9 @@ import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.componen
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../../environments/environment.development';
-import { debounceTime, Subject, switchMap } from 'rxjs';
+import { debounceTime, finalize, Subject, switchMap } from 'rxjs';
 import { GeocodingService } from '../../../services/geocoding.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 @Component({
   selector: 'app-add-new-apartment',
   templateUrl: './add-new-apartment.component.html',
@@ -22,10 +23,9 @@ export class AddNewApartmentComponent implements OnInit {
     private router: Router,
     private modalSvc: NgbModal,
     private route: ActivatedRoute,
-    private geocodingSvc: GeocodingService
+    private geocodingSvc: GeocodingService,
+    private storage: AngularFireStorage
   ) {}
-
-  idEditPost!: number;
 
   form!: FormGroup;
   uid!: string;
@@ -38,16 +38,12 @@ export class AddNewApartmentComponent implements OnInit {
   suggestions: any[] = [];
   private search$ = new Subject<string>();
 
+  selectedImgCover: File | null = null;
+  imgURL: string | null = null;
+
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
       this.categories = res;
-    });
-
-    this.route.params.subscribe((params) => {
-      if (params['id']) {
-        this.idEditPost = params['id'];
-        console.log('ID:', this.idEditPost);
-      }
     });
 
     this.authSvc.authState$.subscribe((res) => {
@@ -96,20 +92,7 @@ export class AddNewApartmentComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.apartSvc.addApartament(this.form.value).subscribe({
-        next: (res) => {
-          this.message = 'Appartamento aggiunto con successo!';
-          this.openModal(this.message, true);
-          setTimeout(() => {
-            this.router.navigate(['/profile/dashboard']);
-            this.modalSvc.dismissAll();
-          }, 2000);
-        },
-        error: (err) => {
-          this.message = err;
-          this.openModal(this.message, false);
-        },
-      });
+      this.onCoverUpload();
     }
   }
 
@@ -151,5 +134,60 @@ export class AddNewApartmentComponent implements OnInit {
     this.form.get('location')?.setValue(suggestion);
     console.log('Località selezionata:', suggestion);
     this.suggestions = [];
+  }
+
+  onCoverSelected(event: any) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedImgCover = fileInput.files[0];
+    }
+  }
+
+  sendDataApartment() {
+    this.apartSvc.addApartament(this.form.value).subscribe({
+      next: (res) => {
+        this.message = 'Appartamento aggiunto con successo!';
+        this.openModal(this.message, true);
+        setTimeout(() => {
+          this.router.navigate(['/profile/dashboard']);
+          this.modalSvc.dismissAll();
+        }, 2000);
+      },
+      error: (err) => {
+        this.message = err;
+        this.openModal(this.message, false);
+      },
+    });
+  }
+  onCoverUpload(): void {
+    if (this.selectedImgCover) {
+      const filePath = `coverImages/${Date.now()}_${
+        this.selectedImgCover.name
+      }`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, this.selectedImgCover);
+
+      task
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.imgURL = url;
+              console.log('Immagine caricata con successo, URL:', url);
+
+              // Aggiorna il form con l'URL dell'immagine
+              this.form.patchValue({
+                coverImage: this.imgURL,
+              });
+
+              // Invia i dati dell'appartamento solo dopo aver ottenuto l'URL dell'immagine
+              this.sendDataApartment();
+            });
+          })
+        )
+        .subscribe();
+    } else {
+      this.sendDataApartment();
+    }
   }
 }
