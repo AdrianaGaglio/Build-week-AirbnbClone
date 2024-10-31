@@ -13,7 +13,7 @@
   </div>
 
   <!-- Sezione Immagini -->
-  <div class="row">
+  <div class="row mb-4">
     <!-- Immagine principale -->
     <div class="col-7 pe-2">
       <img
@@ -66,10 +66,10 @@
     </div>
   </div>
 
-  <div class="container1 d-flex justify-content-between">
-    <div class="row mt-4">
+  <div class="container">
+    <div class="row g-5">
       <!-- Sezione Recensioni e Host -->
-      <div class="col">
+      <div class="col-8">
         <h3 class="text-dark mb-0 fw-bold">{{ apartment.location }}</h3>
         <p class="fs-5 mb-1">{{ apartment.description }}</p>
         <p class="fs-6 m-0">
@@ -205,7 +205,7 @@
         </div>
       </div>
       <!-- App Reservation -->
-      <div class="col-4 ms-3">
+      <div class="col">
         <div class="position-sticky-apartment-cta">
           <ng-container *ngIf="loggedUserId && apartment.availability"
             ><app-reservation [apartment]="apartment"></app-reservation
