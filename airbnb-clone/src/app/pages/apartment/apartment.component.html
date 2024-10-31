@@ -114,7 +114,7 @@
           </div>
         </ng-container>
 
-        <div class="d-flex align-items-center mb-2 border-bottom py-4 g-2">
+        <div class="d-flex align-items-center mb-2 border-bottom py-4 gap-2">
           <div class="rounded-pill overflow-hidden">
             <a [routerLink]="['/host', host.id]" *ngIf="host">
               <ng-container *ngIf="host.profileImg">
@@ -208,12 +208,12 @@
       </div>
       <!-- App Reservation -->
       <div class="col">
-        <div class="position-sticky-apartment-cta">
+        <div>
           <ng-container *ngIf="loggedUserId && apartment.availability"
             ><app-reservation [apartment]="apartment"></app-reservation
           ></ng-container>
           <ng-container *ngIf="loggedUserId && !apartment.availability">
-            <h5 class="text-pink-airbnb">
+            <h5 class="text-pink-airbnb text-center">
               Appartamento al momento non disponibile
             </h5>
           </ng-container>
