@@ -3,7 +3,11 @@
   <div class="row gap-3" *ngIf="messages">
     <ng-container *ngFor="let message of messages">
       <div class="col-12">
-        <app-message-card [message]="message"> </app-message-card>
+        <app-message-card
+          [message]="message"
+          (messageDeleted)="updateMsgList($event)"
+        >
+        </app-message-card>
       </div>
     </ng-container>
   </div>

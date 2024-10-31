@@ -1,5 +1,5 @@
 import { ApartmentComponent } from './../../../apartment/apartment.component';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { iMessage } from '../../../../interfaces/imessage';
 import { UserService } from '../../../../services/user.service';
 import { iUser } from '../../../../interfaces/iuser';
@@ -13,6 +13,7 @@ import { ApartmentService } from '../../../../services/apartment.service';
 })
 export class MessageCardComponent {
   @Input() message!: iMessage;
+  @Output() messageDeleted = new EventEmitter<number>();
   user!: iUser;
   feedback!: string;
 
@@ -52,5 +53,6 @@ export class MessageCardComponent {
 
   deleteMsg() {
     this.messageSvc.delete(this.message).subscribe();
+    this.messageDeleted.emit(this.message.id);
   }
 }
