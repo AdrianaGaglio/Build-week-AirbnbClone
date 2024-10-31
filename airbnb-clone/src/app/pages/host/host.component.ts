@@ -48,7 +48,6 @@ export class HostComponent implements OnInit {
       this.userSvc.getUserById(params['id']).subscribe({
         next: (user) => {
           this.user = user;
-          console.log(this.user);
 
           if (user.ratings) {
             this.ratings = Math.floor(user.ratings.vote / user.ratings.count);
