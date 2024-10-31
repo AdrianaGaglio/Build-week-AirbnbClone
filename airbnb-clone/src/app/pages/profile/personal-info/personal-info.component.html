@@ -198,7 +198,9 @@
         </div>
       </div>
       <div class="row row-cols-3 py-5">
-        <div class="col"><app-review-card></app-review-card></div>
+        <div *ngFor="let review of user.reviews" class="col">
+          <app-review-card [review]="review"></app-review-card>
+        </div>
       </div>
     </div>
 

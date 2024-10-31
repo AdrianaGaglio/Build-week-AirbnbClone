@@ -1,8 +1,25 @@
-<div class="card">
-  <div class="card-body">
-    <img src="" alt="" />
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quis?
-    </p>
+<!-- sezione review -->
+<div class="d-flex justify-content-around mt-3 pb-5 gap-3">
+  <!-- card review -->
+  <div
+    class="card-host border rounded-4 w-100 p-4 d-flex flex-column justify-content-between"
+  >
+    <p class="px-3 pt-2">{{ review.comment }}</p>
+    <div *ngIf="user" class="ms-3">
+      <div class="d-flex align-items-center">
+        <img
+          src="{{ user.profileImg }}"
+          alt="avatar profilo"
+          height="50"
+          width="50"
+          class="rounded-pill"
+        />
+
+        <div class="ms-3">
+          <h6 class="m-0 fw-bold">{{ user.firstName }} {{ user.lastName }}</h6>
+          <p class="m-0">{{ review.date | date }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

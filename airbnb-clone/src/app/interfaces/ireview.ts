@@ -1,5 +1,5 @@
 export interface iReview {
-  userId: number;
+  userId: string;
   comment: string;
   date: Date;
 }

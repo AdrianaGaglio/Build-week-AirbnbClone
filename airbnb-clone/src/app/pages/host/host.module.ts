@@ -4,12 +4,11 @@ import { CommonModule } from '@angular/common';
 import { HostRoutingModule } from './host-routing.module';
 import { HostComponent } from './host.component';
 import { SharedModule } from '../../shared/shared.module';
-import { ReviewComponent } from './components/review/review.component';
 import { SharedResModule } from '../../shared/reservation/sharedRes.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [HostComponent, ReviewComponent],
+  declarations: [HostComponent],
   imports: [
     CommonModule,
     HostRoutingModule,
