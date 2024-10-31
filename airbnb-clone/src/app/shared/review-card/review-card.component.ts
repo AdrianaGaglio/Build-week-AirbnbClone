@@ -19,7 +19,6 @@ export class ReviewCardComponent implements OnInit {
   ngOnInit(): void {
     this.userSvc.getUserById(this.review.userId).subscribe((data) => {
       this.user = data;
-      console.log(this.review);
     });
   }
 }

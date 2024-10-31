@@ -29,6 +29,7 @@ export class HostComponent implements OnInit {
 
   loggedUserId!: string;
 
+  showAll: boolean = false;
   showRatings: boolean = false;
   ratingsForm!: FormGroup;
 

@@ -116,25 +116,31 @@
           <h2 class="fw-bolder">Recensioni di Kevin Hart</h2>
           <div>
             <button
+              (click)="showAll = !showAll"
               type="button"
-              class="btn border rounded-pill mx-1 py-2 fs-7 hoverScale"
+              class="btn border rounded-3 mx-1 py-2 fs-7 hoverScale"
             >
-              ←
-            </button>
-            <button
-              type="button"
-              class="btn border rounded-pill mx-1 py-2 fs-7 hoverScale"
-            >
-              →
+              <span *ngIf="!showAll">Mostra tutte le Recensioni</span
+              ><span *ngIf="showAll">Mostra meno Recensioni</span>
             </button>
           </div>
         </div>
 
-        <div class="row border-bottom">
-          <div *ngFor="let review of user.reviews" class="col">
-            <app-review-card [review]="review"></app-review-card>
+        <ng-container *ngIf="!showAll">
+          <div class="row border-bottom">
+            <div *ngFor="let review of user.reviews.slice(0, 4)" class="col">
+              <app-review-card [review]="review"></app-review-card>
+            </div>
           </div>
-        </div>
+        </ng-container>
+
+        <ng-container *ngIf="showAll">
+          <div class="row border-bottom">
+            <div *ngFor="let review of user.reviews" class="col">
+              <app-review-card [review]="review"></app-review-card>
+            </div>
+          </div>
+        </ng-container>
       </div>
 
       <div *ngIf="apartments">
