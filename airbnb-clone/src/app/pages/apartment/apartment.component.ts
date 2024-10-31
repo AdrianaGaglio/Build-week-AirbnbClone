@@ -79,7 +79,23 @@ export class ApartmentComponent implements OnInit {
     });
 
     this.authSvc.authState$.subscribe((user) => {
-      if (user) this.loggedUserId = user.uid;
+      if (user) {
+        this.favSvc.getFavouritesByUserId(user.uid).subscribe((favourites) => {
+          if (favourites) {
+            const found = favourites.find((favorite) => {
+              if (this.apartment.id && favorite) {
+                return favorite.id === this.apartment.id;
+              } else {
+                return false;
+              }
+            });
+            if (found) {
+              this.isFavorite = true;
+            }
+          }
+        });
+        this.loggedUserId = user.uid;
+      }
 
       this.ratingsForm = this.fb.group({
         ratings: this.fb.group({
@@ -109,12 +125,13 @@ export class ApartmentComponent implements OnInit {
   }
 
   addRemoveFavourite(): void {
-    this.favSvc.addRemoveFavourite(this.loggedUserId, this.apartment);
-  }
-
-  toggleFavorite(): void {
+    this.favSvc
+      .addRemoveFavourite(this.loggedUserId, this.apartment)
+      .subscribe();
     this.isFavorite = !this.isFavorite;
   }
+
+  toggleFavorite(): void {}
 
   sendReview() {
     const apartmentUpdate = this.ratingsForm.value;

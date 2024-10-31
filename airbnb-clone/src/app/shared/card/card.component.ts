@@ -4,6 +4,7 @@ import { FavouritesService } from '../../services/favourites.service';
 import { iUser } from '../../interfaces/iuser';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -14,7 +15,8 @@ export class CardComponent implements OnInit {
   constructor(
     private favSvc: FavouritesService,
     private authSvc: AuthService,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private router: Router
   ) {}
 
   @Input() apartment!: iApartment;
@@ -23,6 +25,11 @@ export class CardComponent implements OnInit {
   favourites!: iApartment[];
   rating!: number;
   user!: iUser;
+
+  goToApartment(id: number) {
+    this.router.navigate(['/apartment', id]);
+    setTimeout(() => window.location.reload(), 100);
+  }
 
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe((isLoggedIn) => {
