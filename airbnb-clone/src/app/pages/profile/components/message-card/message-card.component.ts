@@ -32,6 +32,7 @@ export class MessageCardComponent {
         this.feedback = err;
       },
     });
+    console.log(this.message);
   }
 
   readMessage() {
@@ -48,6 +49,15 @@ export class MessageCardComponent {
       this.message.apartment.availability = false;
       this.messageSvc.changeMessageStatus(this.message).subscribe();
       this.apartmentSvc.changeAvailability(this.message.apartment).subscribe();
+      let newMessage = {
+        apartment: this.message.apartment,
+        date: new Date(Date.now()),
+        isRead: false,
+        message: 'Prenotazione confermata!',
+        senderId: this.message.receiverId,
+        receiverId: this.message.senderId,
+      };
+      this.messageSvc.sendMessage(newMessage).subscribe();
     }
   }
 
