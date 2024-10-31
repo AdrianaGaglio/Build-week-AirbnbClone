@@ -99,13 +99,19 @@ export class AuthService {
   }
 
   logout() {
-    return from(signOut(this.auth)).pipe(
-      map(() => {
-        console.log('Logout effettuato');
-
+    return from(
+      signOut(this.auth).then(() => {
         this.authState$.next(null); // Resetta lo stato dell'utente
         this.router.navigate(['/auth/login']); // Naviga alla pagina di login
       })
     );
+    // .pipe(
+    //   map(() => {
+    //     console.log('Logout effettuato');
+
+    //     this.authState$.next(null); // Resetta lo stato dell'utente
+    //     this.router.navigate(['/auth/login']); // Naviga alla pagina di login
+    //   })
+    // );
   }
 }
