@@ -8,6 +8,8 @@ import { UserService } from '../../services/user.service';
 import { iUser } from '../../interfaces/iuser';
 import { environment } from '../../../environments/environment.development';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
 
 @Component({
   selector: 'app-apartment',
@@ -21,7 +23,8 @@ export class ApartmentComponent implements OnInit {
     private favSvc: FavouritesService,
     private authSvc: AuthService,
     private userSvc: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modalSvc: NgbModal
   ) {}
 
   apartment!: iApartment;
@@ -99,7 +102,12 @@ export class ApartmentComponent implements OnInit {
 
     this.apartmentSvc.changeAvailability(this.apartment).subscribe();
 
-    console.log(apartmentUpdate);
-    console.log(this.apartment);
+    this.openModal('Feedback inviato con successo', true);
+  }
+
+  openModal(message: string, value: boolean) {
+    const modalRef = this.modalSvc.open(PopupComponent);
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.isOk = value;
   }
 }

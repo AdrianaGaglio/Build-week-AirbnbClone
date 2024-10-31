@@ -114,16 +114,18 @@
           </div>
         </ng-container>
 
-        <div class="d-flex align-items-center mb-2 border-bottom py-4">
-          <div class="rounded-pill overflow-hidden me-3">
+        <div class="d-flex align-items-center mb-2 border-bottom py-4 g-2">
+          <div class="rounded-pill overflow-hidden">
             <a [routerLink]="['/host', host.id]" *ngIf="host">
-              <img
-                src="https://a0.muscache.com/im/pictures/user/f654eeec-5aa5-48b6-ae59-7cba6a7d4c7d.jpg?im_w=240"
-                alt="Immagine dell'host"
-                height="50"
-                width="50"
-                class="object-fit-cover"
-              />
+              <ng-container *ngIf="host.profileImg">
+                <img
+                  src="{{ host.profileImg }}"
+                  alt="Immagine dell'host"
+                  height="50"
+                  width="50"
+                  class="object-fit-cover"
+                />
+              </ng-container>
             </a>
           </div>
           <div *ngIf="host">
@@ -228,7 +230,7 @@
             </button>
             <div
               [ngClass]="{ show: showRatings }"
-              class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
+              class="rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
             >
               <form [formGroup]="ratingsForm">
                 <div class="mt-2">
