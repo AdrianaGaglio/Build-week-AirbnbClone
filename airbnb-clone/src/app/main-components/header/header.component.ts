@@ -51,6 +51,8 @@ export class HeaderComponent {
   }
 
   logout() {
+    this.messageSvc.allMessages$.next([]);
+    this.messageSvc.unreadMessages$.next([]);
     this.authSvc.logout().subscribe();
   }
 
