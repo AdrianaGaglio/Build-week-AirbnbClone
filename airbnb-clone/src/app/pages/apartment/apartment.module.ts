@@ -14,6 +14,20 @@ import {
   ionSnowOutline,
   ionCafeOutline,
 } from '@ng-icons/ionicons';
+import {
+  matLocalLaundryService,
+  matKitchen,
+  matMicrowave,
+  matPets,
+  matWaves,
+  matCleaningServices,
+  matHelpCenter,
+  matLandscape,
+  matRoomService,
+  matLocalBar,
+  matBakeryDining,
+  matBlender,
+} from '@ng-icons/material-icons/baseline';
 
 import { SharedResModule } from '../../shared/reservation/sharedRes.module';
 import { SharedMapModule } from '../../shared/map/map.module';
@@ -34,6 +48,18 @@ import { ReactiveFormsModule } from '@angular/forms';
       ionTvOutline,
       ionSnowOutline,
       ionCafeOutline,
+      matLocalLaundryService,
+      matKitchen,
+      matMicrowave,
+      matPets,
+      matWaves,
+      matCleaningServices,
+      matHelpCenter,
+      matLandscape,
+      matRoomService,
+      matLocalBar,
+      matBakeryDining,
+      matBlender,
     }),
     SharedResModule,
     SharedMapModule,

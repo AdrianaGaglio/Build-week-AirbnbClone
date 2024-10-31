@@ -18,6 +18,19 @@ import {
   ionLogoTwitter,
   ionSearchCircleSharp,
   ionChatboxOutline,
+  ionFlameOutline,
+  ionTvOutline,
+  ionWifiOutline,
+  ionSnowOutline,
+  ionShirtOutline,
+  ionCafeOutline,
+  ionHandLeftOutline,
+  ionCarOutline,
+  ionWaterOutline,
+  ionFootballOutline,
+  ionBonfireOutline,
+  ionRoseOutline,
+  ionBodyOutline,
 } from '@ng-icons/ionicons';
 import {
   HTTP_INTERCEPTORS,
@@ -25,6 +38,18 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { matLocalLaundryService } from '@ng-icons/material-icons/baseline';
+import { matKitchen } from '@ng-icons/material-icons/baseline';
+import { matMicrowave } from '@ng-icons/material-icons/baseline';
+import { matBalcony } from '@ng-icons/material-icons/baseline';
+import { matPets } from '@ng-icons/material-icons/baseline';
+import { matWaves } from '@ng-icons/material-icons/baseline';
+import { matCleaningServices } from '@ng-icons/material-icons/baseline';
+import { matHelpCenter } from '@ng-icons/material-icons/baseline';
+import { matLandscape } from '@ng-icons/material-icons/baseline';
+import { matRoomService } from '@ng-icons/material-icons/baseline';
+import { matLocalBar } from '@ng-icons/material-icons/baseline';
+import { matBakeryDining } from '@ng-icons/material-icons/baseline';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
@@ -45,6 +70,31 @@ import { AngularFireModule } from '@angular/fire/compat';
       ionLogoTwitter,
       ionSearchCircleSharp,
       ionChatboxOutline,
+      ionFlameOutline,
+      ionTvOutline,
+      ionWifiOutline,
+      ionSnowOutline,
+      ionShirtOutline,
+      matKitchen,
+      matMicrowave,
+      ionCafeOutline,
+      ionHandLeftOutline,
+      ionCarOutline,
+      ionWaterOutline,
+      ionFootballOutline,
+      ionBonfireOutline,
+      matBalcony,
+      ionRoseOutline,
+      ionBodyOutline,
+      matPets,
+      matWaves,
+      matCleaningServices,
+      matHelpCenter,
+      matLocalLaundryService,
+      matLandscape,
+      matRoomService,
+      matLocalBar,
+      matBakeryDining,
     }),
     FormsModule,
     SharedModule,

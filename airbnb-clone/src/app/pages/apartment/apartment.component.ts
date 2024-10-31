@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApartmentService } from '../../services/apartment.service';
 import { iApartment } from '../../interfaces/iapartment';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './apartment.component.html',
   styleUrls: ['./apartment.component.scss'],
 })
-export class ApartmentComponent {
+export class ApartmentComponent implements OnInit {
   constructor(
     private apartmentSvc: ApartmentService,
     private route: ActivatedRoute,

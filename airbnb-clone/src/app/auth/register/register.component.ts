@@ -84,13 +84,13 @@ export class RegisterComponent implements OnInit {
         this.openModal(this.message, true);
         setTimeout(() => {
           this.authSvc.isRegistering = false;
+          this.authSvc.logout();
           this.router.navigate(['/auth/login']);
           this.modalService.dismissAll();
         }, 2000);
       },
       error: (err) => {
         this.authSvc.isRegistering = false;
-        console.log(err.code);
 
         if (err.code == 'auth/email-already-in-use') {
           this.message = 'Email esistente';
@@ -142,6 +142,8 @@ export class RegisterComponent implements OnInit {
           })
         )
         .subscribe();
+    } else {
+      this.sendDataRegister();
     }
   }
 }

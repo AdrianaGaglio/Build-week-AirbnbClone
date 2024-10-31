@@ -88,7 +88,7 @@ export class EditAparmentComponent {
     });
     this.search$
       .pipe(
-        debounceTime(300), // Aggiungi un ritardo di 300ms per il debounce
+        debounceTime(300),
         switchMap((placeName: string) =>
           this.geocodingSvc.searchGeocode(placeName)
         )
