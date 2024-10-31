@@ -95,7 +95,11 @@
 
         <div class="d-flex align-items-center mb-2 border-bottom py-4 gap-2">
           <div class="rounded-pill overflow-hidden">
-            <a [routerLink]="['/host', host.id]" *ngIf="host">
+            <a
+              [routerLink]="['/host', host.id]"
+              *ngIf="host"
+              class="text-decoration-none"
+            >
               <ng-container *ngIf="host.profileImg">
                 <img
                   src="{{ host.profileImg }}"
@@ -104,6 +108,14 @@
                   width="50"
                   class="object-fit-cover"
                 />
+              </ng-container>
+              <ng-container *ngIf="!host.profileImg">
+                <div
+                  class="bg-black w-fixed-50 h-fixed-50 text-light fs-4 p-2 rounded-circle"
+                >
+                  {{ host.firstName.slice(0, 1)
+                  }}{{ host.lastName.slice(0, 1) }}
+                </div>
               </ng-container>
             </a>
           </div>
@@ -116,7 +128,9 @@
                 <strong>
                   Nome dell'host: {{ host.firstName }} {{ host.lastName }}
                 </strong>
-                <span>Super host • 5 anni di esperienza come host</span>
+                <span *ngIf="rating > 3"
+                  >Super host • 5 anni di esperienza come host</span
+                >
               </p>
             </a>
           </div>
@@ -247,7 +261,7 @@
   </div>
 
   <!-- titolo review -->
-  <div class="my-5">
+  <div class="my-5" *ngIf="apartment.reviews.length > 0">
     <div class="d-flex justify-content-between">
       <h2 class="fw-bolder">Recensioni</h2>
       <div>

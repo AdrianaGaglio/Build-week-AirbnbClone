@@ -9,14 +9,22 @@
     </div>
     <div *ngIf="user" class="ms-3 mt-3">
       <div class="d-flex align-items-center">
-        <img
-          src="{{ user.profileImg }}"
-          alt="avatar profilo"
-          height="50"
-          width="50"
-          class="rounded-pill"
-        />
-
+        <ng-container *ngIf="user.profileImg">
+          <img
+            src="{{ user.profileImg }}"
+            alt="avatar profilo"
+            height="50"
+            width="50"
+            class="rounded-pill"
+          />
+        </ng-container>
+        <ng-container *ngIf="!user.profileImg">
+          <div
+            class="bg-black w-fixed-50 h-fixed-50 text-light fs-4 p-2 rounded-circle"
+          >
+            {{ user.firstName.slice(0, 1) }}{{ user.lastName.slice(0, 1) }}
+          </div>
+        </ng-container>
         <div class="ms-3">
           <h6 class="m-0 fw-bold">{{ user.firstName }} {{ user.lastName }}</h6>
           <p class="m-0">{{ review.date | date }}</p>
