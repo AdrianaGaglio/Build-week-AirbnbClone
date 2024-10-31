@@ -55,10 +55,6 @@ export class EditAparmentComponent {
   imgURLs: string[] = [];
 
   ngOnInit(): void {
-    this.apartSvc.getCategories().subscribe((res) => {
-      this.categories = res;
-    });
-
     this.route.params.subscribe((params) => {
       if (params['id']) {
         this.idEditPost = params['id'];

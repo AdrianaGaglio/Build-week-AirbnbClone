@@ -48,10 +48,6 @@ export class AddNewApartmentComponent implements OnInit {
   imgURLs: string[] = [];
 
   ngOnInit(): void {
-    this.apartSvc.getCategories().subscribe((res) => {
-      this.categories = res;
-    });
-
     this.authSvc.authState$.subscribe((res) => {
       if (res) {
         this.uid = res.uid;

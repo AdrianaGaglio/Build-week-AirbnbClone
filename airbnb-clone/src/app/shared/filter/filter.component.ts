@@ -15,11 +15,7 @@ export class FilterComponent {
 
   categories = environment.categories;
 
-  ngOnInit() {
-    this.apartmentSvc.getCategories().subscribe((res) => {
-      this.categories = res;
-    });
-  }
+  ngOnInit() {}
 
   selectCategory(category: string) {
     this.category.emit(category);
