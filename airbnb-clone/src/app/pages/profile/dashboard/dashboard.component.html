@@ -1,6 +1,6 @@
 <div class="container">
   <!-- welcome cliente -->
-  <h2 class="fw-semibold">Ciao Giuseppe!</h2>
+  <h2 *ngIf="user" class="fw-semibold">Ciao {{ user.firstName }}!</h2>
   <br />
   <!-- titolo e button -->
   <div class="d-flex justify-content-between align-items-center">
@@ -15,6 +15,13 @@
   </div>
   <!-- sezzione annunci -->
   <div
+    *ngIf="(apartments && apartments.length < 1) || !apartments"
+    class="bg-secondary-subtle rounded-2 p-3 text-center my-3"
+  >
+    Non hai ancora appartamenti
+  </div>
+  <div
+    *ngIf="apartments && apartments.length > 0"
     class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 px-3 pb-4 my-3 bg-secondary-subtle rounded-2"
   >
     <div *ngFor="let apartment of apartments" class="col">

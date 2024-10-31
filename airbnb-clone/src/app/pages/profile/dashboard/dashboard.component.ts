@@ -4,6 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { ApartmentService } from '../../../services/apartment.service';
 import { iApartment } from '../../../interfaces/iapartment';
 import { AuthService } from '../../../auth/auth.service';
+import { iUser } from '../../../interfaces/iuser';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,16 +15,21 @@ export class DashboardComponent {
   constructor(
     private router: Router,
     private apartmentSvc: ApartmentService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private userSvc: UserService
   ) {}
 
   apartments!: iApartment[];
+  user!: iUser;
 
   ngOnInit() {
     this.authSvc.authState$.subscribe((user) => {
       if (user) {
         this.apartmentSvc.getApartmentsByUser(user.uid).subscribe((res) => {
           this.apartments = res;
+          this.userSvc.getUserById(user.uid).subscribe((userInfo) => {
+            this.user = userInfo;
+          });
         });
       }
     });
