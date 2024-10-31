@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from '../../services/message.service';
+import { PopupComponent } from '../sharedmodal/popup/popup.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reservation',
@@ -15,7 +17,8 @@ export class ReservationComponent {
     private fb: FormBuilder,
     private authSvc: AuthService,
     private route: ActivatedRoute,
-    private messageSvc: MessageService
+    private messageSvc: MessageService,
+    private modalSvc: NgbModal
   ) {}
 
   @Input() apartment!: iApartment;
@@ -55,11 +58,19 @@ export class ReservationComponent {
       this.messageSvc.sendMessage(this.commentForm.value).subscribe({
         next: (message) => {
           this.message = 'Messaggio inviato correttamente';
+          this.commentForm.reset();
+          this.openModal(this.message, false);
         },
         error: (err) => {
           this.message = err;
         },
       });
     }
+  }
+
+  openModal(message: string, value: boolean) {
+    const modalRef = this.modalSvc.open(PopupComponent);
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.isOk = value;
   }
 }

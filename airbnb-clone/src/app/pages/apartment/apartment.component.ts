@@ -100,9 +100,16 @@ export class ApartmentComponent implements OnInit {
 
     this.apartment.reviews.push(apartmentUpdate.ratingsReview);
 
-    this.apartmentSvc.changeAvailability(this.apartment).subscribe();
-
-    this.openModal('Feedback inviato con successo', true);
+    this.apartmentSvc.changeAvailability(this.apartment).subscribe({
+      next: (res) => {
+        this.openModal('Feedback inviato con successo', false);
+        this.ratingsForm.reset();
+        this.showRatings = false;
+      },
+      error: (res) => {
+        this.openModal('Si è verificato un problema', false);
+      },
+    });
   }
 
   openModal(message: string, value: boolean) {
