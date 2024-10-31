@@ -16,6 +16,7 @@ export class MessagesComponent {
   ngOnInit() {
     this.messageSvc.allMessages$.subscribe((msgs) => {
       if (msgs.length > 0) {
+        console.log(msgs);
         this.messages = msgs;
         this.messages = msgs.sort((a: iMessage, b: iMessage) => {
           // Ordina prima per 'isRead' (dove i non letti - false - vengono per primi)
