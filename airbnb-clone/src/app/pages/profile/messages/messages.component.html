@@ -7,4 +7,10 @@
       </div>
     </ng-container>
   </div>
+  <div
+    *ngIf="(messages && messages.length < 1) || !messages"
+    class="bg-secondary-subtle rounded-2 p-3 text-center my-3"
+  >
+    Non ci sono messaggi
+  </div>
 </div>
