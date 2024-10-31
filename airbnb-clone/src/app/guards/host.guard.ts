@@ -30,7 +30,6 @@ export class HostGuard implements CanActivate, CanActivateChild {
   ): MaybeAsync<GuardResult> {
     return this.authSvc.authStateOb$.pipe(
       map((data) => {
-        console.log('host guardddddd', data?.uid);
         if (data) {
           let user: iUser | null = null;
           this.usersSvc.getUserById(data.uid).subscribe((userFromId) => {

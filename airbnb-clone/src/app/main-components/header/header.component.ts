@@ -1,5 +1,5 @@
 import { ApartmentService } from './../../services/apartment.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { environment } from '../../../environments/environment.development';
 import { Router } from '@angular/router';
@@ -20,7 +20,8 @@ export class HeaderComponent {
     private ApartmentSvc: ApartmentService,
     private router: Router,
     private messageSvc: MessageService,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private elementRef: ElementRef
   ) {}
 
   showBol: boolean = false;
@@ -51,6 +52,12 @@ export class HeaderComponent {
 
   show() {
     this.showBol = !this.showBol;
+  }
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.showBol = false;
+    }
   }
 
   logout() {

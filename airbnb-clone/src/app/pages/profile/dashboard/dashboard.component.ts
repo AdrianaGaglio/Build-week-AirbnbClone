@@ -6,6 +6,9 @@ import { iApartment } from '../../../interfaces/iapartment';
 import { AuthService } from '../../../auth/auth.service';
 import { iUser } from '../../../interfaces/iuser';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupConfirmComponent } from '../../../shared/sharedmodalconfirm/popup-confirm/popup-confirm.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,11 +21,13 @@ export class DashboardComponent {
     private apartmentSvc: ApartmentService,
     private authSvc: AuthService,
     private userSvc: UserService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private modalSvc: NgbModal
   ) {}
 
   apartments!: iApartment[];
   user!: iUser;
+  isConfirm!: boolean;
 
   ngOnInit() {
     this.authSvc.authState$.subscribe((user) => {
@@ -46,14 +51,7 @@ export class DashboardComponent {
   }
 
   deleteApartment(id: number) {
-    this.apartmentSvc.deleteApartmentById(id).subscribe();
-    const found = this.apartments.find((data) => data.id === id);
-    if (found) {
-      found.coverImage.forEach((imageUrl) => {
-        this.deliteImgFromStorage(imageUrl);
-      });
-    }
-    this.apartments = this.apartments.filter((data) => data.id !== id);
+    this.openModal("Sei sicuro di voler eliminare l'appartamento?", id);
   }
 
   checkOut(apartment: iApartment) {
@@ -79,5 +77,22 @@ export class DashboardComponent {
           console.error("Errore durante l'eliminazione dell'immagine:", error);
         },
       });
+  }
+
+  openModal(message: string, id: number) {
+    const modalRef = this.modalSvc.open(PopupConfirmComponent);
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.confirm.subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.apartmentSvc.deleteApartmentById(id).subscribe();
+        const found = this.apartments.find((data) => data.id === id);
+        if (found) {
+          found.coverImage.forEach((imageUrl) => {
+            this.deliteImgFromStorage(imageUrl);
+          });
+        }
+        this.apartments = this.apartments.filter((data) => data.id !== id);
+      }
+    });
   }
 }

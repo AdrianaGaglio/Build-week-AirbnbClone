@@ -36,7 +36,7 @@ export class AddNewApartmentComponent implements OnInit {
   form!: FormGroup;
   uid!: string;
 
-  categories!: string[];
+  categories = environment.categories;
 
   message!: string;
 

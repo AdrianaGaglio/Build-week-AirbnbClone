@@ -24,7 +24,6 @@ export class GuestGuard implements CanActivate, CanActivateChild {
   ): MaybeAsync<GuardResult> {
     return this.authSvc.isLoggedIn$.pipe(
       map((loggedIn) => {
-        console.log('Stato di login aggiornato:', this.isLoggedIn);
         if (loggedIn) {
           this.router.navigate(['/']);
           return false;

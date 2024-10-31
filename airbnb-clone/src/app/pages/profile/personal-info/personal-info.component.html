@@ -197,6 +197,53 @@
           >
         </div>
       </div>
+      <div class="row py-3 border-bottom">
+        <div class="col">
+          <h6 class="fw-bold mb-1">Ruolo</h6>
+          <p class="text-secondary mb-0" *ngIf="!toggleRole">
+            {{ user.role | titlecase }}
+          </p>
+          <div class="d-flex gap-1" *ngIf="toggleRole">
+            <label class="me-2">
+              <input
+                type="radio"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                class=""
+                name="role"
+                [(ngModel)]="user.role"
+                value="host"
+              />
+              Host
+            </label>
+            <label class="me-3">
+              <input
+                type="radio"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                class=""
+                name="role"
+                [(ngModel)]="user.role"
+                value="guest"
+              />
+              Guest
+            </label>
+            <button
+              (click)="updateRole()"
+              class="btn btn-pink-airbnb btn-sm text-light fw-medium"
+              type="button"
+            >
+              Salva
+            </button>
+          </div>
+        </div>
+        <div class="col-2 text-end">
+          <a
+            (click)="changeRole()"
+            class="text-decoration-underline text-black fw-medium"
+            role="button"
+            >Modifica</a
+          >
+        </div>
+      </div>
       <div class="row row-cols-3 py-5">
         <div *ngFor="let review of user.reviews" class="col">
           <app-review-card [review]="review"></app-review-card>

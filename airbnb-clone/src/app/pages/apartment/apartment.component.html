@@ -4,7 +4,6 @@
     <h2 class="text-dark mb-0 fw-bold">{{ apartment.name }}</h2>
     <ng-icon
       [name]="isFavorite ? 'ionHeart' : 'ionHeartOutline'"
-      (click)="toggleFavorite()"
       (click)="addRemoveFavourite()"
       [class.filled]="isFavorite"
       [class.empty]="!isFavorite"
@@ -194,7 +193,11 @@
           ></ng-container>
           <ng-container *ngIf="loggedUserId && !apartment.availability">
             <h5 class="text-pink-airbnb text-center">
-              Appartamento al momento non disponibile
+              {{
+                reserved
+                  ? "Hai prenotato questo appartamento"
+                  : "Appartamento al momento non disponibile"
+              }}
             </h5>
           </ng-container>
           <!-- review -->

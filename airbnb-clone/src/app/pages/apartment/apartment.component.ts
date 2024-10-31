@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
 import { GalleryComponent } from '../../shared/gallery-modal/gallery/gallery.component';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-apartment',
@@ -25,7 +26,8 @@ export class ApartmentComponent implements OnInit {
     private authSvc: AuthService,
     private userSvc: UserService,
     private fb: FormBuilder,
-    private modalSvc: NgbModal
+    private modalSvc: NgbModal,
+    private messageSvc: MessageService
   ) {}
 
   apartment!: iApartment;
@@ -36,6 +38,7 @@ export class ApartmentComponent implements OnInit {
   displayedServices: { service: string; icon: string }[] = [];
   numOfRoom: number = 0;
   array!: any[];
+  reserved!: boolean;
 
   coverimg!: string;
   img4!: string[];
@@ -48,8 +51,6 @@ export class ApartmentComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.apartmentSvc.getApartmentById(params['id']).subscribe({
         next: (res) => {
-          console.log(res);
-
           this.apartment = res;
           this.coverimg = this.apartment.coverImage[0];
           this.img4 = this.apartment.coverImage.slice(1, 4);
@@ -80,7 +81,23 @@ export class ApartmentComponent implements OnInit {
     });
 
     this.authSvc.authState$.subscribe((user) => {
-      if (user) this.loggedUserId = user.uid;
+      if (user) {
+        this.favSvc.getFavouritesByUserId(user.uid).subscribe((favourites) => {
+          if (favourites) {
+            const found = favourites.find((favorite) => {
+              if (this.apartment.id && favorite) {
+                return favorite.id === this.apartment.id;
+              } else {
+                return false;
+              }
+            });
+            if (found) {
+              this.isFavorite = true;
+            }
+          }
+        });
+        this.loggedUserId = user.uid;
+      }
 
       this.ratingsForm = this.fb.group({
         ratings: this.fb.group({
@@ -93,16 +110,30 @@ export class ApartmentComponent implements OnInit {
           date: this.fb.control(Date.now()),
         }),
       });
+
+      this.messageSvc.allMessages$.subscribe((res) => {
+        if (res && res.length > 0) {
+          let found = res.find(
+            (msg) =>
+              msg.apartment!.id === this.apartment.id &&
+              !msg.apartment!.availability
+          );
+          if (found) {
+            this.reserved = true;
+          }
+        }
+      });
     });
   }
 
   addRemoveFavourite(): void {
-    this.favSvc.addRemoveFavourite(this.loggedUserId, this.apartment);
-  }
-
-  toggleFavorite(): void {
+    this.favSvc
+      .addRemoveFavourite(this.loggedUserId, this.apartment)
+      .subscribe();
     this.isFavorite = !this.isFavorite;
   }
+
+  toggleFavorite(): void {}
 
   sendReview() {
     const apartmentUpdate = this.ratingsForm.value;

@@ -48,7 +48,6 @@ export class HostComponent implements OnInit {
       this.userSvc.getUserById(params['id']).subscribe({
         next: (user) => {
           this.user = user;
-          console.log(this.user);
 
           if (user.ratings) {
             this.ratings = Math.floor(user.ratings.vote / user.ratings.count);
@@ -84,7 +83,6 @@ export class HostComponent implements OnInit {
           this.apartments = apartments.filter(
             (apartment) => apartment.hostId === params['id']
           );
-          console.log(this.apartments);
         },
         error: (error) => {
           this.message = error;

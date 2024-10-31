@@ -15,8 +15,7 @@
     src="{{ apartment.coverImage }}"
     alt="Room image"
     role="button"
-    [routerLink]="['/apartment', apartment.id]"
-    routerLinkActive="router-link-active"
+    (click)="goToApartment(apartment.id)"
   />
   <div class="card-body">
     <h5 class="card-title">{{ apartment.name }}</h5>
