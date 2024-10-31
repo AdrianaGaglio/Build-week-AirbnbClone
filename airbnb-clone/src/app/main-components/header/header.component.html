@@ -56,7 +56,7 @@
           >
             <ng-icon name="ionMenuOutline" class="fs-4 text-black"></ng-icon>
 
-            <ng-container *ngIf="!user">
+            <ng-container *ngIf="!isLoggedIn">
               <img
                 src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=G&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
                 height="30"
@@ -66,14 +66,14 @@
 
             <ng-container *ngIf="user && isLoggedIn">
               <img
-                *ngIf="user.profileImg"
+                *ngIf="user && user.profileImg"
                 src="{{ user.profileImg }}"
                 height="30"
                 width="30"
                 class="ms-1 rounded-circle object-fit-cover"
               />
               <div
-                *ngIf="!user.profileImg"
+                *ngIf="user && !user.profileImg"
                 class="w-30 h-30 bg-black p-1 rounded-circle ms-1"
               >
                 <span class="text-light"

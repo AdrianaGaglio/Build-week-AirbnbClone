@@ -102,7 +102,8 @@ export class AuthService {
     return from(
       signOut(this.auth).then(() => {
         this.authState$.next(null); // Resetta lo stato dell'utente
-        this.router.navigate(['/auth/login']); // Naviga alla pagina di login
+
+        location.reload(); // Naviga alla pagina di login
       })
     );
     // .pipe(
