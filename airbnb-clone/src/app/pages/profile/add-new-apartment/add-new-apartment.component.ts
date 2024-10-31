@@ -6,7 +6,13 @@ import { PopupComponent } from '../../../shared/sharedmodal/popup/popup.componen
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../../environments/environment.development';
-import { debounceTime, finalize, Subject, switchMap } from 'rxjs';
+import {
+  debounceTime,
+  finalize,
+  lastValueFrom,
+  Subject,
+  switchMap,
+} from 'rxjs';
 import { GeocodingService } from '../../../services/geocoding.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 @Component({
@@ -38,8 +44,8 @@ export class AddNewApartmentComponent implements OnInit {
   suggestions: any[] = [];
   private search$ = new Subject<string>();
 
-  selectedImgCover: File | null = null;
-  imgURL: string | null = null;
+  selectedImgCovers: File[] = [];
+  imgURLs: string[] = [];
 
   ngOnInit(): void {
     this.apartSvc.getCategories().subscribe((res) => {
@@ -139,7 +145,7 @@ export class AddNewApartmentComponent implements OnInit {
   onCoverSelected(event: any) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files.length > 0) {
-      this.selectedImgCover = fileInput.files[0];
+      this.selectedImgCovers = Array.from(fileInput.files);
     }
   }
 
@@ -160,32 +166,51 @@ export class AddNewApartmentComponent implements OnInit {
     });
   }
   onCoverUpload(): void {
-    if (this.selectedImgCover) {
-      const filePath = `coverImages/${Date.now()}_${
-        this.selectedImgCover.name
-      }`;
-      const fileRef = this.storage.ref(filePath);
-      const task = this.storage.upload(filePath, this.selectedImgCover);
+    if (this.selectedImgCovers.length > 0) {
+      const uploadPromises = this.selectedImgCovers.map((file) => {
+        const filePath = `coverImages/${Date.now()}_${file.name}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file);
 
-      task
-        .snapshotChanges()
-        .pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe((url) => {
-              this.imgURL = url;
-              console.log('Immagine caricata con successo, URL:', url);
+        return new Promise<void>((resolve, reject) => {
+          task
+            .snapshotChanges()
+            .pipe(
+              finalize(async () => {
+                try {
+                  const url = await lastValueFrom(fileRef.getDownloadURL());
+                  this.imgURLs.push(url);
+                  console.log(url);
 
-              // Aggiorna il form con l'URL dell'immagine
-              this.form.patchValue({
-                coverImage: this.imgURL,
-              });
+                  resolve();
+                } catch (error) {
+                  reject(error);
+                }
+              })
+            )
+            .subscribe();
+        });
+      });
 
-              // Invia i dati dell'appartamento solo dopo aver ottenuto l'URL dell'immagine
-              this.sendDataApartment();
-            });
-          })
-        )
-        .subscribe();
+      // Attendi che tutte le immagini siano caricate
+      Promise.all(uploadPromises)
+        .then(() => {
+          console.log('Immagini caricate con successo:', this.imgURLs);
+
+          // Aggiorna il form con l'array degli URL delle immagini
+          this.form.patchValue({
+            coverImage: this.imgURLs,
+          });
+          this.sendDataApartment();
+        })
+        .catch((error) => {
+          console.error(
+            'Errore durante il caricamento delle immagini: ',
+            error
+          );
+          this.message = 'Errore durante il caricamento delle immagini.';
+          this.openModal(this.message, false);
+        });
     } else {
       this.sendDataApartment();
     }
