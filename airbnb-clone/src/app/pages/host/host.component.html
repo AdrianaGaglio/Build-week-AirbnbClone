@@ -157,7 +157,9 @@
       </div>
 
       <div *ngIf="apartments">
-        <h2 class="fw-bolder white-space">Annunci di Kevin Hart</h2>
+        <h2 class="fw-bolder white-space">
+          Annunci di {{ user.firstName }} {{ user.lastName }}
+        </h2>
         <div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-5">
           <div class="col" *ngFor="let apartment of apartments">
             <app-card [apartment]="apartment"></app-card>
