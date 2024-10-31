@@ -114,22 +114,7 @@ export class EditAparmentComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.apartSvc
-        .editApartmentById(this.idEditPost, this.form.value)
-        .subscribe({
-          next: (res) => {
-            this.message = 'Appartamento modificato con successo!';
-            this.openModal(this.message, true);
-            setTimeout(() => {
-              this.router.navigate(['/profile/dashboard']);
-              this.modalSvc.dismissAll();
-            }, 2000);
-          },
-          error: (err) => {
-            this.message = err;
-            this.openModal(this.message, false);
-          },
-        });
+      this.onMoreImagesUpload();
     }
   }
 
@@ -173,6 +158,26 @@ export class EditAparmentComponent {
     console.log('Località selezionata:', suggestion);
     this.suggestions = [];
   }
+
+  sendEditDataApartment() {
+    this.apartSvc
+      .editApartmentById(this.idEditPost, this.form.value)
+      .subscribe({
+        next: (res) => {
+          this.message = 'Appartamento modificato con successo!';
+          this.openModal(this.message, true);
+          setTimeout(() => {
+            this.router.navigate(['/profile/dashboard']);
+            this.modalSvc.dismissAll();
+          }, 2000);
+        },
+        error: (err) => {
+          this.message = err;
+          this.openModal(this.message, false);
+        },
+      });
+  }
+
   onMoreImagesSelected(event: any) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files.length > 0) {
@@ -183,7 +188,7 @@ export class EditAparmentComponent {
   onMoreImagesUpload(): void {
     if (this.selectedMoreImages.length > 0) {
       const uploadPromises = this.selectedMoreImages.map((file) => {
-        const filePath = `apartmentImages/${Date.now()}_${file.name}`;
+        const filePath = `coverImages/${Date.now()}_${file.name}`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, file);
 
@@ -196,15 +201,6 @@ export class EditAparmentComponent {
                   const url = await lastValueFrom(fileRef.getDownloadURL());
                   this.imgURLs.push(url);
 
-                  // Quando tutte le immagini sono state caricate, aggiorna il form e invia i dati
-                  if (this.imgURLs.length === this.selectedMoreImages.length) {
-                    const currentCoverImages =
-                      this.form.get('coverImage')?.value || [];
-                    console.log(this.imgURLs);
-                    this.form.patchValue({
-                      coverImage: [...currentCoverImages, ...this.imgURLs],
-                    });
-                  }
                   resolve();
                 } catch (error) {
                   reject(error);
@@ -219,6 +215,12 @@ export class EditAparmentComponent {
       Promise.all(uploadPromises)
         .then(() => {
           console.log('Tutte le immagini sono state caricate con successo.');
+          const currentCoverImages = this.form.get('coverImage')?.value || [];
+          console.log(this.imgURLs);
+          this.form.patchValue({
+            coverImage: [...currentCoverImages, ...this.imgURLs],
+          });
+          this.sendEditDataApartment();
         })
         .catch((error) => {
           console.error(
@@ -228,6 +230,8 @@ export class EditAparmentComponent {
           this.message = 'Errore durante il caricamento delle immagini.';
           this.openModal(this.message, false);
         });
+    } else {
+      this.sendEditDataApartment();
     }
   }
 }
