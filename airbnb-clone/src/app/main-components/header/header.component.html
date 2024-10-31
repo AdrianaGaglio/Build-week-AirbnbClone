@@ -102,7 +102,7 @@
               >Profile</a
             >
           </li>
-          <li>
+          <li *ngIf="user?.role === 'host'">
             <a
               (click)="show()"
               routerLink="/profile/dashboard"
