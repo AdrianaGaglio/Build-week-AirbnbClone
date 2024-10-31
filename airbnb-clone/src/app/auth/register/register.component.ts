@@ -91,7 +91,6 @@ export class RegisterComponent implements OnInit {
       },
       error: (err) => {
         this.authSvc.isRegistering = false;
-        console.log(err.code);
 
         if (err.code == 'auth/email-already-in-use') {
           this.message = 'Email esistente';
