@@ -1,18 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
 import { environment } from '../../../environments/environment.development';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize, map } from 'rxjs';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-register',

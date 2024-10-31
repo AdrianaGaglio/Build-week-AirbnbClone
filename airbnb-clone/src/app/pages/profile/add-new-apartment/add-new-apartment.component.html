@@ -230,12 +230,13 @@
           <!-- coverImage -->
           <div class="d-flex my-5 gap-5 justify-content-between">
             <h5>Cover annunci</h5>
+            <input type="text" hidden formControlName="coverImage" />
             <input
-              formControlName="coverImage"
               class="form-control"
               type="file"
               id="avatar"
-              accept="image/png, image/jpeg"
+              accept="image/png, image/jpeg, image/webp"
+              (change)="onCoverSelected($event)"
             />
           </div>
           <!-- otherImages -->
