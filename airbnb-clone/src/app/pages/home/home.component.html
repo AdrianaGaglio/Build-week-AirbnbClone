@@ -2,7 +2,12 @@
   (category)="filterByCategory($event)"
   (all)="allCategories($event)"
 ></app-filter>
-<div *ngIf="apartments.length === 0">Non ci sono ancora alloggi caricati</div>
+<div
+  *ngIf="apartments.length === 0"
+  class="container text-center bg-secondary-subtle p-3 my-3 rounded-3"
+>
+  Non ci sono ancora alloggi caricati
+</div>
 <div *ngIf="apartments.length > 0" class="container-fluid padding-lg">
   <div
     class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4"
