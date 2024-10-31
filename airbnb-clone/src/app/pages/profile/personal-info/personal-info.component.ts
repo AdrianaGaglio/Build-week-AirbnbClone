@@ -23,6 +23,7 @@ export class PersonalInfoComponent implements OnInit {
   toggleEmail: boolean = false;
   togglePhone: boolean = false;
   toggleImg: boolean = false;
+  toggleRole: boolean = false;
 
   selectedImg: File | null = null;
   imgURL: string | null = null;
@@ -34,6 +35,7 @@ export class PersonalInfoComponent implements OnInit {
         if (uid) {
           this.userSvc.getUserById(uid).subscribe((user) => {
             this.user = user; // Assegna i dati dell'utente alla proprietà `user`
+            console.log(user);
           });
         }
       }
@@ -74,6 +76,13 @@ export class PersonalInfoComponent implements OnInit {
 
   changePhone() {
     this.togglePhone = !this.togglePhone;
+  }
+  changeRole() {
+    this.toggleRole = !this.toggleRole;
+  }
+  updateRole() {
+    this.userSvc.changeUserInfo(this.user).subscribe();
+    this.toggleRole = false;
   }
 
   updatePhone() {
