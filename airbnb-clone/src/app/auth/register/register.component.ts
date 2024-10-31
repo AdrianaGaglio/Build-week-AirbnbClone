@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
 import { environment } from '../../../environments/environment.development';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize } from 'rxjs';
+import { finalize, map } from 'rxjs';
 
 @Component({
   selector: 'app-register',
