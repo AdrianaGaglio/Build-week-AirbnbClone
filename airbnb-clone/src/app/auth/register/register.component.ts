@@ -84,6 +84,7 @@ export class RegisterComponent implements OnInit {
         this.openModal(this.message, true);
         setTimeout(() => {
           this.authSvc.isRegistering = false;
+          this.authSvc.logout();
           this.router.navigate(['/auth/login']);
           this.modalService.dismissAll();
         }, 2000);
