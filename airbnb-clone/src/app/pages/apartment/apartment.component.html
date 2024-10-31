@@ -193,7 +193,11 @@
           ></ng-container>
           <ng-container *ngIf="loggedUserId && !apartment.availability">
             <h5 class="text-pink-airbnb text-center">
-              Appartamento al momento non disponibile
+              {{
+                reserved
+                  ? "Hai prenotato questo appartamento"
+                  : "Appartamento al momento non disponibile"
+              }}
             </h5>
           </ng-container>
           <!-- review -->

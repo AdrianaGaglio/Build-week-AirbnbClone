@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment.development';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-apartment',
@@ -24,7 +25,8 @@ export class ApartmentComponent implements OnInit {
     private authSvc: AuthService,
     private userSvc: UserService,
     private fb: FormBuilder,
-    private modalSvc: NgbModal
+    private modalSvc: NgbModal,
+    private messageSvc: MessageService
   ) {}
 
   apartment!: iApartment;
@@ -35,6 +37,7 @@ export class ApartmentComponent implements OnInit {
   displayedServices: { service: string; icon: string }[] = [];
   numOfRoom: number = 0;
   array!: any[];
+  reserved!: boolean;
 
   coverimg!: string;
   img4!: string[];
@@ -88,6 +91,19 @@ export class ApartmentComponent implements OnInit {
           userId: this.fb.control(this.loggedUserId),
           date: this.fb.control(Date.now()),
         }),
+      });
+
+      this.messageSvc.allMessages$.subscribe((res) => {
+        if (res && res.length > 0) {
+          let found = res.find(
+            (msg) =>
+              msg.apartment!.id === this.apartment.id &&
+              !msg.apartment!.availability
+          );
+          if (found) {
+            this.reserved = true;
+          }
+        }
       });
     });
   }
