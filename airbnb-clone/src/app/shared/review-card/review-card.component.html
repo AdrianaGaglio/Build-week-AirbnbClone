@@ -4,8 +4,10 @@
   <div
     class="card-host border rounded-4 w-100 p-4 d-flex flex-column justify-content-between"
   >
-    <p class="px-3 pt-2">{{ review.comment }}</p>
-    <div *ngIf="user" class="ms-3">
+    <div class="bg-body-secondary rounded-3">
+      <p class="px-3 my-0 py-2">{{ review.comment }}</p>
+    </div>
+    <div *ngIf="user" class="ms-3 mt-3">
       <div class="d-flex align-items-center">
         <img
           src="{{ user.profileImg }}"
