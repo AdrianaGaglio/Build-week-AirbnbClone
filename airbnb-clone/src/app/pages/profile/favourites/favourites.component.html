@@ -5,4 +5,10 @@
       <app-card [apartment]="apartment"></app-card>
     </div>
   </div>
+  <div
+    *ngIf="apartments.length < 1"
+    class="container text-center bg-secondary-subtle p-3 my-3 rounded-3"
+  >
+    Nessun appartamento salvato
+  </div>
 </div>
