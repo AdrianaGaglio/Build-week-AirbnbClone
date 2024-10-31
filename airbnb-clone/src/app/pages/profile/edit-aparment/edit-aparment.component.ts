@@ -42,6 +42,7 @@ export class EditAparmentComponent {
   form!: FormGroup;
   uid!: string;
 
+  // lista categorie
   categories = environment.categories;
 
   message!: string;
