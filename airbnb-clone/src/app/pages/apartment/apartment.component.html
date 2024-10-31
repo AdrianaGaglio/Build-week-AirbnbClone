@@ -82,7 +82,7 @@
                 *ngIf="host"
                 class="border-start border-2 px-4 p-2 d-flex flex-column align-items-center"
               >
-                <h5 class="m-0 fw-bolder">33</h5>
+                <h5 class="m-0 fw-bolder">{{ apartment.reviews.length }}</h5>
                 <a
                   [routerLink]="['/host', host.id]"
                   class="text-dark fs-6 fw-bolder"
