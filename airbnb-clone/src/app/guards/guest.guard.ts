@@ -9,12 +9,13 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { map } from 'rxjs';
+import { map, of, skipWhile, switchMap, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GuestGuard implements CanActivate, CanActivateChild {
+  isLoggedIn = false;
   constructor(private authSvc: AuthService, private router: Router) {}
 
   canActivate(
@@ -22,15 +23,17 @@ export class GuestGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
     return this.authSvc.isLoggedIn$.pipe(
-      map((value) => {
-        if (value) {
-          this.router.navigate(['/home']);
+      map((loggedIn) => {
+        console.log('Stato di login aggiornato:', this.isLoggedIn);
+        if (loggedIn) {
+          this.router.navigate(['/']);
+          return false;
         }
-
-        return !value;
+        return true;
       })
     );
   }
+
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

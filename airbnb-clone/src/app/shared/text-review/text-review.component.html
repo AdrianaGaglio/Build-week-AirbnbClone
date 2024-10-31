@@ -3,8 +3,8 @@
   <textarea
     type="text"
     class="form-contrl px-2 py-2 rounded border"
-    placeholder="es. Host gentile e disponibile..."
-    formControlName="textReview"
-  >
-  </textarea>
+    formControlName="control"
+    placeholder="es. Host gentile e disponibile, esperienza fantastica..."
+    (input)="onInput($event)"
+  ></textarea>
 </div>

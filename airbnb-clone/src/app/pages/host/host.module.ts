@@ -6,9 +6,16 @@ import { HostComponent } from './host.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReviewComponent } from './components/review/review.component';
 import { SharedResModule } from '../../shared/reservation/sharedRes.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HostComponent, ReviewComponent],
-  imports: [CommonModule, HostRoutingModule, SharedModule, SharedResModule],
+  imports: [
+    CommonModule,
+    HostRoutingModule,
+    SharedModule,
+    SharedResModule,
+    ReactiveFormsModule,
+  ],
 })
 export class HostModule {}

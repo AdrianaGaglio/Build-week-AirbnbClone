@@ -142,6 +142,41 @@
           Appartamento al momento non disponibile
         </h5>
       </ng-container>
+      <!-- review -->
+      <div class="dropdown mt-2">
+        <button
+          (click)="showRatings = !showRatings"
+          class="btn bg-pink-airbnb-subtle text-white w-100 rounded-4 dropdown-toggle button-host"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Valuta l'esperienza!
+        </button>
+        <div
+          [ngClass]="{ show: showRatings }"
+          class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
+        >
+          <form [formGroup]="ratingsForm">
+            <div class="mt-2">
+              <h5>Come valuti l'esperinza?</h5>
+              <div formGroupName="ratings">
+                <app-ratings-stars formControlName="vote"></app-ratings-stars>
+              </div>
+            </div>
+
+            <div formGroupName="ratingsReview">
+              <app-text-review formControlName="comment"></app-text-review>
+            </div>
+            <button
+              (click)="sendReview()"
+              class="btn btn-pink-airbnb text-white fw-bold my-2 w-75"
+            >
+              Invia
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 

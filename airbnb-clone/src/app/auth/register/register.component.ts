@@ -143,6 +143,8 @@ export class RegisterComponent implements OnInit {
           })
         )
         .subscribe();
+    } else {
+      this.sendDataRegister();
     }
   }
 }

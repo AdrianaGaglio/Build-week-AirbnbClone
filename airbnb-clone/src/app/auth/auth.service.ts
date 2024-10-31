@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   Auth,
@@ -7,16 +7,11 @@ import {
   signOut,
   User,
   onAuthStateChanged,
+  authState,
 } from '@angular/fire/auth';
-import { Firestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
-import {
-  BehaviorSubject,
-  catchError,
-  from,
-  map,
-  switchMap,
-  throwError,
-} from 'rxjs';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { iUser } from '../interfaces/iuser';
 import { iLoginData } from '../interfaces/ilogindata';
 
@@ -24,20 +19,24 @@ import { iLoginData } from '../interfaces/ilogindata';
   providedIn: 'root',
 })
 export class AuthService {
+  auth: Auth = inject(Auth);
   authState$ = new BehaviorSubject<User | null>(null);
-  isLoggedIn$ = this.authState$.pipe(map((user) => !!user));
+  authStateOb$ = <Observable<User | null>>authState(this.auth);
+  isLoggedIn$ = this.authStateOb$.pipe(
+    map((user) => {
+      const isLoggedIn = !!user;
 
-  isRegistering: boolean = false;
+      return isLoggedIn;
+    })
+  );
+  isRegistering = false;
 
-  constructor(
-    public auth: Auth,
-    private firestore: Firestore,
-    private router: Router
-  ) {
+  constructor(private firestore: Firestore, private router: Router) {
     onAuthStateChanged(this.auth, (user) => {
+      console.log('Stato di autenticazione rilevato:', user);
       if (!this.isRegistering) {
         this.authState$.next(user);
-      } // Aggiorna lo stato in base alla sessione Firebase
+      }
     });
   }
 
@@ -48,11 +47,10 @@ export class AuthService {
     }
 
     return from(
-      createUserWithEmailAndPassword(this.auth, user.email!, user.password!)
+      createUserWithEmailAndPassword(this.auth, user.email, user.password)
     ).pipe(
       switchMap((userCredential) => {
         const uid = userCredential.user.uid;
-        // console.log('Utente creato con UID:', uid);
 
         const userDocRef = doc(this.firestore, `users/${uid}`);
         return from(
@@ -61,18 +59,16 @@ export class AuthService {
             lastName: user.lastName,
             email: user.email,
             profileImg: user.profileImg || '',
-            role: user.role || 'user',
+            role: user.role || 'guest',
             num_of_apartments: user.num_of_apartments || 0,
             ratings: user.ratings || { vote: 0, count: 0 },
             reviews: user.reviews || [],
           })
-        ).pipe(
-          // map(() => console.log('Dati utente salvati in Firestore.')),
-          catchError((error) => {
-            console.error('Errore durante il salvataggio in Firestore:', error);
-            return throwError(() => new Error('Errore nella registrazione'));
-          })
         );
+      }),
+      catchError((error) => {
+        console.error('Errore durante la registrazione:', error);
+        return throwError(() => new Error('Errore nella registrazione'));
       })
     );
   }
@@ -82,16 +78,11 @@ export class AuthService {
       signInWithEmailAndPassword(this.auth, user.email, user.password)
     ).pipe(
       map((userCredential) => {
-        console.log(userCredential);
+        this.authState$.next(userCredential.user); // Aggiorna lo stato dell'autenticazione
 
-        // Aggiorna lo stato dell'autenticazione e salva i dati di login
-        this.authState$.next(userCredential.user);
-        localStorage.setItem('loginData', JSON.stringify(userCredential.user));
-
-        return userCredential.user; // Passa l'utente al next
+        return userCredential.user;
       }),
       catchError((error) => {
-        // Gestisci gli errori di autenticazione
         let message = '';
         if (error.code === 'auth/user-not-found') {
           message = 'Utente non trovato';
@@ -108,26 +99,13 @@ export class AuthService {
   }
 
   logout() {
-    signOut(this.auth).then(() => {
-      this.authState$.next(null);
-      localStorage.removeItem('loginData');
-      this.router.navigate(['/auth/login']);
-    });
-  }
+    return from(signOut(this.auth)).pipe(
+      map(() => {
+        console.log('Logout effettuato');
 
-  getSavedUser() {
-    const savedUser = localStorage.getItem('loginData');
-
-    if (!savedUser) return;
-
-    const user: User = JSON.parse(savedUser);
-
-    // Controlla se il token è scaduto
-    if (this.auth.currentUser && !this.auth.currentUser.emailVerified) {
-      localStorage.removeItem('loginData'); // Rimuovi l'utente se la sessione è scaduta
-      this.authState$.next(null);
-    } else {
-      this.authState$.next(this.auth.currentUser); // Imposta l'utente come loggato
-    }
+        this.authState$.next(null); // Resetta lo stato dell'utente
+        this.router.navigate(['/auth/login']); // Naviga alla pagina di login
+      })
+    );
   }
 }

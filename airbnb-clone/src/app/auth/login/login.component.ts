@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   ) {}
   private modalService = inject(NgbModal);
 
+  isLoggedIn: boolean = false;
+
   loginForm!: FormGroup;
   logo: string = environment.logo;
   message!: string;
@@ -27,6 +29,10 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: this.fb.control('', [Validators.required, Validators.email]),
       password: this.fb.control('', [Validators.required]),
+    });
+    this.authSvc.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+      console.log('Stato di login aggiornato:', this.isLoggedIn);
     });
   }
 

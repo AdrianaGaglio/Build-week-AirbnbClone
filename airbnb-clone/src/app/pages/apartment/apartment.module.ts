@@ -31,12 +31,15 @@ import {
 
 import { SharedResModule } from '../../shared/reservation/sharedRes.module';
 import { SharedMapModule } from '../../shared/map/map.module';
+import { SharedModule } from '../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ApartmentComponent],
   imports: [
     CommonModule,
     ApartmentRoutingModule,
+    ReactiveFormsModule,
     NgIconsModule.withIcons({
       ionHeart,
       ionHeartOutline,
@@ -60,6 +63,7 @@ import { SharedMapModule } from '../../shared/map/map.module';
     }),
     SharedResModule,
     SharedMapModule,
+    SharedModule,
   ],
 })
 export class ApartmentModule {}
