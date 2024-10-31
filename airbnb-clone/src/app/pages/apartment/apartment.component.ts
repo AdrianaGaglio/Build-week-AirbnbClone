@@ -46,8 +46,6 @@ export class ApartmentComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.apartmentSvc.getApartmentById(params['id']).subscribe({
         next: (res) => {
-          console.log(res);
-
           this.apartment = res;
           this.coverimg = this.apartment.coverImage[0];
           this.img4 = this.apartment.coverImage.slice(1, 4);

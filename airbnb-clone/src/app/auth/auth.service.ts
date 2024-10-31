@@ -33,7 +33,6 @@ export class AuthService {
 
   constructor(private firestore: Firestore, private router: Router) {
     onAuthStateChanged(this.auth, (user) => {
-      console.log('Stato di autenticazione rilevato:', user);
       if (!this.isRegistering) {
         this.authState$.next(user);
       }
@@ -67,7 +66,6 @@ export class AuthService {
         );
       }),
       catchError((error) => {
-        console.error('Errore durante la registrazione:', error);
         return throwError(() => new Error('Errore nella registrazione'));
       })
     );

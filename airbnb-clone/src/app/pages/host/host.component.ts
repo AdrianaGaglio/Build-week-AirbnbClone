@@ -83,7 +83,6 @@ export class HostComponent implements OnInit {
           this.apartments = apartments.filter(
             (apartment) => apartment.hostId === params['id']
           );
-          console.log(this.apartments);
         },
         error: (error) => {
           this.message = error;
