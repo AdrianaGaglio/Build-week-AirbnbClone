@@ -36,7 +36,6 @@ export class HeaderComponent {
       if (authState) {
         this.userSvc.getUserById(authState.uid).subscribe((user) => {
           this.user = user;
-          console.log(this.user);
         });
       }
     });
@@ -52,6 +51,8 @@ export class HeaderComponent {
   }
 
   logout() {
+    this.messageSvc.allMessages$.next([]);
+    this.messageSvc.unreadMessages$.next([]);
     this.authSvc.logout().subscribe();
   }
 

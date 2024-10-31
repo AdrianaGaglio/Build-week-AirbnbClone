@@ -64,7 +64,7 @@
               />
             </ng-container>
 
-            <ng-container *ngIf="user">
+            <ng-container *ngIf="user && isLoggedIn">
               <img
                 *ngIf="user.profileImg"
                 src="{{ user.profileImg }}"

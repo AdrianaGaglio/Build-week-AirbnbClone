@@ -14,7 +14,7 @@ export class MessageService {
   messageUrl = environment.messageUrl;
 
   unreadMessages$ = new BehaviorSubject<iMessage[] | []>([]);
-  allMessages$ = new BehaviorSubject<iMessage[] | []>([]);
+  allMessages$ = new BehaviorSubject<iMessage[]>([]);
 
   getMessages(userId: string): Observable<iMessage[]> {
     return this.http
@@ -74,6 +74,9 @@ export class MessageService {
   }
 
   delete(message: iMessage) {
+    let msgs = this.allMessages$.getValue();
+    msgs = msgs.filter((msg) => msg.id !== message.id);
+    this.allMessages$.next(msgs);
     return this.http.delete<iMessage>(`${this.messageUrl}/${message.id}`);
   }
 }

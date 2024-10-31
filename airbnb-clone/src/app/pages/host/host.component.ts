@@ -6,6 +6,8 @@ import { ApartmentService } from '../../services/apartment.service';
 import { iApartment } from '../../interfaces/iapartment';
 import { AuthService } from '../../auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PopupComponent } from '../../shared/sharedmodal/popup/popup.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-host',
@@ -18,7 +20,8 @@ export class HostComponent implements OnInit {
     private route: ActivatedRoute,
     private apartmentSvc: ApartmentService,
     private authSvc: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modalSvc: NgbModal
   ) {}
 
   user!: iUser;
@@ -98,8 +101,21 @@ export class HostComponent implements OnInit {
 
     this.user.reviews.push(userUpdate.ratingsReview);
 
-    this.userSvc.changeUserInfo(this.user).subscribe();
+    this.userSvc.changeUserInfo(this.user).subscribe({
+      next: (user) => {
+        this.openModal('Recensione inviata correttamente', false);
+        this.ratingsForm.reset();
+        this.showRatings = false;
+      },
+      error: (err) => {
+        this.openModal('Si è verificato un problema', false);
+      },
+    });
+  }
 
-    console.log(this.user);
+  openModal(message: string, value: boolean) {
+    const modalRef = this.modalSvc.open(PopupComponent);
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.isOk = value;
   }
 }

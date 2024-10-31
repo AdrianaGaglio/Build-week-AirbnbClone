@@ -29,7 +29,7 @@ export class AppComponent {
     this.authSvc.authState$.subscribe((user) => {
       if (user) {
         this.messageSvc.getMessages(user.uid).subscribe((msgs) => {
-          if (msgs) {
+          if (msgs.length > 0) {
             this.messageSvc.allMessages$.next(msgs);
             let unread = msgs.filter((msg) => !msg.isRead);
             this.messageSvc.unreadMessages$.next(unread);

@@ -101,6 +101,7 @@
                 <span class="star"></span>
               </div>
               <div
+                *ngIf="host"
                 class="border-start border-2 px-4 p-2 d-flex flex-column align-items-center"
               >
                 <h5 class="m-0 fw-bolder">33</h5>
@@ -114,16 +115,18 @@
           </div>
         </ng-container>
 
-        <div class="d-flex align-items-center mb-2 border-bottom py-4">
-          <div class="rounded-pill overflow-hidden me-3">
-            <a [routerLink]="['/host', host.id]">
-              <img
-                src="https://a0.muscache.com/im/pictures/user/f654eeec-5aa5-48b6-ae59-7cba6a7d4c7d.jpg?im_w=240"
-                alt="Immagine dell'host"
-                height="50"
-                width="50"
-                class="object-fit-cover"
-              />
+        <div class="d-flex align-items-center mb-2 border-bottom py-4 gap-2">
+          <div class="rounded-pill overflow-hidden">
+            <a [routerLink]="['/host', host.id]" *ngIf="host">
+              <ng-container *ngIf="host.profileImg">
+                <img
+                  src="{{ host.profileImg }}"
+                  alt="Immagine dell'host"
+                  height="50"
+                  width="50"
+                  class="object-fit-cover"
+                />
+              </ng-container>
             </a>
           </div>
           <div *ngIf="host">
@@ -179,39 +182,39 @@
 
         <!-- Servizi Offerti -->
         <div class="row mt-3">
-          <div class="col-8">
+          <div class="col">
             <h4>Cosa troverai</h4>
-            <div class="row">
-              <div class="col-6">
-                <!-- Controllo se ci sono servizi da mostrare -->
-                <ul class="list-unstyled" *ngIf="displayedServices.length > 0">
-                  <li
-                    *ngFor="let service of displayedServices"
-                    class="d-flex align-items-center mb-2"
-                  >
-                    <ng-icon
-                      [name]="service.icon"
-                      style="font-size: 20px; margin-right: 5px"
-                    ></ng-icon>
-                    {{ service.service }}
-                  </li>
-                </ul>
-                <p *ngIf="displayedServices.length === 0">
-                  Nessun servizio disponibile
-                </p>
-              </div>
-            </div>
+
+            <!-- Controllo se ci sono servizi da mostrare -->
+            <ul
+              class="list-unstyled row row-cols-4"
+              *ngIf="displayedServices.length > 0"
+            >
+              <li
+                *ngFor="let service of displayedServices"
+                class="d-flex align-items-center mb-2"
+              >
+                <ng-icon
+                  [name]="service.icon"
+                  style="font-size: 20px; margin-right: 5px"
+                ></ng-icon>
+                {{ service.service }}
+              </li>
+            </ul>
+            <p *ngIf="displayedServices.length === 0">
+              Nessun servizio disponibile
+            </p>
           </div>
         </div>
       </div>
       <!-- App Reservation -->
       <div class="col">
-        <div class="position-sticky-apartment-cta">
+        <div>
           <ng-container *ngIf="loggedUserId && apartment.availability"
             ><app-reservation [apartment]="apartment"></app-reservation
           ></ng-container>
           <ng-container *ngIf="loggedUserId && !apartment.availability">
-            <h5 class="text-pink-airbnb">
+            <h5 class="text-pink-airbnb text-center">
               Appartamento al momento non disponibile
             </h5>
           </ng-container>
@@ -228,7 +231,7 @@
             </button>
             <div
               [ngClass]="{ show: showRatings }"
-              class="border rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
+              class="rounded-4 p-2 text-center dropdown-menu w-100 shadow-lg"
             >
               <form [formGroup]="ratingsForm">
                 <div class="mt-2">
