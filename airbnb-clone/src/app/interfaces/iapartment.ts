@@ -13,8 +13,8 @@ export interface iApartment {
   services: string[];
   squaremeters: number;
   hostId: string;
-  coverImage: string;
-  otherImages: string[];
+  coverImage: string[];
+  // otherImages: string[];
   reviews: iReview[];
   ratings: iRatings;
   category: string[];
