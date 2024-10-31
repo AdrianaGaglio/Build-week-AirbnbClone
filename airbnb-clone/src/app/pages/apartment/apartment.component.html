@@ -142,56 +142,66 @@
         </div>
 
         <!-- Sezione Dove dormirai -->
-        <div class="row border-bottom py-5">
+        <div class="row mt-3">
           <div class="col-8">
-            <h3 class="fw-semibold pb-2">Dove dormirai</h3>
-            <div
-              class="card p-3"
-              style="max-width: 200px; display: inline-block"
-            >
-              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-              <ng-icon name="ionBedOutline" style="font-size: 20px"></ng-icon>
-              <h5>Camera da letto</h5>
-              <p>1 letto matrimoniale, 2 letti singoli</p>
+            <h4>Dove dormirai</h4>
+            <div class="card p-3 w-fixed-250">
+              <h5>Stanze</h5>
+              <div>
+                <div>
+                  <ng-container *ngFor="let i of array">
+                    <ng-icon
+                      name="ionBedOutline"
+                      style="font-size: 20px"
+                    ></ng-icon
+                  ></ng-container>
+                </div>
+
+                <span>{{
+                  apartment.rooms >= 5
+                    ? "2 camere da letto"
+                    : "1 camera da letto"
+                }}</span>
+
+                <div>
+                  <ng-container *ngIf="apartment.rooms - numOfRoom >= 1">
+                    <span>{{
+                      apartment.rooms >= 5
+                        ? apartment.rooms - 2 + " altre stanze"
+                        : apartment.rooms - 1 + " altra stanza"
+                    }}</span>
+                  </ng-container>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        <hr class="custom-hr" />
+
         <!-- Servizi Offerti -->
-        <div class="py-5 border-bottom mb-3">
-          <h3 class="fw-semibold pb-2">Cosa troverai</h3>
-          <div
-            class="row row-cols-2 list-unstyled d-flex flex-wrap"
-            *ngIf="apartment.services"
-          >
-            <div class="col d-flex align-items-center mb-2 fs-5">
-              <ng-icon
-                name="ionWifiOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              Wi-Fi gratuito
-            </div>
-            <div class="col d-flex align-items-center mb-2 fs-5">
-              <ng-icon
-                name="ionTvOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              TV con Netflix
-            </div>
-            <div class="col d-flex align-items-center mb-2 fs-5">
-              <ng-icon
-                name="ionSnowOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              Aria condizionata
-            </div>
-            <div class="col d-flex align-items-center mb-2 fs-5">
-              <ng-icon
-                name="ionCafeOutline"
-                style="font-size: 20px; margin-right: 5px"
-              ></ng-icon>
-              Macchina da caffè
+        <div class="row mt-3">
+          <div class="col-8">
+            <h4>Cosa troverai</h4>
+            <div class="row">
+              <div class="col-6">
+                <!-- Controllo se ci sono servizi da mostrare -->
+                <ul class="list-unstyled" *ngIf="displayedServices.length > 0">
+                  <li
+                    *ngFor="let service of displayedServices"
+                    class="d-flex align-items-center mb-2"
+                  >
+                    <ng-icon
+                      [name]="service.icon"
+                      style="font-size: 20px; margin-right: 5px"
+                    ></ng-icon>
+                    {{ service.service }}
+                  </li>
+                </ul>
+                <p *ngIf="displayedServices.length === 0">
+                  Nessun servizio disponibile
+                </p>
+              </div>
             </div>
           </div>
         </div>
