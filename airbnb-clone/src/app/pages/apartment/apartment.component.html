@@ -238,7 +238,40 @@
     </div>
   </div>
 
-  <hr class="custom-hr" />
+  <div class="border-bottom border-top py-4">
+    <app-map [placeMap]="apartment.location"></app-map>
+  </div>
 
-  <app-map [placeMap]="apartment.location"></app-map>
+  <!-- titolo review -->
+  <div class="my-5">
+    <div class="d-flex justify-content-between">
+      <h2 class="fw-bolder">Recensioni</h2>
+      <div>
+        <button
+          (click)="showAll = !showAll"
+          type="button"
+          class="btn border rounded-3 mx-1 py-2 fs-6 hoverScale"
+        >
+          <span *ngIf="!showAll">Mostra tutte le Recensioni</span
+          ><span *ngIf="showAll">Mostra meno Recensioni</span>
+        </button>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!showAll">
+      <div class="row border-bottom">
+        <div *ngFor="let review of apartment.reviews.slice(0, 4)" class="col">
+          <app-review-card [review]="review"></app-review-card>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="showAll">
+      <div class="row border-bottom">
+        <div *ngFor="let review of apartment.reviews" class="col">
+          <app-review-card [review]="review"></app-review-card>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>

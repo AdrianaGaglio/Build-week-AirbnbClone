@@ -39,6 +39,7 @@ export class ApartmentComponent implements OnInit {
   coverimg!: string;
   img4!: string[];
   allImg!: string[];
+  showAll: boolean = false;
 
   showRatings: boolean = false;
   ratingsForm!: FormGroup;
